@@ -20,16 +20,6 @@ This project utilizes the Elliptic++ Actors Dataset, a comprehensive collection 
 
 For dataset details and download instructions, refer to the [data_sources.md](data/data_sources.md) file.
 
-## Methodology
-This project follows an eight-week timeline:
-1. Draft project proposal and finalize scope.
-2. Conduct a literature review and dataset analysis.
-3. Implement a baseline anomaly detection model.
-4. Apply GraphLIME for explainability.
-5. Translate model insights into policy enforcement scenarios.
-6. Develop a dashboard to visualize outputs.
-7. Iterate on feedback and finalize deliverables.
-8. Prepare final report and documentation.
 
 ## Repository Structure
 ```
