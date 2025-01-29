@@ -28,7 +28,6 @@ For dataset details and download instructions, refer to the [data_sources.md](da
 │   ├── raw/                   # Raw dataset files
 │   ├── processed/             # Preprocessed data
 │   ├── data_sources.md        # Dataset overview and instructions
-├── notebooks/                  # Jupyter notebooks for exploration
 ├── src/                        # Source code for preprocessing, models, and utilities
 ├── results/                    # Outputs and visualizations
 ├── README.md                   # Project overview
