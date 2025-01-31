@@ -1,18 +1,24 @@
-import networkx as nx
+import os
 import matplotlib.pyplot as plt
-from src.graph_builder import build_graph, load_data
+import networkx as nx
 
-def visualize_graph(G, save_path=None):
-    """Simple visualization of the graph."""
-    plt.figure(figsize=(12, 8))
-    pos = nx.spring_layout(G)  # Layout for visualization
-    nx.draw(G, pos, with_labels=True, node_color="lightblue", edge_color="gray", node_size=500, font_size=8)
-    if save_path:
-        plt.savefig(save_path)
-    plt.show()
+def visualize_graph(G, folder="visualizations", filename="graph.png"):
+    """Visualizes and saves the NetworkX graph in a specified folder."""
+    
+    # Ensure the folder exists
+    os.makedirs(folder, exist_ok=True)
+    
+    # Construct full file path
+    file_path = os.path.join(folder, filename)
+    
+    # Plot the graph
+    plt.figure(figsize=(12, 12))
+    pos = nx.spring_layout(G, seed=42, k=0.1)  # Force-directed layout
+    nx.draw(G, pos, node_size=10, edge_color="gray", alpha=0.6, with_labels=False)
+    
+    # Save the image
+    plt.title("Graph Visualization")
+    plt.savefig(file_path, dpi=300, bbox_inches="tight")
+    plt.close()  # Close the plot to prevent memory issues
 
-if __name__ == "__main__":
-    data_dir = "../data"
-    users_df, wallets_df, transactions_df = load_data(data_dir)
-    G = build_graph(users_df, wallets_df, transactions_df)
-    visualize_graph(G)
+    print(f"Graph saved at: {file_path}")

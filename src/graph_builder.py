@@ -13,40 +13,67 @@ file_paths = {
 }
 
 def load_data(base_dir=""):
-    """Loads CSV files into DataFrames, ensuring correct path formatting."""
+    """Loads CSV files into structured DataFrames for users, wallets, and transactions."""
     data = {}
     for key, path in file_paths.items():
-        full_path = os.path.normpath(os.path.join(base_dir, path))  # Normalize path to handle slashes
+        full_path = os.path.normpath(os.path.join(base_dir, path))  # Normalize path format
         if not os.path.exists(full_path):
             raise FileNotFoundError(f"File not found: {full_path}")
         data[key] = pd.read_csv(full_path)
-    return data
+
+    # Structuring output: Users, Wallets, Transactions
+    wallets_df = data["wallets"]  # Wallet feature data
+    transactions_df = data["txs_edgelist"]  # Transactions between entities
+    edges_df = {
+        "addr_addr": data["addr_addr"],
+        "addr_tx": data["addr_tx"],
+        "tx_addr": data["tx_addr"]
+    }
+
+    return wallets_df, transactions_df, edges_df 
 
 
-def build_graph(data):
+def build_graph(wallets_df, transactions_df, edges_df):
     """Constructs a NetworkX graph from the dataset."""
     G = nx.Graph()
 
     # Add wallet nodes with features
-    wallets_df = data["wallets"]
     for _, row in wallets_df.iterrows():
-        G.add_node(row["wallet_id"], type="wallet", **row.to_dict())
+        G.add_node(row["address"], type="wallet", **row.to_dict())
 
-    # Add transaction nodes with features
-    txs_features_df = data["txs_features"]
-    for _, row in txs_features_df.iterrows():
-        G.add_node(row["tx_id"], type="transaction", **row.to_dict())
+    # Add transaction nodes with features (avoiding duplicates)
+    for _, row in transactions_df.iterrows():
+        tx_id1, tx_id2 = row["txId1"], row["txId2"]
 
-    # Add edges from different relationships
-    edge_types = ["addr_addr", "addr_tx", "tx_addr", "txs_edgelist"]
-    for edge_type in edge_types:
-        edges_df = data[edge_type]
-        for _, row in edges_df.iterrows():
-            G.add_edge(row["source"], row["target"], type=edge_type, **row.to_dict())
+        if tx_id1 not in G:
+            G.add_node(tx_id1, type="transaction", **row.to_dict())
 
+        if tx_id2 not in G:
+            G.add_node(tx_id2, type="transaction", **row.to_dict())
+
+    # Define correct column mappings for each edge type
+    column_mappings = {
+        "addr_addr": ("input_address", "output_address"),
+        "addr_tx": ("input_address", "txId"),
+        "tx_addr": ("txId", "output_address")
+    }
+
+    # Iterate through edge dataframes with correct mappings
+    for edge_type, df in edges_df.items():
+        df.columns = df.columns.str.strip()  # Clean column names
+        
+        if edge_type not in column_mappings:
+            print(f"Skipping unknown edge type: {edge_type}")
+            continue
+        
+        src_col, tgt_col = column_mappings[edge_type]  # Get correct column names
+        
+        if src_col not in df.columns or tgt_col not in df.columns:
+            print(f"Skipping {edge_type} due to missing columns: {df.columns}")
+            continue
+        
+        for _, row in df.iterrows():
+            G.add_edge(row[src_col], row[tgt_col], type=edge_type, **row.to_dict())
+
+    print(f"Graph has {G.number_of_nodes()} nodes and {G.number_of_edges()} edges.")
     return G
-
-if __name__ == "__main__":
-    data = load_data()
-    graph = build_graph(data)
-    print(f"Graph created with {graph.number_of_nodes()} nodes and {graph.number_of_edges()} edges.")
