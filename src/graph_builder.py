@@ -32,33 +32,22 @@ def load_data(base_dir=""):
 
     return wallets_df, transactions_df, edges_df 
 
-
 def build_graph(wallets_df, transactions_df, edges_df):
-    """Constructs a NetworkX graph from the dataset."""
+    """Constructs a NetworkX graph efficiently."""
     G = nx.Graph()
 
-    # Add wallet nodes with features
-    for _, row in wallets_df.iterrows():
-        G.add_node(row["address"], type="wallet", **row.to_dict())
+    wallet_nodes = [(row["address"], {"type": "wallet", **row.to_dict()}) for _, row in wallets_df.iterrows()]
+    G.add_nodes_from(wallet_nodes)
 
-    # Add transaction nodes with features (avoiding duplicates)
-    for _, row in transactions_df.iterrows():
-        tx_id1, tx_id2 = row["txId1"], row["txId2"]
+    transaction_nodes = set(transactions_df["txId1"]).union(set(transactions_df["txId2"]))
+    G.add_nodes_from((tx_id, {"type": "transaction"}) for tx_id in transaction_nodes)
 
-        if tx_id1 not in G:
-            G.add_node(tx_id1, type="transaction", **row.to_dict())
-
-        if tx_id2 not in G:
-            G.add_node(tx_id2, type="transaction", **row.to_dict())
-
-    # Define correct column mappings for each edge type
     column_mappings = {
         "addr_addr": ("input_address", "output_address"),
         "addr_tx": ("input_address", "txId"),
-        "tx_addr": ("txId", "output_address")
+        "tx_addr": ("txId", "output_address"),
     }
 
-    # Iterate through edge dataframes with correct mappings
     for edge_type, df in edges_df.items():
         df.columns = df.columns.str.strip()  # Clean column names
         
@@ -66,14 +55,14 @@ def build_graph(wallets_df, transactions_df, edges_df):
             print(f"Skipping unknown edge type: {edge_type}")
             continue
         
-        src_col, tgt_col = column_mappings[edge_type]  # Get correct column names
+        src_col, tgt_col = column_mappings[edge_type]
         
         if src_col not in df.columns or tgt_col not in df.columns:
             print(f"Skipping {edge_type} due to missing columns: {df.columns}")
             continue
         
-        for _, row in df.iterrows():
-            G.add_edge(row[src_col], row[tgt_col], type=edge_type, **row.to_dict())
+        edge_list = [(row[src_col], row[tgt_col], {"type": edge_type}) for _, row in df.iterrows()]
+        G.add_edges_from(edge_list) 
 
-    print(f"Graph has {G.number_of_nodes()} nodes and {G.number_of_edges()} edges.")
+    print(f"Graph built! Nodes: {G.number_of_nodes()}, Edges: {G.number_of_edges()}")
     return G

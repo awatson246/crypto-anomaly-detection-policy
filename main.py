@@ -8,6 +8,4 @@ print("Data aquired!")
 print("Building graph...")
 G = build_graph(wallets_df, transactions_df, edges_df)
 
-print(f"Graph has {G.number_of_nodes()} nodes and {G.number_of_edges()} edges.")
-
 visualize_graph(G, folder="results", filename="crypto_graph.png")
