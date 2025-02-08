@@ -64,5 +64,4 @@ def build_graph(wallets_df, transactions_df, edges_df):
         edge_list = [(row[src_col], row[tgt_col], {"type": edge_type}) for _, row in df.iterrows()]
         G.add_edges_from(edge_list) 
 
-    print(f"Graph built! Nodes: {G.number_of_nodes()}, Edges: {G.number_of_edges()}")
     return G

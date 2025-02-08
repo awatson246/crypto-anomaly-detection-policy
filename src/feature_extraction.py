@@ -7,25 +7,36 @@ NODE_FEATURES_FILE = os.path.join(FEATURES_DIR, "node_features.csv")
 EDGE_FEATURES_FILE = os.path.join(FEATURES_DIR, "edge_features.csv")
 
 def extract_node_features(G):
-    """Extracts node-level features and returns a DataFrame."""
+    """Extracts node-level features and ensures consistent attributes for all nodes."""
     node_data = []
+    
+    # Define expected feature keys
+    default_features = {
+        "degree": 0,
+        "in_degree": 0,
+        "out_degree": 0,
+        "node_type": "unknown",
+    }
 
     for node, attrs in G.nodes(data=True):
+        # Compute graph-based features
         degree = G.degree(node)
-        in_degree = sum(1 for _ in G.predecessors(node)) if isinstance(G, nx.DiGraph) else None
-        out_degree = sum(1 for _ in G.successors(node)) if isinstance(G, nx.DiGraph) else None
-        node_type = attrs.get("type", "unknown")
-
-        node_data.append({
+        in_degree = sum(1 for _ in G.predecessors(node)) if isinstance(G, nx.DiGraph) else 0
+        out_degree = sum(1 for _ in G.successors(node)) if isinstance(G, nx.DiGraph) else 0
+        
+        # Merge node attributes with defaults
+        node_features = {**default_features, **attrs}  # Ensures missing fields get defaults
+        node_features.update({
             "node": node,
             "degree": degree,
             "in_degree": in_degree,
             "out_degree": out_degree,
-            "node_type": node_type,
-            **{k: v for k, v in attrs.items() if k not in ["type"]}
         })
 
+        node_data.append(node_features)
+
     return pd.DataFrame(node_data)
+
 
 def extract_edge_features(G):
     """Extracts edge-level features and returns a DataFrame."""
@@ -50,15 +61,30 @@ def save_features(df, file_path):
     print(f"Saved features to {file_path}")
 
 def load_features():
-    """Checks for saved features and loads them if available."""
+    """Loads saved features with consistent data types."""
     if os.path.exists(NODE_FEATURES_FILE) and os.path.exists(EDGE_FEATURES_FILE):
         user_input = input("Existing features found. Reuse them? (y/n): ").strip().lower()
         if user_input == "y":
             print("Loading existing features...")
-            return pd.read_csv(NODE_FEATURES_FILE), pd.read_csv(EDGE_FEATURES_FILE)
-    
+            
+            node_features = pd.read_csv(NODE_FEATURES_FILE, dtype={
+                "node": str,  # Ensure nodes are treated as strings
+                "degree": int,
+                "in_degree": int,
+                "out_degree": int,
+                "node_type": str,
+            })
+            edge_features = pd.read_csv(EDGE_FEATURES_FILE, dtype={
+                "source": str,  # Ensure edge source/target are strings
+                "target": str,
+                "edge_type": str,
+            })
+
+            return node_features, edge_features
+
     print("Extracting new features...")
     return None, None
+
 
 def process_features(G):
     """Handles feature extraction or loading based on user input."""

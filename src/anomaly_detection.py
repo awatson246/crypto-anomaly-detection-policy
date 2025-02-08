@@ -1,40 +1,42 @@
 import os
 import pandas as pd
-import numpy as np
 from sklearn.ensemble import IsolationForest
+from src.feature_extraction import process_features
 
 FEATURES_DIR = "features"
-ANOMALY_OUTPUT_FILE = os.path.join(FEATURES_DIR, "anomalies.csv")
+ANOMALY_OUTPUT_FILE = os.path.join(FEATURES_DIR, "anomaly_scores.csv")
 
-def load_features():
-    """Loads precomputed node features for anomaly detection."""
-    node_features_path = os.path.join(FEATURES_DIR, "node_features.csv")
-    if not os.path.exists(node_features_path):
-        raise FileNotFoundError("Feature file not found. Run feature extraction first.")
+def detect_anomalies(G, node_features, num_anomalies=10):
+    """Runs Isolation Forest on node features to detect anomalies and returns the top N anomalies."""
+    print("Loading or extracting features for anomaly detection...")
     
-    return pd.read_csv(node_features_path)
-
-def detect_anomalies():
-    """Runs Isolation Forest on node features to detect anomalies."""
-    print("Loading features for anomaly detection...")
-    df = load_features()
+    if node_features is None:
+        raise ValueError("Node features could not be loaded or extracted.")
 
     # Selecting numerical columns for anomaly detection
-    feature_columns = ["degree", "in_degree", "out_degree"]  # Adjust based on data availability
-    df_filtered = df[feature_columns].fillna(0)  # Replace NaNs with 0
+    feature_columns = ["degree", "in_degree", "out_degree"]  # Adjust based on actual features
+    df_filtered = node_features[feature_columns].fillna(0)  # Replace NaNs with 0
     
     print("Training Isolation Forest...")
     model = IsolationForest(contamination=0.01, random_state=42)
-    df["anomaly_score"] = model.fit_predict(df_filtered)
+    model.fit(df_filtered)  # Make sure the model is fitted first
+
+    # Now we can use decision_function() since the model is fitted
+    node_features["anomaly_score"] = model.decision_function(df_filtered)  # Higher means more normal
+    node_features["anomaly_label"] = model.predict(df_filtered)  # -1 for anomalies
+
+    # Sort anomalies by lowest anomaly score (most anomalous)
+    anomalies = node_features[node_features["anomaly_label"] == -1].sort_values(by="anomaly_score")
 
     # Save results
     os.makedirs(FEATURES_DIR, exist_ok=True)
-    df.to_csv(ANOMALY_OUTPUT_FILE, index=False)
+    node_features.to_csv(ANOMALY_OUTPUT_FILE, index=False)
     print(f"Anomaly detection complete. Results saved to {ANOMALY_OUTPUT_FILE}")
 
-    # Print anomaly summary
-    anomalies = df[df["anomaly_score"] == -1]
-    print(f"Detected {len(anomalies)} anomalies.")
-    
-    return df, anomalies
+    # Print top N anomalies
+    top_anomalies = anomalies.head(num_anomalies)
+    print("\nTop 10 Anomalous Nodes:")
+    for i, (index, row) in enumerate(top_anomalies.iterrows()):
+        print(f"{i+1}. Node: {row['node']}, Score: {row['anomaly_score']:.4f}")
 
+    return node_features, top_anomalies, model
