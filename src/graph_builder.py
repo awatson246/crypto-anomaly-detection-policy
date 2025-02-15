@@ -1,6 +1,8 @@
 import networkx as nx
+from torch_geometric.utils import from_networkx
 import pandas as pd
 import os
+import torch
 
 file_paths = {
     "wallets": "raw/wallets_features_classes_combined.csv",
@@ -65,3 +67,33 @@ def build_graph(wallets_df, transactions_df, edges_df):
         G.add_edges_from(edge_list) 
 
     return G
+
+def standardize_node_attributes(G):
+    """Ensures all nodes have the same attributes by filling missing values with defaults."""
+    all_attributes = set()
+    
+    # Collect all possible attributes across nodes
+    for _, attrs in G.nodes(data=True):
+        all_attributes.update(attrs.keys())
+
+    # Assign default values (0 for numerical, empty string otherwise)
+    for node in G.nodes():
+        for attr in all_attributes:
+            if attr not in G.nodes[node]:
+                G.nodes[node][attr] = 0  # Default value for missing attributes
+    
+    return G
+
+def convert_to_pyg(G, node_features):
+    """Converts NetworkX graph and node features to PyTorch Geometric format."""
+    # Standardize node attributes
+    G = standardize_node_attributes(G)
+
+    # Convert graph structure
+    pyg_graph = from_networkx(G)
+    
+    # Convert node features to a PyTorch tensor
+    feature_columns = ["degree", "in_degree", "out_degree"]  # Adjust based on actual features
+    features = torch.tensor(node_features[feature_columns].values, dtype=torch.float)
+
+    return pyg_graph, features

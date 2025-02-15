@@ -32,7 +32,7 @@ selected_node = top_anomalies.iloc[selected_idx]["node"]
 print(f"\nExplaining anomaly: Node {selected_node}")
 
 # Run GraphLIME explanation
-num_features = len(["degree", "in_degree", "out_degree"])  # Adjust based on actual features
-explanation = explain_anomaly(G, model, selected_node, num_features, save_path="results/explanation.png")
+num_features = len(["degree", "in_degree", "out_degree"]) 
+explanation = explain_anomaly(G, model, selected_node, save_path="results/explanation.png")
 
 print("Explanation saved to results/explanation.png")

@@ -1,32 +1,60 @@
 import os
-import pandas as pd
-from sklearn.ensemble import IsolationForest
-from src.feature_extraction import process_features
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+from torch_geometric.nn import GCNConv
+from src.graph_builder import convert_to_pyg
 
 FEATURES_DIR = "features"
-ANOMALY_OUTPUT_FILE = os.path.join(FEATURES_DIR, "anomaly_scores.csv")
+ANOMALY_OUTPUT_FILE = os.path.join(FEATURES_DIR, "anomaly_scores_gnn.csv")
 
-def detect_anomalies(G, node_features, num_anomalies=10):
-    """Runs Isolation Forest on node features to detect anomalies and returns the top N anomalies."""
-    print("Loading or extracting features for anomaly detection...")
-    
-    if node_features is None:
-        raise ValueError("Node features could not be loaded or extracted.")
+class AnomalyGCN(nn.Module):
+    def __init__(self, in_features, hidden_dim=16):
+        super(AnomalyGCN, self).__init__()
+        self.conv1 = GCNConv(in_features, hidden_dim)
+        self.conv2 = GCNConv(hidden_dim, 1)  # Output a single score per node
 
-    # Selecting numerical columns for anomaly detection
-    feature_columns = ["degree", "in_degree", "out_degree"]  # Adjust based on actual features
-    df_filtered = node_features[feature_columns].fillna(0)  # Replace NaNs with 0
-    
-    print("Training Isolation Forest...")
-    model = IsolationForest(contamination=0.01, random_state=42)
-    model.fit(df_filtered)  # Make sure the model is fitted first
+    def forward(self, x, edge_index):
+        x = self.conv1(x, edge_index)
+        x = F.relu(x)
+        x = self.conv2(x, edge_index)
+        return x.view(-1)  # Return a single value per node
 
-    # Now we can use decision_function() since the model is fitted
-    node_features["anomaly_score"] = model.decision_function(df_filtered)  # Higher means more normal
-    node_features["anomaly_label"] = model.predict(df_filtered)  # -1 for anomalies
+def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learning_rate=0.01):
+    """Trains a GNN for anomaly detection and returns top anomalies."""
+    print("Converting graph and features for PyG...")
+    pyg_graph, features = convert_to_pyg(G, node_features)
 
-    # Sort anomalies by lowest anomaly score (most anomalous)
-    anomalies = node_features[node_features["anomaly_label"] == -1].sort_values(by="anomaly_score")
+    # Initialize GNN model
+    model = AnomalyGCN(in_features=features.shape[1])
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    loss_fn = nn.MSELoss()  # Minimize reconstruction error
+
+    print("Training GNN for anomaly detection...")
+    for epoch in range(num_epochs):
+        model.train()
+        optimizer.zero_grad()
+        scores = model(features, pyg_graph.edge_index)
+        
+        # Use mean as a proxy for "normal" nodes
+        loss = loss_fn(scores, torch.ones_like(scores) * scores.mean())
+        loss.backward()
+        optimizer.step()
+
+        if epoch % 10 == 0:
+            print(f"Epoch {epoch}/{num_epochs} - Loss: {loss.item():.4f}")
+
+    print("Anomaly scoring...")
+    model.eval()
+    with torch.no_grad():
+        anomaly_scores = model(features, pyg_graph.edge_index).numpy()
+
+    node_features["anomaly_score"] = anomaly_scores
+    node_features["anomaly_label"] = (anomaly_scores < anomaly_scores.mean() - 2 * anomaly_scores.std()).astype(int)
+
+    # Sort anomalies by lowest anomaly score
+    anomalies = node_features.sort_values(by="anomaly_score")
 
     # Save results
     os.makedirs(FEATURES_DIR, exist_ok=True)
