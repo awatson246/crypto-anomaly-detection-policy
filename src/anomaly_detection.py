@@ -9,6 +9,19 @@ from src.graph_builder import convert_to_pyg
 FEATURES_DIR = "features"
 ANOMALY_OUTPUT_FILE = os.path.join(FEATURES_DIR, "anomaly_scores_gnn.csv")
 
+# Define the selected features for training
+FEATURE_COLUMNS = [
+    "degree", "in_degree", "out_degree",  # Graph structure
+    "num_txs_as_sender", "num_txs_as receiver", "total_txs",
+    "lifetime_in_blocks", "num_timesteps_appeared_in",
+    "btc_transacted_total", "btc_transacted_mean", "btc_transacted_median",
+    "btc_sent_total", "btc_sent_mean", "btc_sent_median",
+    "btc_received_total", "btc_received_mean", "btc_received_median",
+    "fees_total", "fees_mean", "fees_median",
+    "blocks_btwn_txs_mean", "blocks_btwn_input_txs_mean", "blocks_btwn_output_txs_mean",
+    "num_addr_transacted_multiple", "transacted_w_address_mean"
+]
+
 class AnomalyGCN(nn.Module):
     def __init__(self, in_features, hidden_dim=16):
         super(AnomalyGCN, self).__init__()
@@ -23,8 +36,12 @@ class AnomalyGCN(nn.Module):
 
 def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learning_rate=0.01):
     """Trains a GNN for anomaly detection and returns top anomalies."""
+    print("Selecting relevant features...")
+    node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)  # Handle missing values
+    print(f"Selected feature matrix shape: {node_features_filtered.shape}")  
+
     print("Converting graph and features for PyG...")
-    pyg_graph, features = convert_to_pyg(G, node_features)
+    pyg_graph, features = convert_to_pyg(G, node_features_filtered)
 
     # Initialize GNN model
     model = AnomalyGCN(in_features=features.shape[1])
