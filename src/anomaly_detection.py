@@ -25,6 +25,7 @@ FEATURE_COLUMNS = [
 class AnomalyGCN(nn.Module):
     def __init__(self, in_features, hidden_dim=16):
         super(AnomalyGCN, self).__init__()
+        print(f"Initializing AnomalyGCN with {in_features} input features")
         self.conv1 = GCNConv(in_features, hidden_dim)
         self.conv2 = GCNConv(hidden_dim, 1)  # Output a single score per node
 
@@ -38,10 +39,13 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
     """Trains a GNN for anomaly detection and returns top anomalies."""
     print("Selecting relevant features...")
     node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)  # Handle missing values
-    print(f"Selected feature matrix shape: {node_features_filtered.shape}")  
+
+    print(f"Model was trained on {node_features.shape[1]} node_features.")
 
     print("Converting graph and features for PyG...")
     pyg_graph, features = convert_to_pyg(G, node_features_filtered)
+
+    print(f"After converting there are {features.shape[1]} node features.")
 
     # Initialize GNN model
     model = AnomalyGCN(in_features=features.shape[1])
@@ -61,6 +65,8 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
 
         if epoch % 10 == 0:
             print(f"Epoch {epoch}/{num_epochs} - Loss: {loss.item():.4f}")
+
+    print(f"Training feature count: {node_features_filtered.shape[1]}")
 
     print("Anomaly scoring...")
     model.eval()

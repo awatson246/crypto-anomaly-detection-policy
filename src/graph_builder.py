@@ -93,7 +93,7 @@ def convert_to_pyg(G, node_features):
     pyg_graph = from_networkx(G)
     
     # Convert node features to a PyTorch tensor
-    feature_columns = ["degree", "in_degree", "out_degree"]  # Adjust based on actual features
+    feature_columns = node_features.columns.tolist() 
     features = torch.tensor(node_features[feature_columns].values, dtype=torch.float)
 
     return pyg_graph, features
