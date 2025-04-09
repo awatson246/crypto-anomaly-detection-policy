@@ -3,6 +3,7 @@ from torch_geometric.utils import from_networkx
 import pandas as pd
 import os
 import torch
+from src.graphlime_explainer import FEATURE_COLUMNS
 
 file_paths = {
     "wallets": "raw/wallets_features_classes_combined.csv",
@@ -68,32 +69,72 @@ def build_graph(wallets_df, transactions_df, edges_df):
 
     return G
 
-def standardize_node_attributes(G):
-    """Ensures all nodes have the same attributes by filling missing values with defaults."""
-    all_attributes = set()
+# def standardize_node_attributes(G):
+#     """Ensures all nodes have the same attributes by filling missing values with defaults."""
+#     all_attributes = set()
     
-    # Collect all possible attributes across nodes
-    for _, attrs in G.nodes(data=True):
-        all_attributes.update(attrs.keys())
+#     # Collect all possible attributes across nodes
+#     for _, attrs in G.nodes(data=True):
+#         all_attributes.update(attrs.keys())
 
-    # Assign default values (0 for numerical, empty string otherwise)
-    for node in G.nodes():
-        for attr in all_attributes:
-            if attr not in G.nodes[node]:
-                G.nodes[node][attr] = 0  # Default value for missing attributes
+#     # Assign default values (0 for numerical, empty string otherwise)
+#     for node in G.nodes():
+#         for attr in all_attributes:
+#             if attr not in G.nodes[node]:
+#                 G.nodes[node][attr] = 0  # Default value for missing attributes
+                
+#     # Rename keys: replace spaces with underscores
+#     for node, attrs in G.nodes(data=True):
+#         # Build new cleaned attributes
+#         cleaned_attrs = {k.replace(" ", "_"): v for k, v in attrs.items()}
+#         # Update node attributes in-place
+#         G.nodes[node].update(cleaned_attrs)
     
-    return G
+#     return G
+
+def standardize_graph_and_features(G, node_features):
+    # Clean node attribute keys
+    for node, attrs in G.nodes(data=True):
+        cleaned_attrs = {k.replace(" ", "_"): v for k, v in attrs.items()}
+        G.nodes[node].update(cleaned_attrs)
+
+    # Clean DataFrame column names
+    node_features.columns = [col.replace(" ", "_") for col in node_features.columns]
+
+    # Ensure all nodes have all features
+    for node in G.nodes():
+        for feature in FEATURE_COLUMNS:
+            if feature not in G.nodes[node]:
+                G.nodes[node][feature] = 0.0  # or np.nan if preferred
+
+    return G, node_features
 
 def convert_to_pyg(G, node_features):
-    """Converts NetworkX graph and node features to PyTorch Geometric format."""
-    # Standardize node attributes
-    G = standardize_node_attributes(G)
+    from src.graphlime_explainer import FEATURE_COLUMNS  # or define locally if needed
 
-    # Convert graph structure
-    pyg_graph = from_networkx(G)
-    
-    # Convert node features to a PyTorch tensor
-    feature_columns = node_features.columns.tolist() 
-    features = torch.tensor(node_features[feature_columns].values, dtype=torch.float)
+    # Clean node_features column names
+    node_features.columns = [col.replace(" ", "_") for col in node_features.columns]
+
+    # Force every node to have the same clean attributes
+    for node in G.nodes():
+        fixed_attrs = {}
+        for feature in FEATURE_COLUMNS:
+            value = G.nodes[node].get(feature, 0.0)
+            if not isinstance(value, (int, float)):
+                value = 0.0
+            fixed_attrs[feature] = float(value)
+        
+        G.nodes[node].clear()
+        G.nodes[node].update(fixed_attrs)
+
+    # Convert to PyG graph using only these attributes
+    pyg_graph = from_networkx(G, group_node_attrs=FEATURE_COLUMNS)
+
+    # Convert features DataFrame to tensor
+    features = torch.tensor(node_features[FEATURE_COLUMNS].values, dtype=torch.float)
 
     return pyg_graph, features
+
+
+
+

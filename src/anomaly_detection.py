@@ -2,6 +2,8 @@ import os
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import numpy as np
+import pandas as pd
 import torch.nn.functional as F
 from torch_geometric.nn import GCNConv
 from src.graph_builder import convert_to_pyg
@@ -37,6 +39,11 @@ class AnomalyGCN(nn.Module):
 
 def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learning_rate=0.01):
     """Trains a GNN for anomaly detection and returns top anomalies."""
+
+    # Ensure node_features is indexed by node IDs
+    node_features = node_features.copy()
+    node_features.index = node_features["node"]
+
     print("Selecting relevant features...")
     node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)  # Handle missing values
 
@@ -89,5 +96,9 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
     print("\nTop 10 Anomalous Nodes:")
     for i, (index, row) in enumerate(top_anomalies.iterrows()):
         print(f"{i+1}. Node: {row['node']}, Score: {row['anomaly_score']:.4f}")
+    
+    anomalies = anomalies.copy()
+    anomalies["node"] = anomalies.index  # preserve node ID from the index
+    top_anomalies = anomalies.head(num_anomalies)
 
     return node_features, top_anomalies, model

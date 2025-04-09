@@ -1,7 +1,8 @@
 import torch
 import networkx as nx
+import numpy as np
 import matplotlib.pyplot as plt
-from torch_geometric.utils import from_networkx
+from torch_geometric.utils import from_networkx, k_hop_subgraph
 from graphlime import GraphLIME
 
 # Ensure we use the same feature columns as in training
@@ -17,60 +18,108 @@ FEATURE_COLUMNS = [
     "num_addr_transacted_multiple", "transacted_w_address_mean"
 ]
 
-def explain_anomaly(G, model, anomaly_node, save_path=None):
+def get_subgraph(G, node, k_hops=2):
     """
-    Generate a GraphLIME explanation for a single anomaly node in a GNN.
-
+    Extract a k-hop subgraph around a given node.
+    
     Parameters:
-        G (networkx.Graph): The graph.
-        model (torch.nn.Module): Trained GNN anomaly detection model.
-        anomaly_node (int): The node to explain.
-        save_path (str, optional): Path to save visualization.
-
+        G (networkx.Graph): Full graph.
+        node (int): Node ID to center subgraph around.
+        k_hops (int): Number of hops to include in subgraph.
+    
     Returns:
-        explanation (torch.Tensor): Feature importance scores.
+        subgraph (networkx.Graph): Extracted subgraph.
     """
-    # Ensure all nodes have the same attributes (only the ones from FEATURE_COLUMNS)
-    for n in G.nodes:
-        for key in FEATURE_COLUMNS:
-            if key not in G.nodes[n]:  
-                G.nodes[n][key] = 0  # Assign default value
+    nodes = set([node])
+    for _ in range(k_hops):
+        neighbors = set()
+        for n in nodes:
+            neighbors.update(G.neighbors(n))
+        nodes.update(neighbors)
 
-    # Convert non-numeric attributes to numeric values
-    def convert_value(val):
-        if isinstance(val, (int, float)):  
-            return val
-        elif isinstance(val, str):  
-            return hash(val) % 100000  # Convert strings to numbers
-        return 0  # Default fallback
+    return G.subgraph(nodes)
 
-    # Prepare feature matrix (using only FEATURE_COLUMNS)
-    node_features_list = [[convert_value(G.nodes[n][key]) for key in FEATURE_COLUMNS] for n in G.nodes]
-    
-    # Convert NetworkX graph to PyG format with the correct features
-    pyg_graph = from_networkx(G)
-    pyg_graph.x = torch.tensor(node_features_list, dtype=torch.float)  # Attach features to PyG graph
+def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
+    """
+    Generate a GraphLIME explanation for a single anomaly node using a subgraph.
+    """
+    import numpy as np
+    import torch
+    import matplotlib.pyplot as plt
+    from torch_geometric.utils import from_networkx, k_hop_subgraph
+    from graphlime import GraphLIME
 
-    # Debug prints
-    print(f"GraphLIME input feature shape: {pyg_graph.x.shape}")
-    print(f"Model expects input features: {model.conv1.in_channels}")
+    MAX_SUBGRAPH_NODES = 2000  # 👈 Set your memory-safe max here
 
-    # Ensure feature dimensions match
-    if pyg_graph.x.shape[1] != model.conv1.in_channels:
-        raise ValueError(f"Feature mismatch: Graph has {pyg_graph.x.shape[1]} features, but model expects {model.conv1.in_channels}.")
+    # Ensure node ID types match (NetworkX might use string keys)
+    if isinstance(list(G.nodes())[0], str):
+        anomaly_node = str(anomaly_node)
+    else:
+        anomaly_node = int(anomaly_node)
 
-    # Ensure the model is in evaluation mode
-    model.eval()
+    if anomaly_node not in G:
+        print(f"Warning: Node {anomaly_node} not found in G!")
+        print(f"Available node IDs (first 10): {list(G.nodes())[:10]}")
+        raise ValueError(f"Node {anomaly_node} not found in graph!")
 
-    # Locate node index
+    # Add degree-based features (you can skip if already added earlier)
+    for node in G.nodes():
+        G.nodes[node]['degree'] = G.degree(node)
+
+    # Filter numeric features
+    sample_node = next(iter(G.nodes()))
+    sample_attrs = G.nodes[sample_node]
+    numeric_keys = [k for k, v in sample_attrs.items() if isinstance(v, (int, float, np.float64, np.int64))]
+
+    # Convert to PyG
+    pyg_graph = from_networkx(G, group_node_attrs=numeric_keys)
+    if not hasattr(pyg_graph, 'x') or pyg_graph.x is None:
+        raise ValueError("PyG graph conversion failed: No node features found!")
+
+    print(f"Converted to PyG. PyG has {pyg_graph.x.shape[0]} nodes.")
+
+    # Get the node's index
     node_idx = list(G.nodes()).index(anomaly_node)
-    
+    node_idx_tensor = torch.tensor([node_idx], dtype=torch.long)
+
+    # Get k-hop subgraph
+    subset, edge_index, mapping, _ = k_hop_subgraph(
+        node_idx=node_idx_tensor, num_hops=k_hops, edge_index=pyg_graph.edge_index, relabel_nodes=True
+    )
+
+    print(f"Subgraph extracted: {len(subset)} nodes.")
+
+    # 🔻 Trim the subgraph if it's too big
+    if len(subset) > MAX_SUBGRAPH_NODES:
+        print(f"Subgraph exceeds {MAX_SUBGRAPH_NODES} nodes. Trimming for memory safety.")
+        # Always include the center node
+        center_idx = mapping.item()
+        trimmed_subset = subset[:MAX_SUBGRAPH_NODES]
+        trimmed_edge_index = edge_index[:, (edge_index[0].isin(trimmed_subset) & edge_index[1].isin(trimmed_subset))]
+
+        # Reindex to ensure center node is still present
+        if center_idx not in trimmed_subset:
+            trimmed_subset[0] = subset[center_idx]  # force-inject center node
+            center_idx = 0  # it's now at position 0
+        else:
+            center_idx = (trimmed_subset == subset[center_idx]).nonzero(as_tuple=True)[0].item()
+
+        subset = trimmed_subset
+        edge_index = trimmed_edge_index
+    else:
+        center_idx = mapping.item()
+
+    sub_x = pyg_graph.x[subset]
+    sub_edge_index = edge_index
+
+    in_features = model.conv1.in_channels
+    if sub_x.shape[1] != in_features:
+        raise ValueError(f"Feature mismatch: Subgraph has {sub_x.shape[1]} features, but model expects {in_features}.")
+
     # Run GraphLIME
     graphlime = GraphLIME(model)
-    explanation = graphlime.explain_node(node_idx, pyg_graph.x, pyg_graph.edge_index)
-    
-    # Extract feature importance scores
-    feature_importance = explanation[node_idx].detach().numpy()
+    explanation = graphlime.explain_node(center_idx, sub_x, sub_edge_index)
+    feature_importance = explanation[center_idx].detach().numpy()
 
     # Plot explanation
     plt.figure(figsize=(8, 6))
