@@ -8,6 +8,7 @@ from sklearn.linear_model import Lasso
 from sklearn.preprocessing import StandardScaler
 import matplotlib.ticker as ticker
 
+
 # Patch GraphLIME to use Lasso and remove deprecated args
 def patched_explain_node(self, node_idx, x, edge_index):
     eps = getattr(self, 'eps', 1e-5)  # fallback if not set
@@ -79,15 +80,20 @@ def get_subgraph(G, node, k_hops=2):
 
     return G.subgraph(nodes)
 
+def generate_llm_summary(anomaly_node, top_features):
+    top_names = [f[0] for f in top_features]
+    insight = (
+        f"This node ({anomaly_node}) was flagged as an anomaly due to high influence from: "
+        f"{', '.join(top_names)}. This pattern may suggest suspicious behavior, such as money laundering "
+        "activities (e.g., layering or mixing), sudden BTC inflows, or unusual transactional clustering."
+    )
+    return insight
+
+
 def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     """
     Generate a GraphLIME explanation for a single anomaly node using a subgraph.
     """
-    import numpy as np
-    import torch
-    import matplotlib.pyplot as plt
-    from torch_geometric.utils import from_networkx, k_hop_subgraph
-    from graphlime import GraphLIME
 
     MAX_SUBGRAPH_NODES = 2000
 
@@ -109,16 +115,12 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     if not hasattr(pyg_graph, 'x') or pyg_graph.x is None:
         raise ValueError("PyG graph conversion failed: No node features found!")
 
-    print(f"Converted to PyG. PyG has {pyg_graph.x.shape[0]} nodes.")
-
     node_idx = list(G.nodes()).index(anomaly_node)
     node_idx_tensor = torch.tensor([node_idx], dtype=torch.long)
 
     subset, edge_index, mapping, _ = k_hop_subgraph(
         node_idx=node_idx_tensor, num_hops=k_hops, edge_index=pyg_graph.edge_index, relabel_nodes=True
     )
-
-    print(f"Subgraph extracted: {len(subset)} nodes.")
 
     if len(subset) > MAX_SUBGRAPH_NODES:
         print(f"Subgraph exceeds {MAX_SUBGRAPH_NODES} nodes. Trimming for memory safety.")
@@ -144,11 +146,8 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
 
         # Safely extract features
         sub_x = pyg_graph.x[trimmed_node_tensor]
-        print("trimmed_node_tensor shape:", trimmed_node_tensor.shape)
-        print("sub_x shape (before fix):", sub_x.shape)
         if sub_x.ndim == 1:
             sub_x = sub_x.unsqueeze(0)
-        print("sub_x shape (after fix):", sub_x.shape)
 
         center_idx = id_map[center_node_global]
 
@@ -159,11 +158,8 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
             subset = subset.unsqueeze(0)
 
         sub_x = pyg_graph.x[subset]
-        print("subset shape:", subset.shape)
-        print("sub_x shape (before fix):", sub_x.shape)
         if sub_x.ndim == 1:
             sub_x = sub_x.unsqueeze(0)
-        print("sub_x shape (after fix):", sub_x.shape)
 
         sub_edge_index = edge_index
         center_idx = mapping.item()
@@ -182,22 +178,42 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     feature_importance = explanation.detach().numpy()
 
     # Plot explanation
-    plt.figure(figsize=(8, 6))
+    # plt.figure(figsize=(8, 6))
+    # feature_importance = np.array(feature_importance).flatten()
+    # if np.isnan(feature_importance).any():
+    #     raise ValueError("Feature importance contains NaNs — check model or inputs.")
+    # plt.bar(range(len(feature_importance)), feature_importance)
+    # plt.xticks(ticks=range(len(feature_importance)), labels=FEATURE_COLUMNS, rotation=90)
+    # plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(1))
+
+    # plt.xlabel("Feature Index")
+    # plt.ylabel("Importance Score")
+    # plt.title(f"GraphLIME Explanation for Node {anomaly_node}")
+
+    # Get top 3 most important features
     feature_importance = np.array(feature_importance).flatten()
     if np.isnan(feature_importance).any():
         raise ValueError("Feature importance contains NaNs — check model or inputs.")
-    plt.bar(range(len(feature_importance)), feature_importance)
-    plt.xticks(ticks=range(len(feature_importance)), labels=FEATURE_COLUMNS, rotation=90)
-    plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(1))
+    num_features = min(len(FEATURE_COLUMNS), len(feature_importance))
+    top_indices = feature_importance[:num_features].argsort()[::-1][:3]
+    top_features = [(FEATURE_COLUMNS[i], feature_importance[i]) for i in top_indices]
 
-    plt.xlabel("Feature Index")
-    plt.ylabel("Importance Score")
-    plt.title(f"GraphLIME Explanation for Node {anomaly_node}")
 
-    if save_path:
-        plt.savefig(save_path)
-        print(f"Explanation saved to {save_path}")
-    else:
-        plt.show()
+    print(f"\nTop contributing features for node {anomaly_node}:")
+    for name, score in top_features:
+        print(f" - {name}: {score:.4f}")
 
-    return feature_importance
+    summary = (
+    f"This node was flagged as an anomaly due to high influence from: "
+    f"{top_features[0][0]}, {top_features[1][0]}, and {top_features[2][0]}. "
+    "This may indicate suspicious behavior such as fund layering, sudden inflows, or transaction spikes."
+    )
+
+    # if save_path:
+    #     plt.savefig(save_path)
+    #     print(f"Explanation saved to {save_path}")
+    # else:
+    #     plt.show()
+
+    insight = generate_llm_summary(anomaly_node, top_features)
+    return feature_importance, insight

@@ -45,7 +45,10 @@ For dataset details and download instructions, refer to the [data_sources.md](da
    pip install -r requirements.txt
    ```
 3. Download the dataset as per the [data_sources.md](data/data_sources.md) instructions and place it in the `data/raw/ellipticplusplus/actors/` directory.
-4. Explore the dataset and methods using the Jupyter notebooks in the `notebooks/` directory.
+4. Setup your OpenAI key by creating a .env file in the root of the repo, and adding your key:
+   ```bash
+   OPENAI_API_KEY=your-api-key-here
+   ```
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.

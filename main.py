@@ -35,6 +35,7 @@ print(f"\nExplaining anomaly: Node {selected_node}")
 # Run GraphLIME explanation
 num_features = len(["degree", "in_degree", "out_degree"]) 
 
-explanation = explain_anomaly(G, model, selected_node, save_path="results/explanation.png")
+explanation, insight = explain_anomaly(G, model, selected_node, save_path="results/explanation.png")
+print("\nLLM insight:\n", insight)
 
 print("Explanation saved to results/explanation.png")
