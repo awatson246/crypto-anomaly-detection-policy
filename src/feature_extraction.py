@@ -63,7 +63,8 @@ def save_features(df, file_path):
 def load_features():
     """Loads saved features with consistent data types."""
     if os.path.exists(NODE_FEATURES_FILE) and os.path.exists(EDGE_FEATURES_FILE):
-        user_input = input("Existing features found. Reuse them? (y/n): ").strip().lower()
+        #user_input = input("Existing features found. Reuse them? (y/n): ").strip().lower()
+        user_input = "y"
         if user_input == "y":
             print("Loading existing features...")
             

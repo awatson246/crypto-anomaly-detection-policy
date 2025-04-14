@@ -5,7 +5,6 @@ from src.visualize import visualize_graph
 from src.anomaly_detection import detect_anomalies
 from src.graphlime_explainer import explain_anomaly
 
-
 data_dir = "data"
 
 # Load raw data
@@ -27,13 +26,15 @@ df, top_anomalies, model = detect_anomalies(G, node_features)
 visualize_graph(G, folder="results", filename="crypto_graph.png")
 
 # Ask user to select an anomaly to explain
-selected_idx = int(input("\nSelect an anomaly to explain (1-10): ")) - 1
+#selected_idx = int(input("\nSelect an anomaly to explain (1-10): ")) - 1
+selected_idx = 0
 selected_node = top_anomalies.index[selected_idx] 
 
 print(f"\nExplaining anomaly: Node {selected_node}")
 
 # Run GraphLIME explanation
 num_features = len(["degree", "in_degree", "out_degree"]) 
+
 explanation = explain_anomaly(G, model, selected_node, save_path="results/explanation.png")
 
 print("Explanation saved to results/explanation.png")

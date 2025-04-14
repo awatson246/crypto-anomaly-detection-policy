@@ -69,29 +69,6 @@ def build_graph(wallets_df, transactions_df, edges_df):
 
     return G
 
-# def standardize_node_attributes(G):
-#     """Ensures all nodes have the same attributes by filling missing values with defaults."""
-#     all_attributes = set()
-    
-#     # Collect all possible attributes across nodes
-#     for _, attrs in G.nodes(data=True):
-#         all_attributes.update(attrs.keys())
-
-#     # Assign default values (0 for numerical, empty string otherwise)
-#     for node in G.nodes():
-#         for attr in all_attributes:
-#             if attr not in G.nodes[node]:
-#                 G.nodes[node][attr] = 0  # Default value for missing attributes
-                
-#     # Rename keys: replace spaces with underscores
-#     for node, attrs in G.nodes(data=True):
-#         # Build new cleaned attributes
-#         cleaned_attrs = {k.replace(" ", "_"): v for k, v in attrs.items()}
-#         # Update node attributes in-place
-#         G.nodes[node].update(cleaned_attrs)
-    
-#     return G
-
 def standardize_graph_and_features(G, node_features):
     # Clean node attribute keys
     for node, attrs in G.nodes(data=True):
@@ -134,7 +111,3 @@ def convert_to_pyg(G, node_features):
     features = torch.tensor(node_features[FEATURE_COLUMNS].values, dtype=torch.float)
 
     return pyg_graph, features
-
-
-
-

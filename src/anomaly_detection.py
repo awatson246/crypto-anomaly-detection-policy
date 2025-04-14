@@ -35,7 +35,7 @@ class AnomalyGCN(nn.Module):
         x = self.conv1(x, edge_index)
         x = F.relu(x)
         x = self.conv2(x, edge_index)
-        return x.view(-1)  # Return a single value per node
+        return x  # shape will be (num_nodes, 1)
 
 def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learning_rate=0.01):
     """Trains a GNN for anomaly detection and returns top anomalies."""
@@ -47,12 +47,8 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
     print("Selecting relevant features...")
     node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)  # Handle missing values
 
-    print(f"Model was trained on {node_features.shape[1]} node_features.")
-
     print("Converting graph and features for PyG...")
     pyg_graph, features = convert_to_pyg(G, node_features_filtered)
-
-    print(f"After converting there are {features.shape[1]} node features.")
 
     # Initialize GNN model
     model = AnomalyGCN(in_features=features.shape[1])
@@ -72,8 +68,6 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
 
         if epoch % 10 == 0:
             print(f"Epoch {epoch}/{num_epochs} - Loss: {loss.item():.4f}")
-
-    print(f"Training feature count: {node_features_filtered.shape[1]}")
 
     print("Anomaly scoring...")
     model.eval()
@@ -100,5 +94,8 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
     anomalies = anomalies.copy()
     anomalies["node"] = anomalies.index  # preserve node ID from the index
     top_anomalies = anomalies.head(num_anomalies)
+
+    node_features = node_features.copy()
+    node_features["node"] = node_features.index  # Store actual node IDs
 
     return node_features, top_anomalies, model
