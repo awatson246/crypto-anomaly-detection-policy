@@ -11,7 +11,7 @@ The decentralized nature of cryptocurrency, while celebrated for its innovation,
 - Map XAI outputs to actionable policy recommendations for enhanced regulatory enforcement.
 
 ## Dataset
-This project utilizes the Elliptic++ Actors Dataset, a comprehensive collection of blockchain transaction data formatted as graphs. The dataset includes:
+This project utilizes the [Elliptic++ Actors Dataset](https://github.com/git-disl/EllipticPlusPlus/tree/main), a comprehensive collection of blockchain transaction data formatted as graphs. The dataset includes:
 - **wallets_features.csv**: Feature data for actors.
 - **wallets_classes.csv**: Class labels for actors.
 - **AddrAddr_edgelist.csv**: Address-to-address graph edgelist.
