@@ -63,19 +63,18 @@ def save_features(df, file_path):
 def load_features():
     """Loads saved features with consistent data types."""
     if os.path.exists(NODE_FEATURES_FILE) and os.path.exists(EDGE_FEATURES_FILE):
-        #user_input = input("Existing features found. Reuse them? (y/n): ").strip().lower()
-        user_input = "y"
+        user_input = input("Existing features found. Reuse them? (y/n): ").strip().lower()
         if user_input == "y":
             print("Loading existing features...")
-            
-            node_features = pd.read_csv(NODE_FEATURES_FILE, dtype={
+
+            node_features = pd.read_csv(NODE_FEATURES_FILE, low_memory=False, dtype={
                 "node": str,  # Ensure nodes are treated as strings
                 "degree": int,
                 "in_degree": int,
                 "out_degree": int,
                 "node_type": str,
             })
-            edge_features = pd.read_csv(EDGE_FEATURES_FILE, dtype={
+            edge_features = pd.read_csv(EDGE_FEATURES_FILE, low_memory=False, dtype={
                 "source": str,  # Ensure edge source/target are strings
                 "target": str,
                 "edge_type": str,

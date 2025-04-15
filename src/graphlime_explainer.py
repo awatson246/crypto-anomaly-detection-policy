@@ -84,8 +84,7 @@ def generate_llm_summary(anomaly_node, top_features):
     top_names = [f[0] for f in top_features]
     insight = (
         f"This node ({anomaly_node}) was flagged as an anomaly due to high influence from: "
-        f"{', '.join(top_names)}. This pattern may suggest suspicious behavior, such as money laundering "
-        "activities (e.g., layering or mixing), sudden BTC inflows, or unusual transactional clustering."
+        f"{', '.join(top_names)}."
     )
     return insight
 
@@ -206,7 +205,6 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     summary = (
     f"This node was flagged as an anomaly due to high influence from: "
     f"{top_features[0][0]}, {top_features[1][0]}, and {top_features[2][0]}. "
-    "This may indicate suspicious behavior such as fund layering, sudden inflows, or transaction spikes."
     )
 
     # if save_path:

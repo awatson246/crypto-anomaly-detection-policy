@@ -38,14 +38,14 @@ class AnomalyGCN(nn.Module):
         return x  # shape will be (num_nodes, 1)
 
 def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learning_rate=0.01):
-    """Trains a GNN for anomaly detection and returns top anomalies."""
+    """Trains a GNN for anomaly detection and returns top anomalies with valid node IDs."""
 
     # Ensure node_features is indexed by node IDs
     node_features = node_features.copy()
     node_features.index = node_features["node"]
 
     print("Selecting relevant features...")
-    node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)  # Handle missing values
+    node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)
 
     print("Converting graph and features for PyG...")
     pyg_graph, features = convert_to_pyg(G, node_features_filtered)
@@ -53,15 +53,13 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
     # Initialize GNN model
     model = AnomalyGCN(in_features=features.shape[1])
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-    loss_fn = nn.MSELoss()  # Minimize reconstruction error
+    loss_fn = nn.MSELoss()
 
     print("Training GNN for anomaly detection...")
     for epoch in range(num_epochs):
         model.train()
         optimizer.zero_grad()
         scores = model(features, pyg_graph.edge_index)
-        
-        # Use mean as a proxy for "normal" nodes
         loss = loss_fn(scores, torch.ones_like(scores) * scores.mean())
         loss.backward()
         optimizer.step()
@@ -77,25 +75,23 @@ def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learnin
     node_features["anomaly_score"] = anomaly_scores
     node_features["anomaly_label"] = (anomaly_scores < anomaly_scores.mean() - 2 * anomaly_scores.std()).astype(int)
 
-    # Sort anomalies by lowest anomaly score
-    anomalies = node_features.sort_values(by="anomaly_score")
-
-    # Save results
+    # Save full results
     os.makedirs(FEATURES_DIR, exist_ok=True)
     node_features.to_csv(ANOMALY_OUTPUT_FILE, index=False)
     print(f"Anomaly detection complete. Results saved to {ANOMALY_OUTPUT_FILE}")
 
-    # Print top N anomalies
-    top_anomalies = anomalies.head(num_anomalies)
-    print("\nTop 10 Anomalous Nodes:")
+    # Filter out numeric-only node IDs
+    node_features["node"] = node_features.index.astype(str)
+    non_numeric_nodes = node_features[node_features["node"].str.isdigit() == False]
+
+    # Sort by anomaly score
+    sorted_anomalies = non_numeric_nodes.sort_values(by="anomaly_score")
+
+    # Grab top N anomalies
+    top_anomalies = sorted_anomalies.head(num_anomalies)
+
+    print("\nTop Anomalous Nodes:")
     for i, (index, row) in enumerate(top_anomalies.iterrows()):
         print(f"{i+1}. Node: {row['node']}, Score: {row['anomaly_score']:.4f}")
-    
-    anomalies = anomalies.copy()
-    anomalies["node"] = anomalies.index  # preserve node ID from the index
-    top_anomalies = anomalies.head(num_anomalies)
-
-    node_features = node_features.copy()
-    node_features["node"] = node_features.index  # Store actual node IDs
 
     return node_features, top_anomalies, model
