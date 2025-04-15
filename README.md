@@ -56,6 +56,9 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 ## License
 This project is licensed under the MIT License.
 
+## References
+Youssef Elmougy and Ling Liu. 2023. Demystifying Fraudulent Transactions and Illicit Nodes in the Bitcoin Network for Financial Forensics. In Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD ’23), August 6–10, 2023, Long Beach, CA, USA. ACM, New York, NY, USA, 12 pages. https://doi.org/10.1145/3580305.3599803
+
 ---
 
 For any questions, please contact [Adriana Watson](mailto:watso213@purdue.edu).
