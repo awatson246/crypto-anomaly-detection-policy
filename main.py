@@ -36,7 +36,7 @@ print(f"\nExplaining anomaly: Node {selected_node}")
 num_features = len(["degree", "in_degree", "out_degree"]) 
 
 explanation, insight = explain_anomaly(G, model, selected_node, save_path="results/explanation.png")
-print("\nLLM insight:\n", insight)
+print("\nLLM input:\n", insight)
 
 # GPT explanation
 llm_reasoning = interpret_with_openai(insight)

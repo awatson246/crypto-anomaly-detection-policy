@@ -13,7 +13,7 @@ def interpret_with_openai(insight_text, model="gpt-3.5-turbo"):
 
     client = openai.OpenAI()  # uses .env key automatically
     response = client.chat.completions.create(
-        model=model,
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.5
     )
