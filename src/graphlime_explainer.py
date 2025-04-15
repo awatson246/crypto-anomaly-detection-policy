@@ -7,6 +7,10 @@ from graphlime import GraphLIME
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import StandardScaler
 import matplotlib.ticker as ticker
+from sklearn.exceptions import ConvergenceWarning
+import warnings
+warnings.filterwarnings("ignore", category=ConvergenceWarning)
+
 
 
 # Patch GraphLIME to use Lasso and remove deprecated args
