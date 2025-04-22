@@ -156,13 +156,17 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
 
     # Safely pair feature names and importance scores
     num_features = min(len(FEATURE_COLUMNS), len(feature_importance))
-    top_indices = feature_importance[:num_features].argsort()[::-1][:3]
-    top_features = [(FEATURE_COLUMNS[i], feature_importance[i]) for i in top_indices]
 
+    # Only keep non-zero importance scores (with index tracking)
+    nonzero_importances = [
+        (i, feature_importance[i])
+        for i in range(num_features)
+        if feature_importance[i] > 1e-8  # small epsilon to ignore near-zero noise
+    ]
 
-    print(f"\nTop contributing features for node {anomaly_node}:")
-    for name, score in top_features:
-        print(f" - {name}: {score:.3e}")
+    # Sort by importance (descending) and take top 3
+    top_indices = sorted(nonzero_importances, key=lambda x: x[1], reverse=True)[:3]
+    top_features = [(FEATURE_COLUMNS[i], imp) for i, imp in top_indices]
 
     row = G.nodes[anomaly_node]
     insight, top_features, node_data_dict = format_insight(anomaly_node, top_features, row)
