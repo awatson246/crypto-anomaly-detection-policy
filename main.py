@@ -35,11 +35,16 @@ print(f"\nExplaining anomaly: Node {selected_node}")
 # Run GraphLIME explanation
 num_features = len(["degree", "in_degree", "out_degree"]) 
 
-explanation, insight = explain_anomaly(G, model, selected_node, save_path="results/explanation.png")
+explanation, top_features, node_data_dict, insight = explain_anomaly(G, model, selected_node, save_path="results/explanation.png")
 print("\nLLM input:\n", insight)
 
 # GPT explanation
-llm_reasoning = interpret_with_openai(insight)
+llm_reasoning = interpret_with_openai(
+    node_id=selected_node,
+    top_features=top_features,
+    node_data=node_data_dict  # dictionary of real feature values
+)
+
 print("\nLLM says:\n", llm_reasoning)
 
 

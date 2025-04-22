@@ -37,7 +37,7 @@ class AnomalyGCN(nn.Module):
         x = self.conv2(x, edge_index)
         return x  # shape will be (num_nodes, 1)
 
-def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=100, learning_rate=0.01):
+def detect_anomalies(G, node_features, num_anomalies=10, num_epochs=200, learning_rate=0.01):
     """Trains a GNN for anomaly detection and returns top anomalies with valid node IDs."""
 
     # Ensure node_features is indexed by node IDs
