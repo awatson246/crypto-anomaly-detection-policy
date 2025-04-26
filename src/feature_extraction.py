@@ -60,10 +60,14 @@ def save_features(df, file_path):
     df.to_csv(file_path, index=False)
     print(f"Saved features to {file_path}")
 
-def load_features():
+def load_features(confirm_path="y"):
     """Loads saved features with consistent data types."""
     if os.path.exists(NODE_FEATURES_FILE) and os.path.exists(EDGE_FEATURES_FILE):
-        user_input = input("Existing features found. Reuse them? (y/n): ").strip().lower()
+        if confirm_path == "y":
+            user_input = input("Existing features found. Reuse them? (y/n): ").strip().lower()
+        else:
+            user_input = "y'"
+            print("Skipping existing path confirmation.")
         if user_input == "y":
             print("Loading existing features...")
 
@@ -86,9 +90,9 @@ def load_features():
     return None, None
 
 
-def process_features(G):
+def process_features(G, confirm_path="y"):
     """Handles feature extraction or loading based on user input."""
-    node_features, edge_features = load_features()
+    node_features, edge_features = load_features(confirm_path)
     
     if node_features is None or edge_features is None:
         node_features = extract_node_features(G)
