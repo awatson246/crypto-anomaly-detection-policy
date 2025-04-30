@@ -24,4 +24,4 @@ with open("results/llm_insights.json", "r") as f:
 
 # Export dashboard-ready files
 
-export_mini_dashboard_graph(G, node_features, all_insights_dict)
+export_mini_dashboard_graph(G, node_features, all_insights_dict, k_hops=1, max_central_nodes=15)
