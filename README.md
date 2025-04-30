@@ -25,6 +25,7 @@ For dataset details and download instructions, refer to the [data_sources.md](da
 ```
 ├── dashboard/                 # Resources to run the project dashboard
 │   ├── dashboard_data/        # Data needed to build the dashboard
+│   ├── screenshots/           # Samples of the final dashboard
 │   ├── ui/                    # Files for creating the dashboard ui
 │   ├── dashboard_setup.py     # Populates dashbaord_data files
 ├── data/                      # Dataset and related files
@@ -73,7 +74,8 @@ For dataset details and download instructions, refer to the [data_sources.md](da
    python -m http.server
    ```
    and navigate to http://localhost:8000 to view the dashboard. 
-
+   It should look somethikg like this: 
+   ![Dashboard Screenshot](dashboard/screenshots/main_view.png)
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.
