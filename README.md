@@ -1,6 +1,6 @@
 # Graph-Based Fraud Detection for Cryptocurrency with Explainable AI (XAI)
 
-This project explores the application of graph-based anomaly detection and explainable AI (XAI) tools to detect and interpret fraudulent activities in cryptocurrency transactions. By leveraging the structure of blockchain data as a graph and integrating state-of-the-art machine learning techniques, this project aims to address a critical gap in cryptocurrency fraud detection and policy enforcement.
+This project explores the application of graph-based anomaly detection and explainable AI (XAI) tools to detect and interpret fraudulent activities in cryptocurrency transactions. By leveraging the structure of blockchain data as a graph and integrating machine learning techniques, this project aims to address a critical gap in cryptocurrency fraud detection and policy enforcement.
 
 ## Problem Statement
 The decentralized nature of cryptocurrency, while celebrated for its innovation, has also introduced significant challenges in detecting and addressing fraud. Traditional data analytics methods often fall short when applied to blockchain's inherently graphical structure. Meanwhile, fraudulent activities—often involving obscure tokens and low-volume transactions—remain difficult to identify, leaving regulators with limited actionable insights.
@@ -23,15 +23,22 @@ For dataset details and download instructions, refer to the [data_sources.md](da
 
 ## Repository Structure
 ```
-├── dashboard/                   # Resources to run the project dashboard
-├── data/                       # Dataset and related files
+├── dashboard/                 # Resources to run the project dashboard
+│   ├── dashboard_data/        # Data needed to build the dashboard
+│   ├── screenshots/           # Samples of the final dashboard
+│   ├── ui/                    # Files for creating the dashboard ui
+│   ├── dashboard_setup.py     # Populates dashbaord_data files
+├── data/                      # Dataset and related files
 │   ├── raw/                   # Raw dataset files
 │   ├── processed/             # Preprocessed data
 │   ├── data_sources.md        # Dataset overview and instructions
-├── src/                        # Source code for preprocessing, models, and utilities
-├── results/                    # Outputs and visualizations
-├── README.md                   # Project overview
-├── requirements.txt            # Required Python packages
+├── features/                  # Contains anomaly, node, and edge features afer running main.py
+├── src/                       # Source code for preprocessing, models, and utilities
+├── tests/                     # Files for looking over data
+├── main.py/                   # Runs the main program to generate features and explain 1 anomaly
+├── generate_all_insights.py/  # Generates a set number of llm insights
+├── README.md                  # This document!
+├── requirements.txt           # Required Python packages
 ```
 
 ## Getting Started
@@ -49,6 +56,26 @@ For dataset details and download instructions, refer to the [data_sources.md](da
    ```bash
    OPENAI_API_KEY=your-api-key-here
    ```
+5. To generate features, run:
+   ```bash
+   python main.py
+   ```
+6. Then, to generate llm insights run:
+   ```bash
+   python generate_all_insights.py
+   ```
+7. Finally, for the dashboard run:
+   ```bash
+   python dashboard/dashboard_setup.py
+   ```
+   which will create the neccesary files in the dashboard/data folder. 
+8. To launch the dahboard, run: 
+   ```bash
+   python -m http.server
+   ```
+   and navigate to http://localhost:8000 to view the dashboard. 
+   It should look somethikg like this: 
+   ![Dashboard Screenshot](dashboard\screenshots\Dashboard_Example1.png)
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.

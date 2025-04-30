@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  background-color: #1f1f1f;
+  padding: 1em;
+  text-align: center;
+  color: #ffffff;
+  border-bottom: 1px solid #333;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+#graph {
+  flex: 2;
+  height: 100%;
+}
+
+#info-panel {
+  flex: 1;
+  padding: 1em;
+  background-color: #1e1e1e;
+  border-left: 1px solid #333;
+  overflow-y: auto;
+}
+
+#node-info {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.insight-text {
+  margin-top: 0.5em;
+  background-color: #2e2e2e;
+  padding: 0.5em;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  color: #ccc;
+}

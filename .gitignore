@@ -1,4 +1,5 @@
 data/raw/
 features/
+dashboard/dashboard_data
 .env
 dashboard\dashboard_data
