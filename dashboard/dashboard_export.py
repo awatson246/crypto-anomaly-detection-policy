@@ -52,35 +52,38 @@ def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashbo
 
     # --- Safe conversion for JSON ---
     def to_serializable(val):
+        # Safely convert values for JSON
         if pd.isna(val):
             return None
         if hasattr(val, "item"):
             return val.item()
-        if isinstance(val, (np.generic, np.bool_)):
-            return val.item()
-        if isinstance(val, (float, int, str, bool)) or val is None:
-            return val
-        return str(val)
+        if isinstance(val, (np.int64, np.float64, np.bool_)):
+            return val.tolist()
+        return val
 
     # --- Node metadata ---
     mini_node_data = {}
     for node in G_sub.nodes():
         node_str = str(node)
         if node_str not in node_features.index:
+            print(f"[WARN] Node {node_str} not in node_features index")
             continue
 
         row = node_features.loc[node_str]
+        score = row.get("anomaly_score", None)
+        label = row.get("anomaly_label", 0)
+
         mini_node_data[node_str] = {
-            "anomaly_score": to_serializable(row.get("anomaly_score")),
-            "is_anomalous": bool(row.get("anomaly_label", 0)),
+            "anomaly_score": to_serializable(score),
+            "is_anomalous": bool(int(label)) if not pd.isna(label) else False,
             "feature_values": {
                 k: to_serializable(v)
                 for k, v in row.items()
                 if k not in ["anomaly_score", "anomaly_label"]
             },
             "has_llm": (
-                node_str in insights_dict and
-                "No LLM interpretation available" not in insights_dict[node_str].get("llm_reasoning", "")
+                node_str in insights_dict
+                and "No LLM interpretation available" not in insights_dict[node_str].get("llm_reasoning", "")
             )
         }
 
