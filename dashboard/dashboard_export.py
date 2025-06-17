@@ -32,7 +32,7 @@ def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashbo
 
     print(f"Selected {len(center_nodes)} central anomaly nodes for mini graph.")
 
-    # --- Collect k-hop neighbors ---
+    # Collect k-hop neighbors
     subgraph_nodes = set()
     for node in center_nodes:
         if node in G:
@@ -42,7 +42,7 @@ def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashbo
     G_sub = G.subgraph(subgraph_nodes).copy()
     print(f"Mini graph has {len(G_sub.nodes)} nodes and {len(G_sub.edges)} edges.")
 
-    # --- Save edge list ---
+    # Save edge list
     edge_data = [
         {"source": str(u), "target": str(v)}
         for u, v in G_sub.edges()
@@ -50,7 +50,7 @@ def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashbo
     with open(os.path.join(out_dir, "graph.json"), "w") as f:
         json.dump(edge_data, f, indent=2)
 
-    # --- Safe conversion for JSON ---
+    # Safe conversion for JSON
     def to_serializable(val):
         # Safely convert values for JSON
         if pd.isna(val):
@@ -61,7 +61,7 @@ def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashbo
             return val.tolist()
         return val
 
-    # --- Node metadata ---
+    # Node metadata
     mini_node_data = {}
     for node in G_sub.nodes():
         node_str = str(node)
@@ -90,7 +90,7 @@ def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashbo
     with open(os.path.join(out_dir, "node_data.json"), "w") as f:
         json.dump(mini_node_data, f, indent=2)
 
-    # --- Filtered LLM insights ---
+    # Filtered LLM insights
     mini_insights = {
         k: v for k, v in insights_dict.items() if k in G_sub.nodes
     }
