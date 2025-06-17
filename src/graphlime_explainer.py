@@ -135,12 +135,6 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     if sub_x.ndim == 1:
         sub_x = sub_x.unsqueeze(0)
 
-    # Filter out zero-variance features
-    # stds = sub_x.std(dim=0)
-    # mask = stds > 1e-6
-    # sub_x = sub_x[:, mask]
-    # retained_features = [f for i, f in enumerate(FEATURE_COLUMNS) if mask[i]]
-
     # Standardize features
     sub_x_np = sub_x.detach().cpu().numpy()
     sub_x_np = StandardScaler().fit_transform(sub_x_np)
