@@ -2,6 +2,8 @@
 
 This project explores the application of graph-based anomaly detection and explainable AI (XAI) tools to detect and interpret fraudulent activities in cryptocurrency transactions. By leveraging the structure of blockchain data as a graph and integrating machine learning techniques, this project aims to address a critical gap in cryptocurrency fraud detection and policy enforcement.
 
+This project reflects the work described in the paper found [here](https://arxiv.org/abs/2506.14933). 
+
 ## Problem Statement
 The decentralized nature of cryptocurrency, while celebrated for its innovation, has also introduced significant challenges in detecting and addressing fraud. Traditional data analytics methods often fall short when applied to blockchain's inherently graphical structure. Meanwhile, fraudulent activities—often involving obscure tokens and low-volume transactions—remain difficult to identify, leaving regulators with limited actionable insights.
 
