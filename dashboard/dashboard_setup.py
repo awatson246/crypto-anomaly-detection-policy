@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import sys
 from dashboard_export import export_mini_dashboard_graph
+from local_subgraph import LocalSubgraph
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(project_root)
@@ -24,4 +25,10 @@ with open("results/llm_insights.json", "r") as f:
 
 # Export dashboard-ready files
 
-export_mini_dashboard_graph(G, node_features, all_insights_dict, k_hops=1, max_central_nodes=20)
+#export_mini_dashboard_graph(G, node_features, all_insights_dict, k_hops=1, max_central_nodes=20)
+
+# Build the subgraph
+sub = LocalSubgraph()
+sub.initialize_from_query(G, node_features, all_insights_dict, filter_label="anomaly")
+sub.to_json()
+

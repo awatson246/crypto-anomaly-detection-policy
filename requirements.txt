@@ -8,5 +8,7 @@ scikit-learn>=1.2
 openai
 python-dotenv
 seaborn
+flask 
+flask-cors
 # NOTE: GraphLIME requires a patch to avoid deprecated `normalize` arg in LassoLars.
 # This is handled in main.py at runtime.
