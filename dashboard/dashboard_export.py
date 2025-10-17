@@ -15,7 +15,7 @@ def sanitize_for_json(obj):
         return None if (math.isnan(obj) or math.isinf(obj)) else obj
     return obj
 
-def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashboard/dashboard_data", k_hops=1, max_central_nodes=25):
+def export_mini_dashboard_graph(G, node_features, insights_dict, out_dir="dashboard/dashboard_data", k_hops=2, max_central_nodes=35):
     """
     Extracts a smaller graph centered around nodes with LLM insights and exports:
     - graph.json

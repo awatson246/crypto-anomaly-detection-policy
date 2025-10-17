@@ -73,9 +73,10 @@ For dataset details and download instructions, refer to the [data_sources.md](da
    which will create the neccesary files in the dashboard/data folder. 
 8. To launch the dahboard, run: 
    ```bash
+   cd dashboard
    python -m http.server
    ```
-   and navigate to http://localhost:8000 to view the dashboard. 
+   and navigate to http://localhost:8000/ui/index.html to view the dashboard. 
    It should look somethikg like this: 
    ![Dashboard Screenshot](dashboard/screenshots/Dashboard_Example1.png)
 
