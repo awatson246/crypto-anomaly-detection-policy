@@ -46,6 +46,3 @@ llm_reasoning = interpret_with_openai(
 )
 
 print("\nLLM says:\n", llm_reasoning)
-
-
-print("Explanation saved to results/explanation.png")

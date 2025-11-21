@@ -6,7 +6,7 @@ import torch
 from src.graphlime_explainer import FEATURE_COLUMNS
 
 file_paths = {
-    "wallets": "raw/wallets_features_classes_combined.csv",
+    "wallets": "raw/wallets_features.csv",
     "addr_addr": "raw/AddrAddr_edgelist.csv",
     "addr_tx": "raw/AddrTx_edgelist.csv",
     "tx_addr": "raw/TxAddr_edgelist.csv",
