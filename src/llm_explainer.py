@@ -1,133 +1,171 @@
 import os
 import time
+import json
 import openai
 from dotenv import load_dotenv
 
 load_dotenv()
 client = openai.OpenAI()
 
-# Pricing lookup (you can update when needed)
+# -----------------------------
+#  Model pricing (per 1M tokens)
+# -----------------------------
 MODEL_PRICES = {
     "gpt-4o-mini": {"input": 0.15/1_000_000, "output": 0.60/1_000_000},
     "gpt-4o": {"input": 0.80/1_000_000, "output": 3.20/1_000_000},
     "gpt-3.5-turbo": {"input": 0.50/1_000_000, "output": 1.50/1_000_000},
 }
 
-def _estimate_cost(model, in_tokens, out_tokens):
+def estimate_cost(model, in_tokens, out_tokens):
     if model not in MODEL_PRICES:
         return None
-    pricing = MODEL_PRICES[model]
-    return (in_tokens * pricing["input"]) + (out_tokens * pricing["output"])
+    rates = MODEL_PRICES[model]
+    return in_tokens * rates["input"] + out_tokens * rates["output"]
 
-
-def _retry_api_call(fn, max_retries=12):
+# -------------------------------------------------------------
+#   Helper: Safe retry wrapper (strong exponential backoff)
+# -------------------------------------------------------------
+def retry_api_call(fn, max_retries=12, tag="LLM"):
     for attempt in range(max_retries):
         try:
             return fn()
         except Exception as e:
-            err = str(e).lower()
-            if "rate" in err or "limit" in err:
-                time.sleep(10 * (attempt + 1))
-                continue
-            if "timeout" in err or "503" in err or "connection" in err:
-                time.sleep(5 * (attempt + 1))
-                continue
-            return f"[ERROR:{e}]"
-    return "[FAILED AFTER MAX RETRIES]"
+            msg = str(e).lower()
+            wait = (2 ** attempt) + (0.2 * attempt)
 
+            # Rate limit / overloaded system
+            if "rate" in msg or "limit" in msg or "overloaded" in msg:
+                print(f"[{tag}] Rate limit, retrying in {wait:.2f}s...")
+                time.sleep(wait)
+                continue
 
+            # Connection hiccups
+            if "timeout" in msg or "503" in msg or "connection" in msg:
+                print(f"[{tag}] Transient network error, retrying in {wait:.2f}s...")
+                time.sleep(wait)
+                continue
+
+            # Other fatal cases
+            print(f"[{tag}] Fatal error: {e}")
+            return None
+
+    print(f"[{tag}] Failed after maximum retries.")
+    return None
+
+# --------------------------------------------------------------------
+#   Main function: generates structured JSON + cost + latency metrics
+# --------------------------------------------------------------------
 def interpret_with_openai(node_id, top_features, node_data, model="gpt-4o-mini"):
+    """
+    Returns:
+        structured_json (dict)
+        latency_seconds (float)
+        input_tokens (int)
+        output_tokens (int)
+        cost_usd (float)
+    """
+
     fraud_types = (
         "Ponzi schemes, phishing attacks, pump-and-dump schemes, ransomware, "
-        "SIM swapping, mining malware, giveaway scams, impersonation scams, securities fraud"
+        "SIM swapping, mining malware, giveaway scams, impersonation scams, "
+        "securities fraud, money laundering"
     )
 
-    formatted_weights = "\n".join([f"- {n}: {v:.3e}" for n, v in top_features])
-    formatted_data = "\n".join([f"- {k}: {v}" for k, v in node_data.items()])
+    formatted_weights = "\n".join(
+        [f"- {name}: {value:.3e}" for name, value in top_features]
+    )
 
+    formatted_data = "\n".join(
+        [f"- {k}: {v}" for k, v in node_data.items()]
+    )
+
+    # --------------------------------------------------------------
+    #  Structured-output prompt (JSON enforced)
+    # --------------------------------------------------------------
     prompt = f"""
-You are a cryptocurrency forensics analyst specializing in wallet-level behavior.
+You are a cryptocurrency forensics analyst.
 
-A graph-based anomaly detection model has flagged a wallet as suspicious.
 You will receive:
-1. GraphLIME feature importance weights (importance only, not actual values)
-2. Raw wallet statistics (actual values)
-3. A list of fraud types
+1. GraphLIME feature importances (importance only)
+2. Actual wallet statistics
+3. Fraud types
 
-You must produce:
-- A clear explanation of why the wallet may be anomalous
-- A fraud-type classification *only if applicable*
-- A statement if the wallet likely appears normal
+You must return **strict JSON only**:
 
----
+{{
+  "explanation": "...",
+  "is_fraud": true/false,
+  "fraud_type": "Ponzi schemes" | "phishing attacks" | ... | null,
+  "confidence": float between 0 and 1
+}}
 
-### Example 1
-Feature importances:
-- btc_sent_total: 9.812e-01
-- degree: 3.442e-02
-- btc_received_total: 0.000e+00
-
-Actual values:
-- btc_sent_total: 0.0
-- btc_received_total: 45.1
-- degree: 24
-
-**Interpretation**: The model heavily weighted sending, but the actual value is 0, while receiving is high. This appears consistent with Ponzi inflow behavior (accumulates funds but does not return them).
+RULES:
+- If behavior appears normal → is_fraud = false, fraud_type = null
+- Do NOT hallucinate new fraud types
+- Fraud type should be chosen ONLY from the provided list
+- Explanation must be concise (2–5 sentences) and discuss why the node is/ isn't fraudulent based on the provided information
 
 ---
 
-### Example 2
-Feature importances:
-- transacted_w_address_mean: 7.623e-01
-- degree: 1.124e-01
-- btc_sent_total: 4.132e-03
-
-Actual values:
-- btc_sent_total: 90.55
-- btc_received_total: 21.38
-- total_txs: 27
-- transacted_w_address_mean: 1.0
-
-**Interpretation**: Despite importance on address-mean, the real pattern suggests layering behavior (high movement of funds through many addresses).
-
----
-
-### Real Case
-Node ID: {node_id}
-
-GraphLIME Important Features:
+### Feature Importances (GraphLIME)
 {formatted_weights}
 
-Actual Node Values:
+### Actual Node Statistics
 {formatted_data}
 
-Fraud types available for classification:
+### Known Fraud Types
 {fraud_types}
 
-Your analysis should explain the behavior and assess the likelihood and nature of fraud, if present.
+Return ONLY valid JSON.
 """
 
-    start = time.time()
-
-    def _do_call():
+    def call_api():
         return client.chat.completions.create(
             model=model,
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.2
+            temperature=0.0  # reproducibility
         )
 
-    response = _retry_api_call(_do_call)
-
+    # ----------------------------------
+    # LLM call with retry protection
+    # ----------------------------------
+    start = time.time()
+    response = retry_api_call(call_api, tag=f"LLM:{model}")
     latency = time.time() - start
 
-    # If error string returned
-    if isinstance(response, str):
-        return response, latency, 0, 0, None
+    if response is None:
+        return (
+            {
+                "explanation": "LLM failed after retries",
+                "is_fraud": None,
+                "fraud_type": None,
+                "confidence": 0.0
+            },
+            latency,
+            0, 0, 0.0
+        )
 
+    # Extract new-format message
+    raw_message = response.choices[0].message.content.strip()
+
+    # Parse JSON robustly
+    try:
+        structured = json.loads(raw_message)
+    except Exception:
+        # In case the model wraps JSON in text/etc.
+        try:
+            structured = json.loads(raw_message.strip("` \n"))
+        except:
+            structured = {
+                "explanation": raw_message,
+                "is_fraud": None,
+                "fraud_type": None,
+                "confidence": 0.0
+            }
+
+    # Token usage
     in_tokens = response.usage.prompt_tokens
     out_tokens = response.usage.completion_tokens
-    cost = _estimate_cost(model, in_tokens, out_tokens)
+    cost_usd = estimate_cost(model, in_tokens, out_tokens)
 
-    message = response.choices[0].message["content"].strip()
-
-    return message, latency, in_tokens, out_tokens, cost
+    return structured, latency, in_tokens, out_tokens, cost_usd

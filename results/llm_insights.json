@@ -1,0 +1,879 @@
+{
+  "13vHWR3iLsHeYwT42RnuKYNBoVPrKKZgRv": {
+    "top_features": [
+      [
+        "degree",
+        0.23561416566371918
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 13vHWR3iLsHeYwT42RnuKYNBoVPrKKZgRv\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 54438.0\n\nTop contributing features from GraphLIME:\n - degree: 2.356e-01\n\nAdditional node statistics:\n - total_txs: 1471.0\n - btc_received_total: 2345.30848981\n - btc_sent_total: 1651.88770297\n - num_txs_as_sender: 1453.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 3997.19619278\n - fees_total: 1.290972\n - degree: 5025\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant number of transactions as a sender, indicating active participation in the network. However, it has not received any transactions, which is unusual for a legitimate user. Despite this, the overall transaction volume and behavior do not strongly indicate fraudulent activity.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "3EEwPZZ6pYRJSotCz9RBoVYPRnoWyGWEka": {
+    "top_features": [
+      [
+        "degree",
+        0.06364760547876358
+      ],
+      [
+        "num_timesteps_appeared_in",
+        7.802597792760935e-06
+      ],
+      [
+        "btc_received_mean",
+        3.3398631416048374e-08
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 3EEwPZZ6pYRJSotCz9RBoVYPRnoWyGWEka\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 96767.0\n\nTop contributing features from GraphLIME:\n - degree: 6.365e-02\n - num_timesteps_appeared_in: 7.803e-06\n - btc_received_mean: 3.340e-08\n\nAdditional node statistics:\n - total_txs: 16.0\n - btc_received_total: 38.6702415\n - btc_sent_total: 57.193875760000005\n - num_txs_as_sender: 9.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 95.86411726\n - fees_total: 0.01188967\n - degree: 62\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree of 62 and has sent significantly more BTC than it has received, indicating active participation in transactions. The absence of received transactions suggests it may be a sender rather than a receiver, which is typical for legitimate trading behavior. Therefore, the activity does not align with known fraudulent patterns.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1GQmweAj7Lqwzs4eD8u6DjGA8da2kaG93S": {
+    "top_features": [
+      [
+        "degree",
+        0.17288802564144135
+      ],
+      [
+        "num_txs_as_receiver",
+        8.470632337775896e-07
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1GQmweAj7Lqwzs4eD8u6DjGA8da2kaG93S\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 74585.0\n\nTop contributing features from GraphLIME:\n - degree: 1.729e-01\n - num_txs_as_receiver: 8.471e-07\n\nAdditional node statistics:\n - total_txs: 23.0\n - btc_received_total: 2916.6\n - btc_sent_total: 3982.0\n - num_txs_as_sender: 14.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 6898.6\n - fees_total: 0.2693534\n - degree: 684\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant amount of total transactions, indicating active participation in the network. Additionally, it has sent more BTC than it has received, which is typical for legitimate users rather than fraudulent activities. There are no signs of unusual behavior or patterns that would suggest fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1Lwj974KpHL9dDyXKjhm8wy9edNpPq8QdB": {
+    "top_features": [
+      [
+        "degree",
+        0.6637184023857117
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1Lwj974KpHL9dDyXKjhm8wy9edNpPq8QdB\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 88708.0\n\nTop contributing features from GraphLIME:\n - degree: 6.637e-01\n\nAdditional node statistics:\n - total_txs: 35.0\n - btc_received_total: 0.15007924\n - btc_sent_total: 0.39792278\n - num_txs_as_sender: 5.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.54800202\n - fees_total: 0.0051237\n - degree: 70\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree of 70, indicating a significant number of connections, but the transaction behavior does not suggest any fraudulent activity. The total transactions are relatively low, and the amount of Bitcoin sent exceeds the amount received, which is typical for legitimate users. Therefore, this wallet does not exhibit characteristics of fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1P9RQEr2XeE3PEb44ZE35sfZRRW1JHU8qx": {
+    "top_features": [
+      [
+        "degree",
+        0.2548658549785614
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1P9RQEr2XeE3PEb44ZE35sfZRRW1JHU8qx\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 56449.0\n\nTop contributing features from GraphLIME:\n - degree: 2.549e-01\n\nAdditional node statistics:\n - total_txs: 1277.0\n - btc_received_total: 1177.9077258\n - btc_sent_total: 1900.14313306\n - num_txs_as_sender: 1245.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 3078.05085886\n - fees_total: 0.50409499\n - degree: 2463\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high number of transactions as a sender with no transactions as a receiver, indicating a potential pattern of sending funds without receiving any. The total amount sent significantly exceeds the amount received, which could suggest unusual behavior consistent with money laundering. However, without additional context on the nature of the transactions, it is difficult to definitively classify this as fraud.",
+      "is_fraud": true,
+      "fraud_type": "money laundering",
+      "confidence": 0.75
+    }
+  },
+  "1NfRKpHGe5wxdSYsZ44a154oJi3jxqQvSD": {
+    "top_features": [
+      [
+        "degree",
+        0.17235982418060303
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1NfRKpHGe5wxdSYsZ44a154oJi3jxqQvSD\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 82654.0\n\nTop contributing features from GraphLIME:\n - degree: 1.724e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0291\n - btc_sent_total: 0.0002\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.0293\n - fees_total: 0.0002\n - degree: 6\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a low transaction volume with only two transactions and a small amount of Bitcoin received. The behavior does not indicate any suspicious activity typically associated with fraud, such as high transaction frequency or large sums of money being moved. Therefore, it appears to be a normal wallet usage.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "357M3eYk7BTMGhLwkS84fWigqPDEJ9gp25": {
+    "top_features": [
+      [
+        "degree",
+        0.009492124430835247
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 357M3eYk7BTMGhLwkS84fWigqPDEJ9gp25\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 94753.0\n\nTop contributing features from GraphLIME:\n - degree: 9.492e-03\n\nAdditional node statistics:\n - total_txs: 15.0\n - btc_received_total: 104.90185847\n - btc_sent_total: 42.75136996\n - num_txs_as_sender: 8.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 147.65322843\n - fees_total: 0.01046931\n - degree: 61\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a total of 15 transactions with a significant amount of Bitcoin received and sent. The absence of transactions as a receiver and a high degree suggest that it may be involved in a network of transactions rather than fraudulent activity. Overall, the behavior appears normal and does not indicate any specific fraud type.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1EEm41ThHBMMavFrLCfBgov1msx1cPPsWo": {
+    "top_features": [
+      [
+        "degree",
+        0.9923611283302307
+      ],
+      [
+        "btc_sent_mean",
+        0.9923611283302307
+      ],
+      [
+        "transacted_w_address_mean",
+        0.9923611283302307
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1EEm41ThHBMMavFrLCfBgov1msx1cPPsWo\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 66524.0\n\nTop contributing features from GraphLIME:\n - degree: 9.924e-01\n - btc_sent_mean: 9.924e-01\n - transacted_w_address_mean: 9.924e-01\n\nAdditional node statistics:\n - total_txs: 3.0\n - btc_received_total: 15.0\n - btc_sent_total: 5.08322\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 20.08322\n - fees_total: 0.0010136\n - degree: 8\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a low number of transactions (3) and a significant amount of BTC received (15) compared to the amount sent (5.08322). The high degree and mean transaction values suggest a potentially normal behavior, but the lack of transactions as a receiver raises some suspicion. However, without clear indicators of fraudulent activity, it is not classified as fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "1AHjpLAQGZjiCrtMAxkfGedYVxCUjMY7YY": {
+    "top_features": [
+      [
+        "degree",
+        0.9997995495796204
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1AHjpLAQGZjiCrtMAxkfGedYVxCUjMY7YY\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 44354.0\n\nTop contributing features from GraphLIME:\n - degree: 9.998e-01\n\nAdditional node statistics:\n - total_txs: 18.0\n - btc_received_total: 974.48706184\n - btc_sent_total: 1192.71\n - num_txs_as_sender: 9.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 2167.2\n - fees_total: 0.0114\n - degree: 39\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant amount of BTC sent compared to received, indicating potential unusual activity. The absence of transactions as a receiver raises concerns about the legitimacy of the transactions. This behavior is consistent with money laundering, where funds are moved without clear sources or purposes.",
+      "is_fraud": true,
+      "fraud_type": "money laundering",
+      "confidence": 0.85
+    }
+  },
+  "1LuyaAzBiQpmsXeyvPmiLiqgBPKDvT6Zxr": {
+    "top_features": [
+      [
+        "degree",
+        0.9998054504394531
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1LuyaAzBiQpmsXeyvPmiLiqgBPKDvT6Zxr\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 44352.0\n\nTop contributing features from GraphLIME:\n - degree: 9.998e-01\n\nAdditional node statistics:\n - total_txs: 20.0\n - btc_received_total: 1350.20762963\n - btc_sent_total: 1223.46907592\n - num_txs_as_sender: 10.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 2573.67670555\n - fees_total: 0.0106\n - degree: 44\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant amount of BTC transacted, but it has not received any transactions as a receiver. This behavior is atypical for legitimate wallets, which usually have a mix of sending and receiving transactions. The lack of incoming transactions raises suspicion, indicating potential fraudulent activity.",
+      "is_fraud": true,
+      "fraud_type": "money laundering",
+      "confidence": 0.85
+    }
+  },
+  "3377fMhgXxrrMvyC38AxCHp2dGKazYJSZD": {
+    "top_features": [
+      [
+        "degree",
+        0.9992857575416565
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 3377fMhgXxrrMvyC38AxCHp2dGKazYJSZD\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 48390.0\n\nTop contributing features from GraphLIME:\n - degree: 9.993e-01\n\nAdditional node statistics:\n - total_txs: 36.0\n - btc_received_total: 12.974\n - btc_sent_total: 4.0307322\n - num_txs_as_sender: 34.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 17.0047322\n - fees_total: 0.00797844\n - degree: 70\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant number of transactions as a sender, with no transactions as a receiver. This behavior is typical for legitimate trading or investment activity rather than fraudulent schemes. The transaction volume and fees are also consistent with normal usage patterns.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1NsvYGGB319YiDo4vFoRfHvdtDoeREXTnN": {
+    "top_features": [],
+    "graphlime_raw_insight": "Node ID: 1NsvYGGB319YiDo4vFoRfHvdtDoeREXTnN\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 92736.0\n\nTop contributing features from GraphLIME:\n\n\nAdditional node statistics:\n - total_txs: 10.0\n - btc_received_total: 0.19361189\n - btc_sent_total: 0.18164569\n - num_txs_as_sender: 7.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.37525758\n - fees_total: 0.00536203\n - degree: 23\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a relatively low transaction volume with a total of 10 transactions and a small amount of Bitcoin transacted. The absence of transactions as a receiver and the low fees suggest normal behavior rather than fraudulent activity. Therefore, this wallet does not exhibit characteristics typical of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "12Gd1SKpkZd8FxdUBwVvHyrcSmuNzcfeCy": {
+    "top_features": [
+      [
+        "degree",
+        0.9993506669998169
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 12Gd1SKpkZd8FxdUBwVvHyrcSmuNzcfeCy\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 82659.0\n\nTop contributing features from GraphLIME:\n - degree: 9.994e-01\n\nAdditional node statistics:\n - total_txs: 12.0\n - btc_received_total: 3.60964207\n - btc_sent_total: 0.7822\n - num_txs_as_sender: 9.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 4.39184207\n - fees_total: 0.00703115\n - degree: 36\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant amount of BTC received compared to the amount sent, indicating it is primarily receiving funds. However, the total number of transactions is relatively low, and there are no transactions as a receiver, which suggests normal behavior rather than fraudulent activity. Therefore, it does not exhibit characteristics typical of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "18p9Ftp3m4435tdpZTvoBsm3yjUgkvTF2b": {
+    "top_features": [
+      [
+        "degree",
+        0.9999282956123352
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 18p9Ftp3m4435tdpZTvoBsm3yjUgkvTF2b\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 82659.0\n\nTop contributing features from GraphLIME:\n - degree: 9.999e-01\n\nAdditional node statistics:\n - total_txs: 288.0\n - btc_received_total: 104.99709609\n - btc_sent_total: 150.00974198\n - num_txs_as_sender: 285.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 255.00683807\n - fees_total: 0.14792931\n - degree: 573\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant number of transactions as a sender, with no transactions as a receiver. This behavior suggests that the wallet is primarily sending funds rather than receiving them, which is atypical for legitimate wallets. The total amount sent exceeds the amount received, indicating potential fraudulent activity.",
+      "is_fraud": true,
+      "fraud_type": "money laundering",
+      "confidence": 0.85
+    }
+  },
+  "12cgpFdJViXbwHbhrA3TuW1EGnL25Zqc3P": {
+    "top_features": [
+      [
+        "degree",
+        0.9999500513076782
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 12cgpFdJViXbwHbhrA3TuW1EGnL25Zqc3P\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 64515.0\n\nTop contributing features from GraphLIME:\n - degree: 1.000e+00\n\nAdditional node statistics:\n - total_txs: 86.0\n - btc_received_total: 6610.12725641\n - btc_sent_total: 19195.84889999\n - num_txs_as_sender: 48.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 25805.9761564\n - fees_total: 2.10820264\n - degree: 5551\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant amount of BTC sent compared to BTC received, indicating it is primarily used for sending rather than receiving funds. This behavior, along with the total transactions and fees, suggests it may be involved in money laundering activities rather than typical user behavior.",
+      "is_fraud": true,
+      "fraud_type": "money laundering",
+      "confidence": 0.85
+    }
+  },
+  "1ED7DgK4pXzTMvcswVkURgMEsgGU9G3MbD": {
+    "top_features": [
+      [
+        "degree",
+        0.9917355179786682
+      ],
+      [
+        "btc_sent_total",
+        0.9917355179786682
+      ],
+      [
+        "blocks_btwn_output_txs_mean",
+        0.9917355179786682
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1ED7DgK4pXzTMvcswVkURgMEsgGU9G3MbD\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 86683.0\n\nTop contributing features from GraphLIME:\n - degree: 9.917e-01\n - btc_sent_total: 9.917e-01\n - blocks_btwn_output_txs_mean: 9.917e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.08035006\n - btc_sent_total: 0.0018522\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.08220226\n - fees_total: 0.000552\n - degree: 6\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The node has a very low total transaction volume and a low degree, indicating limited activity. The behavior does not exhibit characteristics typical of fraudulent schemes, such as high transaction frequency or large amounts sent. Therefore, it appears to be a normal wallet with minimal usage.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "1JydBsXSnZyRM1ENyd48ZREGU55hzFNW3w": {
+    "top_features": [
+      [
+        "degree",
+        0.9917355179786682
+      ],
+      [
+        "btc_sent_total",
+        0.9917355179786682
+      ],
+      [
+        "blocks_btwn_output_txs_mean",
+        0.9917355179786682
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1JydBsXSnZyRM1ENyd48ZREGU55hzFNW3w\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 56450.0\n\nTop contributing features from GraphLIME:\n - degree: 9.917e-01\n - btc_sent_total: 9.917e-01\n - blocks_btwn_output_txs_mean: 9.917e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.13147\n - btc_sent_total: 0.49540487\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.62687487\n - fees_total: 0.0011035\n - degree: 8\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The node has a high degree and a significant amount of BTC sent compared to received, indicating potential unusual activity. However, with only two total transactions and no transactions as a receiver, it does not strongly indicate a specific fraud type. The behavior could be consistent with normal usage patterns, but the high BTC sent raises some concerns.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "1KiVTTQeT7FEAemaCtAVHWNU2eKDuHuYRu": {
+    "top_features": [
+      [
+        "degree",
+        0.9923611283302307
+      ],
+      [
+        "btc_sent_mean",
+        0.9923611283302307
+      ],
+      [
+        "transacted_w_address_mean",
+        0.9923611283302307
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1KiVTTQeT7FEAemaCtAVHWNU2eKDuHuYRu\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 56449.0\n\nTop contributing features from GraphLIME:\n - degree: 9.924e-01\n - btc_sent_mean: 9.924e-01\n - transacted_w_address_mean: 9.924e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 7.70725\n - btc_sent_total: 1.415275\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 9.122525\n - fees_total: 0.000284\n - degree: 5\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a low number of transactions and a significant amount of Bitcoin received compared to the amount sent. The behavior does not indicate any typical signs of fraudulent activity such as high transaction volume or unusual patterns. Therefore, it appears to be a normal wallet usage.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "12XQwTywniHvWXUY992c9RHsUZo5gYBkgv": {
+    "top_features": [
+      [
+        "degree",
+        0.9952499866485596
+      ],
+      [
+        "btc_received_median",
+        0.9952499866485596
+      ],
+      [
+        "blocks_btwn_txs_mean",
+        0.9952499866485596
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 12XQwTywniHvWXUY992c9RHsUZo5gYBkgv\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 80643.0\n\nTop contributing features from GraphLIME:\n - degree: 9.952e-01\n - btc_received_median: 9.952e-01\n - blocks_btwn_txs_mean: 9.952e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.01402866\n - btc_sent_total: 0.04\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.05402866\n - fees_total: 0.03795736\n - degree: 5\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The node has a low total transaction count and a significant amount of BTC sent compared to received, which may indicate unusual behavior. However, the degree and median BTC received suggest that it is not operating in a typical fraudulent manner. The lack of multiple transactions as a receiver further supports the idea that this node is not engaging in fraudulent activities.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "3CgMfYD17SYP7ddhUDrbpMUEabymcaFjH5": {
+    "top_features": [
+      [
+        "degree",
+        0.9991151094436646
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 3CgMfYD17SYP7ddhUDrbpMUEabymcaFjH5\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 62498.0\n\nTop contributing features from GraphLIME:\n - degree: 9.991e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.21944999\n - btc_sent_total: 0.62146892\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.84091891\n - fees_total: 0.00213397\n - degree: 7\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a low number of transactions (2) and a higher amount of BTC sent compared to received, which may indicate unusual behavior. However, the degree is relatively low, suggesting limited connectivity. This behavior does not strongly align with known fraud patterns.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "18ge4pQaUF4T71uF8KT4SNLawTgmqCtwR3": {
+    "top_features": [
+      [
+        "degree",
+        0.16015784442424774
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 18ge4pQaUF4T71uF8KT4SNLawTgmqCtwR3\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 4.0\n\nTop contributing features from GraphLIME:\n - degree: 1.602e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.5188212\n - btc_sent_total: 0.5188212\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 1.0376424\n - fees_total: 0.0801084\n - degree: 4\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a low transaction count with equal amounts of BTC received and sent, indicating normal transactional behavior. There are no signs of unusual activity or patterns typically associated with fraud. The degree of the node is also relatively low, suggesting it is not part of a larger fraudulent network.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1P1deJAyffEp9ry9hLoaBEy4XrCofFzu1a": {
+    "top_features": [],
+    "graphlime_raw_insight": "Node ID: 1P1deJAyffEp9ry9hLoaBEy4XrCofFzu1a\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 78618.0\n\nTop contributing features from GraphLIME:\n\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.00416647\n - btc_sent_total: 0.5190643\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.52323077\n - fees_total: 0.0022431\n - degree: 4\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a very low total transaction volume with only two transactions, one as a sender and none as a receiver. The high amount sent compared to the small amount received suggests potential suspicious activity, but without further context or patterns indicative of specific fraud types, it cannot be definitively classified as fraudulent.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "1MqpX62kJU5QcXYNo6cEycaMLyKREodhEu": {
+    "top_features": [
+      [
+        "degree",
+        0.9952499866485596
+      ],
+      [
+        "blocks_btwn_txs_mean",
+        0.9952499866485596
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1MqpX62kJU5QcXYNo6cEycaMLyKREodhEu\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 72571.0\n\nTop contributing features from GraphLIME:\n - degree: 9.952e-01\n - blocks_btwn_txs_mean: 9.952e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.03027725\n - btc_sent_total: 0.00606284\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.03634009\n - fees_total: 0.00112173\n - degree: 6\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The node has a very low number of transactions (2 total) and a low degree (6), which suggests limited activity. The transaction behavior does not exhibit characteristics typical of fraudulent schemes, such as high transaction volume or complex transaction patterns. Therefore, it appears to be normal activity.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1LZw2RyfruTs4uh7CYTzcgeL65VYJDmb19": {
+    "top_features": [
+      [
+        "degree",
+        0.9966706037521362
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1LZw2RyfruTs4uh7CYTzcgeL65VYJDmb19\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 70561.0\n\nTop contributing features from GraphLIME:\n - degree: 9.967e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.5\n - btc_sent_total: 2.0001\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 2.5001\n - fees_total: 0.00126327\n - degree: 6\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a total of 2 transactions, with a significant amount of BTC sent (2.0001) compared to the amount received (0.5). The lack of incoming transactions and the high outgoing volume suggest unusual behavior, potentially indicative of money laundering. However, without further context on the source of the funds or the nature of the transactions, it cannot be definitively classified as fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "139AdCGDyaF1Yg4Eyddvaj38PnihsfCLPj": {
+    "top_features": [
+      [
+        "degree",
+        0.9917355179786682
+      ],
+      [
+        "btc_sent_total",
+        0.9917355179786682
+      ],
+      [
+        "blocks_btwn_output_txs_mean",
+        0.9917355179786682
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 139AdCGDyaF1Yg4Eyddvaj38PnihsfCLPj\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 64513.0\n\nTop contributing features from GraphLIME:\n - degree: 9.917e-01\n - btc_sent_total: 9.917e-01\n - blocks_btwn_output_txs_mean: 9.917e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.9339\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.9339\n - fees_total: 0.0011\n - degree: 6\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only two transactions, both as a sender, with a total of 0.9339 BTC sent and no BTC received. The high degree and transaction metrics suggest limited activity, which is not indicative of fraudulent behavior. Therefore, this wallet does not exhibit characteristics typical of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1BKhEsYKhw5FD4pJ6f7JstobjjRFuqQ2YD": {
+    "top_features": [
+      [
+        "degree",
+        0.9996153712272644
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1BKhEsYKhw5FD4pJ6f7JstobjjRFuqQ2YD\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 50404.0\n\nTop contributing features from GraphLIME:\n - degree: 9.996e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.25786871\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.25786871\n - fees_total: 0.0077\n - degree: 159\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only two transactions, both as a sender, with no BTC received. The low transaction volume and lack of incoming funds suggest normal behavior rather than fraudulent activity. Additionally, the degree is high, but this alone does not indicate fraud without suspicious transaction patterns.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1HdJuG8UxpckpPbfGd8VidpbL8kT4UqdHH": {
+    "top_features": [
+      [
+        "degree",
+        0.18386821448802948
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1HdJuG8UxpckpPbfGd8VidpbL8kT4UqdHH\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 58458.0\n\nTop contributing features from GraphLIME:\n - degree: 1.839e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 26.0\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 26.0\n - fees_total: 0.0264357\n - degree: 18\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only sent transactions without receiving any Bitcoin, which may indicate unusual behavior. However, the total number of transactions is low, and there is no evidence of typical fraudulent activity such as large transfers or patterns consistent with known scams. Therefore, it does not meet the criteria for fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "1CSPyqbLaRKjare36pXzTuGMVCWXAid5Vn": {
+    "top_features": [],
+    "graphlime_raw_insight": "Node ID: 1CSPyqbLaRKjare36pXzTuGMVCWXAid5Vn\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 48380.0\n\nTop contributing features from GraphLIME:\n\n\nAdditional node statistics:\n - total_txs: 3.0\n - btc_received_total: 14.0\n - btc_sent_total: 42.007\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 56.007\n - fees_total: 0.05503077\n - degree: 20\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high total amount of BTC sent compared to received, indicating potential suspicious activity. The absence of transactions as a receiver raises concerns about the legitimacy of the transactions. However, without additional context or patterns typical of known fraud types, it cannot be definitively classified as fraudulent.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "12ZjbeFDGtUboK73gshp2EKp8effFEJ7Qf": {
+    "top_features": [
+      [
+        "degree",
+        0.9909999966621399
+      ],
+      [
+        "btc_transacted_median",
+        0.9909999966621399
+      ],
+      [
+        "blocks_btwn_txs_mean",
+        0.9909999966621399
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 12ZjbeFDGtUboK73gshp2EKp8effFEJ7Qf\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 56448.0\n\nTop contributing features from GraphLIME:\n - degree: 9.910e-01\n - btc_transacted_median: 9.910e-01\n - blocks_btwn_txs_mean: 9.910e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.08825245\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.08825245\n - fees_total: 0.00101022\n - degree: 6\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only two transactions, both as a sender, with a total of 0.08825245 BTC sent and no BTC received. The low transaction volume and lack of incoming funds suggest normal behavior rather than fraudulent activity. The degree and transaction statistics do not indicate any patterns typical of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "3LCNB5KyW8ZLk7DYJbQXJd5ZnTKqyjyu9v": {
+    "top_features": [
+      [
+        "degree",
+        0.9992857575416565
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 3LCNB5KyW8ZLk7DYJbQXJd5ZnTKqyjyu9v\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 50403.0\n\nTop contributing features from GraphLIME:\n - degree: 9.993e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.08496178\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.08496178\n - fees_total: 0.00381327\n - degree: 50\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only two transactions, both as a sender, with no BTC received. The degree is relatively high, but the lack of incoming transactions and the small amount of BTC sent suggest normal behavior rather than fraudulent activity. Therefore, this node does not exhibit characteristics typical of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "37U1BcQvTAfgkSJnFegekjdKJ5SFUAg4Hy": {
+    "top_features": [
+      [
+        "degree",
+        0.6550441980361938
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 37U1BcQvTAfgkSJnFegekjdKJ5SFUAg4Hy\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 46360.0\n\nTop contributing features from GraphLIME:\n - degree: 6.550e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.35453921\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.35453921\n - fees_total: 0.00890552\n - degree: 39\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only sent transactions without receiving any funds, which is unusual behavior. The total amount sent is relatively low, and the degree indicates a moderate level of connectivity. This could suggest potential fraudulent activity, but without more context, it is not definitively indicative of a specific fraud type.",
+      "is_fraud": true,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "39ioEbcSHDDgLJsvzQWb9QLRBobQi9ovCi": {
+    "top_features": [
+      [
+        "degree",
+        0.989062488079071
+      ],
+      [
+        "btc_transacted_total",
+        0.989062488079071
+      ],
+      [
+        "btc_received_median",
+        0.989062488079071
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 39ioEbcSHDDgLJsvzQWb9QLRBobQi9ovCi\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 0.0\n\nTop contributing features from GraphLIME:\n - degree: 9.891e-01\n - btc_transacted_total: 9.891e-01\n - btc_received_median: 9.891e-01\n\nAdditional node statistics:\n - total_txs: 1.0\n - btc_received_total: 0.00061236\n - btc_sent_total: 0.0\n - num_txs_as_sender: 0.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.00061236\n - fees_total: 0.00160674\n - degree: 2\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The node has only one transaction with a very low total amount of Bitcoin received and no transactions as a sender. The degree is also low, indicating limited interaction with the network. These characteristics suggest normal behavior rather than fraudulent activity.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "3KsNYzJdoMA6RsmqbEYjb3VrvVZxdbgx8f": {
+    "top_features": [
+      [
+        "degree",
+        0.9978271722793579
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 3KsNYzJdoMA6RsmqbEYjb3VrvVZxdbgx8f\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 0.0\n\nTop contributing features from GraphLIME:\n - degree: 9.978e-01\n\nAdditional node statistics:\n - total_txs: 1.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.13318873\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.13318873\n - fees_total: 0.00095844\n - degree: 30\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only one transaction where it sent a small amount of BTC and has not received any BTC. The degree of the node is relatively high, but the lack of incoming transactions and the minimal activity suggest that this behavior is not indicative of fraud. Therefore, it appears to be a normal transaction pattern.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1DpWmV1Lb6Fzx8dhXgttYdZPAPuBEKCWGa": {
+    "top_features": [
+      [
+        "degree",
+        0.9877551198005676
+      ],
+      [
+        "num_txs_as_receiver",
+        0.9877551198005676
+      ],
+      [
+        "num_timesteps_appeared_in",
+        0.9877551198005676
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1DpWmV1Lb6Fzx8dhXgttYdZPAPuBEKCWGa\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 0.0\n\nTop contributing features from GraphLIME:\n - degree: 9.878e-01\n - num_txs_as_receiver: 9.878e-01\n - num_timesteps_appeared_in: 9.878e-01\n\nAdditional node statistics:\n - total_txs: 1.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.16812745\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.16812745\n - fees_total: 0.0001\n - degree: 4\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only one transaction as a sender and no transactions as a receiver, indicating limited activity. The total amount sent is relatively small, and there are no signs of typical fraudulent behavior such as high transaction volume or suspicious patterns. Therefore, this behavior appears normal.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "17A16QmavnUfCW11DAApiJxp7ARnxN5pGX": {
+    "top_features": [],
+    "graphlime_raw_insight": "Node ID: 17A16QmavnUfCW11DAApiJxp7ARnxN5pGX\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 44358.0\n\nTop contributing features from GraphLIME:\n\n\nAdditional node statistics:\n - total_txs: 496.0\n - btc_received_total: 15235.00104294\n - btc_sent_total: 13521.00928042\n - num_txs_as_sender: 451.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 28756.01032336\n - fees_total: 1.91899153\n - degree: 12894\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high number of transactions and a significant amount of Bitcoin received and sent, indicating active usage. There are no signs of unusual behavior such as a lack of transactions as a receiver or excessive fees that could suggest fraudulent activity. Therefore, the behavior appears normal.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "3PY7VQHd75khkysr5ddreiP9mcrtHXf3Ac": {
+    "top_features": [
+      [
+        "degree",
+        0.3996821939945221
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 3PY7VQHd75khkysr5ddreiP9mcrtHXf3Ac\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 48381.0\n\nTop contributing features from GraphLIME:\n - degree: 3.997e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.6286\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.6286\n - fees_total: 0.00605908\n - degree: 55\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only sent transactions with no received funds, which may indicate a lack of legitimate activity. However, the low number of total transactions and the absence of any received BTC suggest that this behavior could be consistent with normal usage patterns, such as a user sending funds without receiving any. Therefore, it does not strongly indicate fraudulent activity.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.3
+    }
+  },
+  "3KsqEhDypSefhetpSxNLxoHibn455L8yQn": {
+    "top_features": [
+      [
+        "degree",
+        0.9991870522499084
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 3KsqEhDypSefhetpSxNLxoHibn455L8yQn\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 2014.0\n\nTop contributing features from GraphLIME:\n - degree: 9.992e-01\n\nAdditional node statistics:\n - total_txs: 3.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.0429532\n - num_txs_as_sender: 3.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.0429532\n - fees_total: 0.00245924\n - degree: 79\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only sent a small amount of Bitcoin (0.0429532 BTC) across three transactions without receiving any funds. This behavior is typical for a wallet that may be used for legitimate purposes, such as making payments. The high degree suggests it is connected to many other nodes, but this alone does not indicate fraudulent activity.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "38DPYmsa7RXwLrhpTP6udrfSiGn5dzdGAC": {
+    "top_features": [
+      [
+        "degree",
+        0.10420072078704834
+      ],
+      [
+        "btc_sent_median",
+        6.505037163151428e-06
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 38DPYmsa7RXwLrhpTP6udrfSiGn5dzdGAC\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 4.0\n\nTop contributing features from GraphLIME:\n - degree: 1.042e-01\n - btc_sent_median: 6.505e-06\n\nAdditional node statistics:\n - total_txs: 5.0\n - btc_received_total: 0.0\n - btc_sent_total: 1.52194189\n - num_txs_as_sender: 5.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 1.52194189\n - fees_total: 0.1204\n - degree: 8711\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only sent transactions without receiving any funds, which is unusual behavior. The total amount sent is relatively low, and the number of transactions is limited. This could indicate potential fraudulent activity, such as a giveaway scam, where the wallet is used to send small amounts to multiple addresses without receiving anything in return.",
+      "is_fraud": true,
+      "fraud_type": "giveaway scams",
+      "confidence": 0.75
+    }
+  },
+  "18WYMeJ4cxoeb7LxWHMxayuJGVBWfGjckD": {
+    "top_features": [
+      [
+        "degree",
+        0.9999500513076782
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 18WYMeJ4cxoeb7LxWHMxayuJGVBWfGjckD\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 12.0\n\nTop contributing features from GraphLIME:\n - degree: 1.000e+00\n\nAdditional node statistics:\n - total_txs: 28.0\n - btc_received_total: 1.22360457\n - btc_sent_total: 27.32988052\n - num_txs_as_sender: 6.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 28.55348509\n - fees_total: 0.9350896\n - degree: 5960\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high degree and a significant amount of BTC sent compared to received, indicating it is primarily used for sending rather than receiving funds. The lack of transactions as a receiver and the high total transactions suggest potential involvement in suspicious activities. However, without additional context or evidence of fraudulent behavior, it cannot be definitively classified as fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "1E3RfA788FQEwB8dZYAudbQZzoVvTEsFTc": {
+    "top_features": [
+      [
+        "degree",
+        0.17253738641738892
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1E3RfA788FQEwB8dZYAudbQZzoVvTEsFTc\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 70554.0\n\nTop contributing features from GraphLIME:\n - degree: 1.725e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.0474\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.0474\n - fees_total: 0.0002\n - degree: 5\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only two transactions, with a total of 0.0474 BTC sent and no BTC received. The low activity and lack of incoming transactions suggest that this wallet is not engaging in typical fraudulent behavior. Therefore, it appears to be a normal wallet with minimal usage.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "39ycNwsYeTHcTvkkrnaff2xXpQeFS1UQaJ": {
+    "top_features": [
+      [
+        "btc_received_median",
+        0.989062488079071
+      ],
+      [
+        "btc_transacted_total",
+        0.33524519205093384
+      ],
+      [
+        "transacted_w_address_mean",
+        0.33510980010032654
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 39ycNwsYeTHcTvkkrnaff2xXpQeFS1UQaJ\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 0.0\n\nTop contributing features from GraphLIME:\n - btc_received_median: 9.891e-01\n - btc_transacted_total: 3.352e-01\n - transacted_w_address_mean: 3.351e-01\n\nAdditional node statistics:\n - total_txs: 1.0\n - btc_received_total: 6292.8\n - btc_sent_total: 0.0\n - num_txs_as_sender: 0.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 6292.8\n - fees_total: 0.000517\n - degree: 2\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a high total BTC received with no transactions as a sender, indicating it may be a receiving wallet for funds. The lack of outgoing transactions and the single transaction suggest that this behavior is not typical of fraudulent activity. Therefore, it appears to be a legitimate wallet rather than one involved in fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1NTpCvpA9zEjJtV5CfVZ6LU5dsrYfg3cBH": {
+    "top_features": [
+      [
+        "degree",
+        0.9965561032295227
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1NTpCvpA9zEjJtV5CfVZ6LU5dsrYfg3cBH\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 68542.0\n\nTop contributing features from GraphLIME:\n - degree: 9.966e-01\n\nAdditional node statistics:\n - total_txs: 4.0\n - btc_received_total: 0.415684\n - btc_sent_total: 0.59052719\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 1.00621119\n - fees_total: 0.00380116\n - degree: 10\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a low number of transactions (4) and a higher amount of BTC sent (0.5905) compared to BTC received (0.4157), indicating potential unusual behavior. However, the degree of the node is relatively high, suggesting it may be connected to a larger network. Without additional evidence of fraudulent activity, it cannot be definitively classified as fraud.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "14puEpmKN9ur3tcbPDGwxwcUkJpFimXzEk": {
+    "top_features": [
+      [
+        "degree",
+        0.9964334964752197
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 14puEpmKN9ur3tcbPDGwxwcUkJpFimXzEk\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 52408.0\n\nTop contributing features from GraphLIME:\n - degree: 9.964e-01\n\nAdditional node statistics:\n - total_txs: 4.0\n - btc_received_total: 0.5116863\n - btc_sent_total: 0.5116863\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 1.0233726\n - fees_total: 0.00188546\n - degree: 10\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a balanced number of transactions as both sender and receiver, with no significant discrepancies in the amounts sent and received. The degree is relatively high, indicating a well-connected node, which is typical for legitimate activity. Therefore, the behavior does not suggest fraudulent activity.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1MD1TJLH4qscqMwPfz2h6SX4zB961NsjhL": {
+    "top_features": [
+      [
+        "degree",
+        0.990123450756073
+      ],
+      [
+        "total_txs",
+        0.990123450756073
+      ],
+      [
+        "btc_transacted_mean",
+        0.990123450756073
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1MD1TJLH4qscqMwPfz2h6SX4zB961NsjhL\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 0.0\n\nTop contributing features from GraphLIME:\n - degree: 9.901e-01\n - total_txs: 9.901e-01\n - btc_transacted_mean: 9.901e-01\n\nAdditional node statistics:\n - total_txs: 1.0\n - btc_received_total: 0.474\n - btc_sent_total: 0.0\n - num_txs_as_sender: 0.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.474\n - fees_total: 0.003\n - degree: 2\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The node has only one transaction with a total of 0.474 BTC received and no transactions as a sender. The low activity and lack of outgoing transactions suggest normal behavior rather than fraudulent activity. Therefore, it does not exhibit characteristics of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1HdV2CXXttuV4dFpC3XXktdcaf2zZF9zUc": {
+    "top_features": [
+      [
+        "degree",
+        0.9999500513076782
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1HdV2CXXttuV4dFpC3XXktdcaf2zZF9zUc\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 88705.0\n\nTop contributing features from GraphLIME:\n - degree: 1.000e+00\n\nAdditional node statistics:\n - total_txs: 4.0\n - btc_received_total: 2.029\n - btc_sent_total: 2.029\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 4.058\n - fees_total: 0.003739\n - degree: 8\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a balanced transaction history with equal amounts of BTC received and sent, indicating normal behavior. The low number of transactions and lack of receiving transactions suggest it may be a personal wallet rather than one involved in fraudulent activities. Therefore, it does not exhibit characteristics typical of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "14tJrPguJKQJ9swxKhxSp9PXVXV11g4GJV": {
+    "top_features": [
+      [
+        "degree",
+        0.10677631944417953
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 14tJrPguJKQJ9swxKhxSp9PXVXV11g4GJV\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 58464.0\n\nTop contributing features from GraphLIME:\n - degree: 1.068e-01\n\nAdditional node statistics:\n - total_txs: 4.0\n - btc_received_total: 0.20428977\n - btc_sent_total: 0.20428977\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.40857954\n - fees_total: 0.00240155\n - degree: 9\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a balanced number of transactions as both sender and receiver, with no significant discrepancies in the amount of BTC received and sent. The degree of the wallet is relatively low, indicating limited connectivity, which is typical for non-fraudulent behavior. Therefore, the activity appears normal and does not suggest any fraudulent intent.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1B8PCcVBKZvq38CfgxtFgrc2Pqi86BtjcN": {
+    "top_features": [
+      [
+        "degree",
+        0.11269830167293549
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1B8PCcVBKZvq38CfgxtFgrc2Pqi86BtjcN\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 74596.0\n\nTop contributing features from GraphLIME:\n - degree: 1.127e-01\n\nAdditional node statistics:\n - total_txs: 4.0\n - btc_received_total: 0.11506663\n - btc_sent_total: 0.11506663\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.23013326\n - fees_total: 0.00303557\n - degree: 11\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a balanced transaction history with equal amounts of BTC received and sent, indicating normal behavior. The low number of transactions and the absence of any suspicious patterns suggest that this wallet is not involved in fraudulent activities.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1AScU6crcHeZaime8iCicEeHFLDgUVtggt": {
+    "top_features": [
+      [
+        "degree",
+        0.9917355179786682
+      ],
+      [
+        "btc_sent_total",
+        0.9917355179786682
+      ],
+      [
+        "blocks_btwn_output_txs_mean",
+        0.9917355179786682
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1AScU6crcHeZaime8iCicEeHFLDgUVtggt\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 9.0\n\nTop contributing features from GraphLIME:\n - degree: 9.917e-01\n - btc_sent_total: 9.917e-01\n - blocks_btwn_output_txs_mean: 9.917e-01\n\nAdditional node statistics:\n - total_txs: 2.0\n - btc_received_total: 0.0\n - btc_sent_total: 2.0122\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 2.0122\n - fees_total: 0.0002\n - degree: 6\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only two transactions, both as a sender, with no received BTC. The high degree and total BTC sent suggest a potential for unusual activity, but the limited transaction history and lack of incoming funds indicate that this behavior may not be indicative of fraud. Therefore, it appears to be a normal transaction pattern.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.7
+    }
+  },
+  "1Dksk7aA6PPpttznZi73d8xzsw4ERHSTLc": {
+    "top_features": [
+      [
+        "degree",
+        0.9933673739433289
+      ],
+      [
+        "btc_transacted_median",
+        0.9933673739433289
+      ],
+      [
+        "btc_received_total",
+        0.9933673739433289
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1Dksk7aA6PPpttznZi73d8xzsw4ERHSTLc\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 0.0\n\nTop contributing features from GraphLIME:\n - degree: 9.934e-01\n - btc_transacted_median: 9.934e-01\n - btc_received_total: 9.934e-01\n\nAdditional node statistics:\n - total_txs: 1.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.1493951\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.1493951\n - fees_total: 0.0003951\n - degree: 4\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only one transaction where it sent a small amount of BTC and has not received any BTC. The low degree and lack of received transactions suggest normal behavior rather than fraudulent activity. Therefore, it does not exhibit characteristics typical of known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  },
+  "1PJKQywnm72ETmdqo1xZzdzqQYoh2GFMyJ": {
+    "top_features": [
+      [
+        "degree",
+        0.9933673739433289
+      ],
+      [
+        "btc_transacted_median",
+        0.9933673739433289
+      ],
+      [
+        "btc_received_total",
+        0.9933673739433289
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1PJKQywnm72ETmdqo1xZzdzqQYoh2GFMyJ\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 0.0\n\nTop contributing features from GraphLIME:\n - degree: 9.934e-01\n - btc_transacted_median: 9.934e-01\n - btc_received_total: 9.934e-01\n\nAdditional node statistics:\n - total_txs: 1.0\n - btc_received_total: 0.0\n - btc_sent_total: 0.26490031\n - num_txs_as_sender: 1.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.26490031\n - fees_total: 0.0003\n - degree: 4\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has only one transaction where it sent a small amount of BTC and has not received any BTC. The low degree and lack of incoming transactions suggest normal behavior rather than fraudulent activity. Therefore, it does not fit any known fraud types.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.95
+    }
+  },
+  "1CjL2NPbPZMVteJWCN5zi3gaG9hN9y5a3j": {
+    "top_features": [
+      [
+        "degree",
+        0.20405346155166626
+      ]
+    ],
+    "graphlime_raw_insight": "Node ID: 1CjL2NPbPZMVteJWCN5zi3gaG9hN9y5a3j\nType: unknown\nClass Label: N/A\nTime Step: N/A\nLifetime (blocks): 74591.0\n\nTop contributing features from GraphLIME:\n - degree: 2.041e-01\n\nAdditional node statistics:\n - total_txs: 4.0\n - btc_received_total: 0.41360031\n - btc_sent_total: 0.41360031\n - num_txs_as_sender: 2.0\n - num_txs_as_receiver: 0.0\n - btc_transacted_total: 0.82720062\n - fees_total: 0.02933629\n - degree: 13\n\nThis node was flagged as an anomaly due to the above feature importance patterns.",
+    "llm_output_structured": {
+      "explanation": "The wallet has a balanced number of transactions as both sender and receiver, with no significant discrepancies in the amount of Bitcoin received and sent. The degree of the wallet is relatively high, indicating a well-connected node, which is typical for legitimate users. Therefore, the behavior does not suggest fraudulent activity.",
+      "is_fraud": false,
+      "fraud_type": null,
+      "confidence": 0.85
+    }
+  }
+}
