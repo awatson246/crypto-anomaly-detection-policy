@@ -53,7 +53,7 @@ def detect_anomalies(G, node_features, num_epochs=350, learning_rate=0.01):
     node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)
 
     print("Converting graph and features for PyG...")
-    pyg_graph, features, node_id_map = convert_to_pyg(...)
+    pyg_graph, features, node_id_map = convert_to_pyg(G, node_features_filtered)
 
     # Initialize GNN model
     model = AnomalyGCN(in_features=features.shape[1])
