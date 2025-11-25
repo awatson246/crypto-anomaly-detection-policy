@@ -36,15 +36,32 @@ def load_data(base_dir=""):
     return wallets_df, transactions_df, edges_df 
 
 def build_graph(wallets_df, transactions_df, edges_df):
-    """Constructs a NetworkX graph efficiently."""
-    G = nx.Graph()
+    """
+    Construct a *faithful* address–transaction heterogeneous graph.
+    Uses MultiDiGraph to preserve multi-edges and directions.
+    """
 
-    wallet_nodes = [(row["address"], {"type": "wallet", **row.to_dict()}) for _, row in wallets_df.iterrows()]
-    G.add_nodes_from(wallet_nodes)
+    # ----------------------------------------------------
+    # 1. Multi-edge, directed heterogeneous graph
+    # ----------------------------------------------------
+    G = nx.MultiDiGraph()
 
-    transaction_nodes = set(transactions_df["txId1"]).union(set(transactions_df["txId2"]))
-    G.add_nodes_from((tx_id, {"type": "transaction"}) for tx_id in transaction_nodes)
+    # ----------------------------------------------------
+    # 2. Add Wallet/Address Nodes
+    # ----------------------------------------------------
+    # Wallet nodes (wallet-level features)
+    for _, row in wallets_df.iterrows():
+        addr = row["address"]
+        G.add_node(addr, type="wallet", **row.to_dict())
 
+    # Transaction nodes
+    tx_nodes = set(transactions_df["txId1"]).union(set(transactions_df["txId2"]))
+    for tx_id in tx_nodes:
+        G.add_node(tx_id, type="transaction")
+
+    # ----------------------------------------------------
+    # 3. Add Edges for Three Edge Lists
+    # ----------------------------------------------------
     column_mappings = {
         "addr_addr": ("input_address", "output_address"),
         "addr_tx": ("input_address", "txId"),
@@ -52,20 +69,36 @@ def build_graph(wallets_df, transactions_df, edges_df):
     }
 
     for edge_type, df in edges_df.items():
-        df.columns = df.columns.str.strip()  # Clean column names
-        
+        df.columns = df.columns.str.strip()
+
         if edge_type not in column_mappings:
             print(f"Skipping unknown edge type: {edge_type}")
             continue
-        
+
         src_col, tgt_col = column_mappings[edge_type]
-        
+
         if src_col not in df.columns or tgt_col not in df.columns:
-            print(f"Skipping {edge_type} due to missing columns: {df.columns}")
+            print(f"[WARN] {edge_type} missing columns: {df.columns}")
             continue
-        
-        edge_list = [(row[src_col], row[tgt_col], {"type": edge_type}) for _, row in df.iterrows()]
-        G.add_edges_from(edge_list) 
+
+        # Preserve all edges (multi-edge!)
+        for _, row in df.iterrows():
+            src = row[src_col]
+            tgt = row[tgt_col]
+            G.add_edge(src, tgt, type=edge_type)
+
+    # ----------------------------------------------------
+    # 4. Compute NEW interpretable structural features
+    # ----------------------------------------------------
+    for node in G.nodes():
+        neighbors = set(G.neighbors(node))
+
+        G.nodes[node]["degree_multi"] = G.degree(node)  # preserves multi-edge count
+        G.nodes[node]["unique_neighbors"] = len(neighbors)
+
+        # Transaction-role features
+        G.nodes[node]["unique_senders"] = len([n for n in neighbors if G.has_edge(n, node)])
+        G.nodes[node]["unique_receivers"] = len([n for n in neighbors if G.has_edge(node, n)])
 
     return G
 
@@ -110,4 +143,4 @@ def convert_to_pyg(G, node_features):
     # Convert features DataFrame to tensor
     features = torch.tensor(node_features[FEATURE_COLUMNS].values, dtype=torch.float)
 
-    return pyg_graph, features
+    return pyg_graph, features, list(G.nodes())

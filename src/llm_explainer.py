@@ -3,6 +3,8 @@ import time
 import json
 import openai
 from dotenv import load_dotenv
+from statistics import mode
+from collections import Counter
 
 load_dotenv()
 client = openai.OpenAI()
@@ -22,6 +24,7 @@ def estimate_cost(model, in_tokens, out_tokens):
     rates = MODEL_PRICES[model]
     return in_tokens * rates["input"] + out_tokens * rates["output"]
 
+
 # -------------------------------------------------------------
 #   Helper: Safe retry wrapper (strong exponential backoff)
 # -------------------------------------------------------------
@@ -33,36 +36,47 @@ def retry_api_call(fn, max_retries=12, tag="LLM"):
             msg = str(e).lower()
             wait = (2 ** attempt) + (0.2 * attempt)
 
-            # Rate limit / overloaded system
             if "rate" in msg or "limit" in msg or "overloaded" in msg:
                 print(f"[{tag}] Rate limit, retrying in {wait:.2f}s...")
                 time.sleep(wait)
                 continue
 
-            # Connection hiccups
             if "timeout" in msg or "503" in msg or "connection" in msg:
-                print(f"[{tag}] Transient network error, retrying in {wait:.2f}s...")
+                print(f"[{tag}] Network hiccup, retrying in {wait:.2f}s...")
                 time.sleep(wait)
                 continue
 
-            # Other fatal cases
             print(f"[{tag}] Fatal error: {e}")
             return None
 
     print(f"[{tag}] Failed after maximum retries.")
     return None
 
-# --------------------------------------------------------------------
-#   Main function: generates structured JSON + cost + latency metrics
-# --------------------------------------------------------------------
-def interpret_with_openai(node_id, top_features, node_data, model="gpt-4o-mini"):
+
+# -------------------------------------------------------------
+#      NEW: MULTI-SAMPLE LLM INTERPRETATION FUNCTION
+# -------------------------------------------------------------
+def interpret_with_openai_multi(
+    node_id,
+    top_features,
+    node_data,
+    model="gpt-4o-mini",
+    num_samples=5,
+    temperature=0.2,
+):
     """
     Returns:
-        structured_json (dict)
-        latency_seconds (float)
-        input_tokens (int)
-        output_tokens (int)
-        cost_usd (float)
+      {
+        "samples": [...all raw LLM JSON outputs...],
+        "consensus": {...single consensus JSON...},
+        "agreement_rate": float,
+        "fraud_type_agreement": float,
+        "avg_confidence": float,
+        "avg_latency": float,
+        "total_cost_usd": float,
+        "total_input_tokens": int,
+        "total_output_tokens": int
+      }
     """
 
     fraud_types = (
@@ -79,93 +93,178 @@ def interpret_with_openai(node_id, top_features, node_data, model="gpt-4o-mini")
         [f"- {k}: {v}" for k, v in node_data.items()]
     )
 
-    # --------------------------------------------------------------
-    #  Structured-output prompt (JSON enforced)
-    # --------------------------------------------------------------
-    prompt = f"""
+    base_prompt = f"""
 You are a cryptocurrency forensics analyst.
 
 You will receive:
-1. GraphLIME feature importances (importance only)
-2. Actual wallet statistics
-3. Fraud types
+1. GraphLIME feature importances
+2. Raw node statistics
+3. Fraud-type ontology
 
-You must return **strict JSON only**:
+Return STRICT JSON:
 
 {{
-  "explanation": "...",
+  "explanation": "... (2-5 sentences)",
   "is_fraud": true/false,
-  "fraud_type": "Ponzi schemes" | "phishing attacks" | ... | null,
-  "confidence": float between 0 and 1
+  "fraud_type": "... or null",
+  "confidence": float,
+  "evidence": {{
+      "features": [list of most relevant feature names],
+      "behaviors": [list of notable behavioral patterns]
+  }}
 }}
 
-RULES:
-- If behavior appears normal → is_fraud = false, fraud_type = null
-- Do NOT hallucinate new fraud types
-- Fraud type should be chosen ONLY from the provided list
-- Explanation must be concise (2–5 sentences) and discuss why the node is/ isn't fraudulent based on the provided information
+Rules:
+- fraud_type MUST be from: {fraud_types}
+- If not fraudulent → fraud_type = null.
+- Be concise and data-grounded.
+- Return ONLY JSON.
 
----
-
-### Feature Importances (GraphLIME)
+### Feature Importances
 {formatted_weights}
 
-### Actual Node Statistics
+### Node Statistics
 {formatted_data}
-
-### Known Fraud Types
-{fraud_types}
-
-Return ONLY valid JSON.
 """
 
-    def call_api():
-        return client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.0  # reproducibility
+    samples = []
+    all_is_fraud = []
+    all_fraud_types = []
+    all_confidences = []
+
+    total_input_tokens = 0
+    total_output_tokens = 0
+    total_cost_usd = 0.0
+    total_latency = 0.0
+
+    # --------------------------------------------
+    # Run N LLM calls
+    # --------------------------------------------
+    for i in range(num_samples):
+        def call_api():
+            return client.chat.completions.create(
+                model=model,
+                messages=[{
+                    "role": "user",
+                    "content": base_prompt
+                }],
+                temperature=temperature
+            )
+
+        start = time.time()
+        response = retry_api_call(
+            call_api, tag=f"LLM:{model}:sample{i}"
         )
+        latency = time.time() - start
+        total_latency += latency
 
-    # ----------------------------------
-    # LLM call with retry protection
-    # ----------------------------------
-    start = time.time()
-    response = retry_api_call(call_api, tag=f"LLM:{model}")
-    latency = time.time() - start
-
-    if response is None:
-        return (
-            {
-                "explanation": "LLM failed after retries",
+        if response is None:
+            samples.append({
+                "explanation": "LLM failed",
                 "is_fraud": None,
                 "fraud_type": None,
-                "confidence": 0.0
-            },
-            latency,
-            0, 0, 0.0
-        )
+                "confidence": 0.0,
+                "evidence": {}
+            })
+            continue
 
-    # Extract new-format message
-    raw_message = response.choices[0].message.content.strip()
+        msg = response.choices[0].message.content.strip()
 
-    # Parse JSON robustly
-    try:
-        structured = json.loads(raw_message)
-    except Exception:
-        # In case the model wraps JSON in text/etc.
+        # Parse JSON robustly
         try:
-            structured = json.loads(raw_message.strip("` \n"))
+            js = json.loads(msg)
         except:
-            structured = {
-                "explanation": raw_message,
-                "is_fraud": None,
-                "fraud_type": None,
-                "confidence": 0.0
-            }
+            try:
+                js = json.loads(msg.strip("` \n"))
+            except:
+                js = {
+                    "explanation": msg,
+                    "is_fraud": None,
+                    "fraud_type": None,
+                    "confidence": 0.0,
+                    "evidence": {}
+                }
 
-    # Token usage
-    in_tokens = response.usage.prompt_tokens
-    out_tokens = response.usage.completion_tokens
-    cost_usd = estimate_cost(model, in_tokens, out_tokens)
+        samples.append(js)
 
-    return structured, latency, in_tokens, out_tokens, cost_usd
+        if js["is_fraud"] is not None:
+            all_is_fraud.append(js["is_fraud"])
+        if js["fraud_type"] is not None:
+            all_fraud_types.append(js["fraud_type"])
+        all_confidences.append(js.get("confidence", 0))
+
+        # Token stats
+        total_input_tokens += response.usage.prompt_tokens
+        total_output_tokens += response.usage.completion_tokens
+        total_cost_usd += estimate_cost(
+            model,
+            response.usage.prompt_tokens,
+            response.usage.completion_tokens
+        )
+
+    # -----------------------------------------------------
+    # Consensus: fraud = majority vote
+    # -----------------------------------------------------
+    if all_is_fraud:
+        try:
+            consensus_fraud = mode(all_is_fraud)
+        except:
+            consensus_fraud = Counter(all_is_fraud).most_common(1)[0][0]
+    else:
+        consensus_fraud = None
+
+    # -----------------------------------------------------
+    # Consensus: fraud type (conditional)
+    # -----------------------------------------------------
+    if consensus_fraud:
+        if all_fraud_types:
+            try:
+                consensus_type = mode(all_fraud_types)
+            except:
+                consensus_type = Counter(all_fraud_types).most_common(1)[0][0]
+        else:
+            consensus_type = None
+    else:
+        consensus_type = None
+
+    # -----------------------------------------------------
+    # Agreement statistics
+    # -----------------------------------------------------
+    agreement_rate = (
+        sum(1 for s in samples if s["is_fraud"] == consensus_fraud)
+        / len(samples)
+    )
+
+    if consensus_fraud:
+        if all_fraud_types:
+            fraud_type_agreement = (
+                sum(1 for t in all_fraud_types if t == consensus_type)
+                / len(all_fraud_types)
+            )
+        else:
+            fraud_type_agreement = 0.0
+    else:
+        fraud_type_agreement = None
+
+    avg_confidence = sum(all_confidences) / len(all_confidences) if all_confidences else 0.0
+
+    consensus_output = {
+        "node_id": node_id,
+        "is_fraud": consensus_fraud,
+        "fraud_type": consensus_type,
+        "agreement_rate": agreement_rate,
+        "fraud_type_agreement": fraud_type_agreement,
+        "avg_confidence": avg_confidence,
+    }
+
+    return {
+        "samples": samples,
+        "consensus": consensus_output,
+        "agreement_rate": agreement_rate,
+        "fraud_type_agreement": fraud_type_agreement,
+        "avg_confidence": avg_confidence,
+        "avg_latency": total_latency / num_samples,
+        "total_cost_usd": total_cost_usd,
+        "total_input_tokens": total_input_tokens,
+        "total_output_tokens": total_output_tokens
+    }

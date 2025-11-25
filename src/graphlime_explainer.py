@@ -1,15 +1,15 @@
 import torch
 import networkx as nx
 import numpy as np
-import matplotlib.pyplot as plt
 from torch_geometric.utils import from_networkx, k_hop_subgraph
+from torch_geometric.explain import Explainer, GNNExplainer as GNNExplainerAlgo
 from graphlime import GraphLIME
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import StandardScaler
 from sklearn.exceptions import ConvergenceWarning
 import warnings
 
-# Define which features are used
+
 FEATURE_COLUMNS = [
     "degree", "in_degree", "out_degree",  
     "num_txs_as_sender", "num_txs_as_receiver", "total_txs",
@@ -24,7 +24,7 @@ FEATURE_COLUMNS = [
 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
-# Monkey-patch GraphLIME to avoid deprecated 'normalize' arg
+# ---- Patched GraphLIME ----
 def patched_explain_node(self, node_idx, x, edge_index):
     eps = getattr(self, 'eps', 1e-5)
     self.model.eval()
@@ -50,41 +50,49 @@ def patched_explain_node(self, node_idx, x, edge_index):
 GraphLIME.explain_node = patched_explain_node
 print("Patched GraphLIME to avoid deprecated arguments.")
 
-def format_insight(anomaly_node_id, top_features, node_attributes):
-    """
-    Builds a readable summary and structured data for LLM input.
-    """
-    insight = f"""Node ID: {anomaly_node_id}
-Type: {node_attributes.get('type', 'unknown')}
-Class Label: {node_attributes.get('class', 'N/A')}
-Time Step: {node_attributes.get('Time step', 'N/A')}
-Lifetime (blocks): {node_attributes.get('lifetime_in_blocks', 'N/A')}
+# ---- Explanation runner ----
+def run_explainers(model, sub_x, sub_edge_index, center_idx, explainers=["graphlime", "gnnexplainer"]):
+    results = {}
 
-Top contributing features from GraphLIME:
-""" + "\n".join([f" - {feat}: {imp:.3e}" for feat, imp in top_features]) + "\n\n"
+    if "graphlime" in explainers:
+        graphlime = GraphLIME(model)
+        explanation = graphlime.explain_node(center_idx, sub_x, sub_edge_index)
+        results['graphlime'] = explanation.detach().numpy().flatten()
 
-    insight += "Additional node statistics:\n"
-    node_data_dict = {}
-    for key in [
-        "total_txs", "btc_received_total", "btc_sent_total",
-        "transacted_w_address_total", "num_txs_as_sender", "num_txs_as_receiver",
-        "btc_transacted_total", "fees_total", "degree"
-    ]:
-        if key in node_attributes:
-            val = node_attributes[key]
-            node_data_dict[key] = val
-            insight += f" - {key}: {val}\n"
+    if "gnnexplainer" in explainers:
+        try:
+            expl = Explainer(
+                model=model,
+                algorithm=GNNExplainerAlgo(epochs=100),
+                explanation_type='model',
+                node_mask_type='attributes',
+                edge_mask_type='object',
+                model_config=dict(
+                    mode='regression',      # anomaly GNN outputs scalar
+                    task_level='node',
+                    return_type='raw'
+                )
+            )
 
-    insight += "\nThis node was flagged as an anomaly due to the above feature importance patterns."
-    return insight, top_features, node_data_dict
+            explanation = expl(
+                node_index=center_idx,
+                x=sub_x,
+                edge_index=sub_edge_index
+            )
 
-def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
-    """
-    Run GraphLIME explanation for a specific node in the graph.
-    """
+            results["gnnexplainer"] = (
+                explanation.node_feat_mask.detach().cpu().numpy()
+            )
+
+        except Exception as e:
+            print(f"[WARN] GNNExplainer failed: {e}")
+            results["gnnexplainer"] = None
+
+    return results
+
+# ---- Main wrapper ----
+def explain_anomaly_multi(G, model, anomaly_node, save_path=None, k_hops=2, explainers=["graphlime", "gnnexplainer"]):
     MAX_SUBGRAPH_NODES = 2000
-
-    # Ensure anomaly node ID is str if graph uses strings
     anomaly_node = str(anomaly_node) if isinstance(list(G.nodes())[0], str) else int(anomaly_node)
 
     if anomaly_node not in G:
@@ -93,11 +101,7 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     for node in G.nodes():
         G.nodes[node]['degree'] = G.degree(node)
 
-    # Extract numeric features
-    sample_attrs = G.nodes[next(iter(G.nodes()))]
-    numeric_keys = [k for k, v in sample_attrs.items() if isinstance(v, (int, float, np.integer, np.floating))]
-
-    # Convert to PyG format
+    numeric_keys = [k for k, v in G.nodes[next(iter(G.nodes()))].items() if isinstance(v, (int, float, np.integer, np.floating))]
     pyg_graph = from_networkx(G, group_node_attrs=numeric_keys)
     if not hasattr(pyg_graph, 'x') or pyg_graph.x is None:
         raise ValueError("PyG conversion failed: No node features found.")
@@ -105,7 +109,6 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     node_idx = list(G.nodes()).index(anomaly_node)
     node_idx_tensor = torch.tensor([node_idx], dtype=torch.long)
 
-    # Extract subgraph
     subset, edge_index, mapping, _ = k_hop_subgraph(
         node_idx=node_idx_tensor, num_hops=k_hops, edge_index=pyg_graph.edge_index, relabel_nodes=True
     )
@@ -120,10 +123,10 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
 
         trimmed_node_tensor = torch.tensor(trimmed_node_ids, dtype=torch.long)
         mask = torch.isin(edge_index[0], trimmed_node_tensor) & torch.isin(edge_index[1], trimmed_node_tensor)
-        trimmed_edge_index = edge_index[:, mask]
+        sub_edge_index = edge_index[:, mask]
         sub_edge_index = torch.tensor([
-            [id_map[int(s)] for s in trimmed_edge_index[0]],
-            [id_map[int(d)] for d in trimmed_edge_index[1]]
+            [id_map[int(s)] for s in sub_edge_index[0]],
+            [id_map[int(d)] for d in sub_edge_index[1]]
         ], dtype=torch.long)
         sub_x = pyg_graph.x[trimmed_node_tensor]
         center_idx = id_map[center_node_global]
@@ -135,7 +138,6 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     if sub_x.ndim == 1:
         sub_x = sub_x.unsqueeze(0)
 
-    # Standardize features
     sub_x_np = sub_x.detach().cpu().numpy()
     sub_x_np = StandardScaler().fit_transform(sub_x_np)
     sub_x = torch.tensor(sub_x_np, dtype=torch.float)
@@ -143,26 +145,6 @@ def explain_anomaly(G, model, anomaly_node, save_path=None, k_hops=2):
     if sub_x.shape[1] != model.conv1.in_channels:
         raise ValueError(f"Subgraph feature mismatch: {sub_x.shape[1]} vs expected {model.conv1.in_channels}")
 
-    # Run explanation
-    graphlime = GraphLIME(model)
-    explanation = graphlime.explain_node(center_idx, sub_x, sub_edge_index)
-    feature_importance = explanation.detach().numpy().flatten()
-
-    # Safely pair feature names and importance scores
-    num_features = min(len(FEATURE_COLUMNS), len(feature_importance))
-
-    # Only keep non-zero importance scores (with index tracking)
-    nonzero_importances = [
-        (i, feature_importance[i])
-        for i in range(num_features)
-        if feature_importance[i] > 1e-8  # small epsilon to ignore near-zero noise
-    ]
-
-    # Sort by importance (descending) and take top 3
-    top_indices = sorted(nonzero_importances, key=lambda x: x[1], reverse=True)[:3]
-    top_features = [(FEATURE_COLUMNS[i], imp) for i, imp in top_indices]
-
-    row = G.nodes[anomaly_node]
-    insight, top_features, node_data_dict = format_insight(anomaly_node, top_features, row)
-
-    return feature_importance, top_features, node_data_dict, insight
+    # Run all explainers
+    feature_importances = run_explainers(model, sub_x, sub_edge_index, center_idx, explainers)
+    return feature_importances

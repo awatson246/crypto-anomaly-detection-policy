@@ -9,4 +9,4 @@ openai
 python-dotenv
 seaborn
 # NOTE: GraphLIME requires a patch to avoid deprecated `normalize` arg in LassoLars.
-# This is handled in main.py at runtime.
+# This is handled in main.py and/or generate_all_insights.py at runtime.
