@@ -24,6 +24,42 @@ FEATURE_COLUMNS = [
 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
+# ---- Feature selection from explainer results ----
+def select_top_features_from_importances(feature_importances, k=3):
+    """
+    feature_importances: dict of explainer_name -> numpy array (length = FEATURE_COLUMNS)
+    Prefer GraphLIME, then fallback to aggregate.
+    Returns: list of (feature_name, importance)
+    """
+    # Prefer graphlime
+    gl = feature_importances.get('graphlime')
+    if gl is None:
+        gl = np.zeros(len(FEATURE_COLUMNS), dtype=float)
+
+    # Ensure numeric
+    gl = np.asarray(gl, dtype=float).flatten()
+
+    # Non-zero importances
+    nonzero_idx = np.where(np.abs(gl) > 1e-10)[0].tolist()
+
+    if len(nonzero_idx) == 0:
+        # fallback: take top-k by absolute value
+        abs_idx = np.argsort(np.abs(gl))[::-1][:k]
+        top_idx = [int(i) for i in abs_idx]
+    else:
+        top_idx = sorted(nonzero_idx, key=lambda i: gl[i], reverse=True)[:k]
+
+    top_features = []
+    for i in top_idx:
+        if i < len(FEATURE_COLUMNS):
+            top_features.append((FEATURE_COLUMNS[i], float(gl[i])))
+    # final fallback if still empty
+    if len(top_features) == 0:
+        for i in range(min(k, len(FEATURE_COLUMNS))):
+            top_features.append((FEATURE_COLUMNS[i], 0.0))
+    return top_features
+
+
 # ---- Patched GraphLIME ----
 def patched_explain_node(self, node_idx, x, edge_index):
     eps = getattr(self, 'eps', 1e-5)
@@ -51,14 +87,21 @@ GraphLIME.explain_node = patched_explain_node
 print("Patched GraphLIME to avoid deprecated arguments.")
 
 # ---- Explanation runner ----
-def run_explainers(model, sub_x, sub_edge_index, center_idx, explainers=["graphlime", "gnnexplainer"]):
+def run_explainers(model, sub_x, sub_edge_index, center_idx,
+                   explainers=["graphlime", "gnnexplainer"]):
     results = {}
 
+    # GraphLIME (may raise; catch)
     if "graphlime" in explainers:
-        graphlime = GraphLIME(model)
-        explanation = graphlime.explain_node(center_idx, sub_x, sub_edge_index)
-        results['graphlime'] = explanation.detach().numpy().flatten()
+        try:
+            graphlime = GraphLIME(model)
+            explanation = graphlime.explain_node(center_idx, sub_x, sub_edge_index)
+            results['graphlime'] = explanation.detach().cpu().numpy().flatten()
+        except Exception as e:
+            print(f"[WARN] GraphLIME failed: {e}")
+            results['graphlime'] = None
 
+    # GNNExplainer using new PyG API (safe call)
     if "gnnexplainer" in explainers:
         try:
             expl = Explainer(
@@ -68,25 +111,45 @@ def run_explainers(model, sub_x, sub_edge_index, center_idx, explainers=["graphl
                 node_mask_type='attributes',
                 edge_mask_type='object',
                 model_config=dict(
-                    mode='regression',      # anomaly GNN outputs scalar
+                    mode='regression',
                     task_level='node',
                     return_type='raw'
                 )
             )
-
+            # Use explicit keyword args to avoid positional conflicts
             explanation = expl(
-                node_index=center_idx,
+                node_index=int(center_idx),
                 x=sub_x,
                 edge_index=sub_edge_index
             )
 
-            results["gnnexplainer"] = (
-                explanation.node_feat_mask.detach().cpu().numpy()
-            )
+            # Node feature mask (may be None if explainer failed internally)
+            feat_mask = None
+            if hasattr(explanation, "node_feat_mask") and explanation.node_feat_mask is not None:
+                feat_mask = explanation.node_feat_mask.detach().cpu().numpy().flatten()
+
+            results['gnnexplainer'] = feat_mask
 
         except Exception as e:
             print(f"[WARN] GNNExplainer failed: {e}")
-            results["gnnexplainer"] = None
+            results['gnnexplainer'] = None
+
+    # Normalize results: turn None or wrong-length arrays into safe numeric arrays
+    for key in list(results.keys()):
+        arr = results[key]
+        if arr is None:
+            # safe fallback -> zeros of required length
+            results[key] = np.zeros(len(FEATURE_COLUMNS), dtype=float)
+        else:
+            arr = np.asarray(arr, dtype=float).flatten()
+            if arr.size < len(FEATURE_COLUMNS):
+                # pad with zeros to consistent shape
+                pad = np.zeros(len(FEATURE_COLUMNS) - arr.size, dtype=float)
+                arr = np.concatenate([arr, pad])
+            elif arr.size > len(FEATURE_COLUMNS):
+                # trim if unexpectedly longer
+                arr = arr[:len(FEATURE_COLUMNS)]
+            results[key] = arr
 
     return results
 
@@ -147,4 +210,5 @@ def explain_anomaly_multi(G, model, anomaly_node, save_path=None, k_hops=2, expl
 
     # Run all explainers
     feature_importances = run_explainers(model, sub_x, sub_edge_index, center_idx, explainers)
+    top_features = select_top_features_from_importances(feature_importances, k=250)
     return feature_importances

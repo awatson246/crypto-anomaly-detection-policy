@@ -31,11 +31,17 @@ class AnomalyGCN(nn.Module):
         self.conv1 = GCNConv(in_features, hidden_dim)
         self.conv2 = GCNConv(hidden_dim, 1)  # Output a single score per node
 
-    def forward(self, x, edge_index):
+    # Accept extra args/kwargs used by PyG explainers (node_index, idx, etc.)
+    def forward(self, x, edge_index, *args, **kwargs):
+        """
+        Note: *args and **kwargs allow Explainer to pass node_index (and others)
+        during the explanation process without causing an error.
+        """
         x = self.conv1(x, edge_index)
         x = F.relu(x)
         x = self.conv2(x, edge_index)
         return x  # shape will be (num_nodes, 1)
+
 
 def detect_anomalies(G, node_features, num_epochs=350, learning_rate=0.01):
     """

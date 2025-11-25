@@ -165,7 +165,7 @@ def process_single_node(
     # 1) Explainers
     try:
         t0 = time.time()
-        expl_results = explain_anomaly_multi(G, model, node_id, explainers=["graphlime", "gnnexplainer", "pgexplainer"])
+        expl_results = explain_anomaly_multi(G, model, node_id, explainers=["graphlime", "gnnexplainer"])
         metrics_entry["explainer_time_s"] = time.time() - t0
     except Exception as e:
         expl_results = {}
