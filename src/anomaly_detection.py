@@ -42,63 +42,105 @@ class AnomalyGCN(nn.Module):
         x = self.conv2(x, edge_index)
         return x  # shape will be (num_nodes, 1)
 
-
 def detect_anomalies(G, node_features, num_epochs=350, learning_rate=0.01):
     """
     Trains a GNN for anomaly detection and returns:
-        - full node_features with anomaly_score
+        - full node_features (ALL nodes in G) with anomaly_score
         - full sorted anomaly ranking (all nodes)
+        - wallet-only anomaly ranking (safe for explainer)
         - trained model
     """
 
-    # Ensure node_features indexed by node IDs
-    node_features = node_features.copy()
-    node_features.index = node_features["node"].astype(str)
+    print("\nNormalizing node_features input...")
 
-    print("Selecting relevant features...")
-    node_features_filtered = node_features[FEATURE_COLUMNS].fillna(0)
+    # Normalize node ID column
+    node_features['node'] = node_features['node'].astype(str)
 
-    print("Converting graph and features for PyG...")
-    pyg_graph, features, node_id_map = convert_to_pyg(G, node_features_filtered)
+    # Only keep features whose nodes exist in the graph
+    valid_nodes = set(map(str, G.nodes()))
+    node_features = node_features[node_features['node'].isin(valid_nodes)].copy()
 
-    # Initialize GNN model
+    # Set index to node ID
+    node_features.index = node_features['node']
+
+    print(f" - Features received: {len(node_features)}")
+    print(f" - Graph nodes:        {len(G.nodes())}")
+
+    print("\nBuilding full feature matrix aligned to graph nodes...")
+
+    # Build feature matrix aligned EXACTLY to G.nodes()
+    all_nodes = list(map(str, G.nodes()))
+    node_features_full = node_features.reindex(all_nodes)
+
+    # Missing nodes get 0s
+    node_features_full = node_features_full.fillna(0)
+
+    # Ensure all feature columns exist
+    for feat in FEATURE_COLUMNS:
+        if feat not in node_features_full.columns:
+            node_features_full[feat] = 0.0
+
+    # Ensure node_type is present
+    if "node_type" not in node_features_full.columns:
+        node_features_full["node_type"] = "unknown"
+
+    print(" - Final aligned feature rows:", len(node_features_full))
+    print(" - Should match graph nodes:", len(G.nodes()))
+
+    # Convert to torch tensor
+    features = torch.tensor(node_features_full[FEATURE_COLUMNS].values, dtype=torch.float)
+
+    print("\nBuilding PyG graph...")
+    pyg_graph, _ = convert_to_pyg(G, node_features_full)
+
+    # Sanity check
+    assert features.shape[0] == pyg_graph.num_nodes, \
+        f"FEATURE MISMATCH! features={features.shape[0]}  pyg={pyg_graph.num_nodes}"
+
+    print("\nTraining GNN anomaly detector...")
     model = AnomalyGCN(in_features=features.shape[1])
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     loss_fn = nn.MSELoss()
 
-    print("Training GNN for anomaly detection...")
     for epoch in range(num_epochs):
         model.train()
         optimizer.zero_grad()
-
         scores = model(features, pyg_graph.edge_index)
-        loss = loss_fn(scores, torch.ones_like(scores) * scores.mean())
+
+        # Self-supervised: minimize distance from global average
+        loss = loss_fn(scores, torch.full_like(scores, scores.mean().item()))
         loss.backward()
         optimizer.step()
 
         if epoch % 10 == 0:
             print(f"Epoch {epoch}/{num_epochs} - Loss: {loss.item():.4f}")
 
-    print("Anomaly scoring...")
+    print("\nScoring nodes...")
     model.eval()
     with torch.no_grad():
-        anomaly_scores = model(features, pyg_graph.edge_index).numpy().flatten()
+        anomaly_scores = model(features, pyg_graph.edge_index).cpu().numpy().flatten()
 
     # Attach anomaly scores
-    node_features["anomaly_score"] = anomaly_scores
+    node_features_full["anomaly_score"] = anomaly_scores
 
-    # Attach REAL bitcoin node IDs
-    node_features["node_id"] = node_id_map
+    print(" - anomaly_scores len:", len(anomaly_scores))
+    print(" - node_features_full rows:", len(node_features_full))
 
-    # Save full list of scores
+    # Save
     os.makedirs(FEATURES_DIR, exist_ok=True)
-    node_features.to_csv(ANOMALY_OUTPUT_FILE, index=False)
+    node_features_full.to_csv(ANOMALY_OUTPUT_FILE, index=False)
 
-    # Sort ALL nodes by anomaly_score (ascending = more anomalous)
-    full_rank = node_features.sort_values("anomaly_score")
+    print("\nRanking anomalies...")
 
+    # Full ranking
+    full_rank_all_nodes = node_features_full.sort_values("anomaly_score")
+
+    # Wallet-only safe subset
+    wallet_rank = full_rank_all_nodes[
+        full_rank_all_nodes["type"].astype(str) == "wallet"
+    ]
+
+    print(" - wallet_rank count:", len(wallet_rank))
     print(f"Anomaly detection complete. Scores saved to {ANOMALY_OUTPUT_FILE}")
 
-    # Return all scores — NOT truncated at 10
-    return node_features, full_rank, model
-
+    return node_features_full, full_rank_all_nodes, wallet_rank, model

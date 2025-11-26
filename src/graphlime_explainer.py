@@ -25,7 +25,7 @@ FEATURE_COLUMNS = [
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
 # ---- Feature selection from explainer results ----
-def select_top_features_from_importances(feature_importances, k=3):
+def select_top_features_from_importances(feature_importances, k=5):
     """
     feature_importances: dict of explainer_name -> numpy array (length = FEATURE_COLUMNS)
     Prefer GraphLIME, then fallback to aggregate.
@@ -88,7 +88,7 @@ print("Patched GraphLIME to avoid deprecated arguments.")
 
 # ---- Explanation runner ----
 def run_explainers(model, sub_x, sub_edge_index, center_idx,
-                   explainers=["graphlime", "gnnexplainer"]):
+                   explainers=["graphlime"]):
     results = {}
 
     # GraphLIME (may raise; catch)
@@ -154,7 +154,7 @@ def run_explainers(model, sub_x, sub_edge_index, center_idx,
     return results
 
 # ---- Main wrapper ----
-def explain_anomaly_multi(G, model, anomaly_node, save_path=None, k_hops=2, explainers=["graphlime", "gnnexplainer"]):
+def explain_anomaly_multi(G, model, anomaly_node, save_path=None, k_hops=2, explainers=["graphlime"]):
     MAX_SUBGRAPH_NODES = 2000
     anomaly_node = str(anomaly_node) if isinstance(list(G.nodes())[0], str) else int(anomaly_node)
 

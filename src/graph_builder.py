@@ -1,7 +1,7 @@
+import os
+import pandas as pd
 import networkx as nx
 from torch_geometric.utils import from_networkx
-import pandas as pd
-import os
 import torch
 from src.graphlime_explainer import FEATURE_COLUMNS
 
@@ -15,6 +15,7 @@ file_paths = {
     "txs_features": "raw/txs_features.csv",
 }
 
+# ------------------------- Data loading -------------------------
 def load_data(base_dir=""):
     """Loads CSV files into structured DataFrames for users, wallets, and transactions."""
     data = {}
@@ -36,32 +37,15 @@ def load_data(base_dir=""):
     return wallets_df, transactions_df, edges_df 
 
 def build_graph(wallets_df, transactions_df, edges_df):
-    """
-    Construct a *faithful* address–transaction heterogeneous graph.
-    Uses MultiDiGraph to preserve multi-edges and directions.
-    """
+    """Constructs a NetworkX graph efficiently."""
+    G = nx.Graph()
 
-    # ----------------------------------------------------
-    # 1. Multi-edge, directed heterogeneous graph
-    # ----------------------------------------------------
-    G = nx.MultiDiGraph()
+    wallet_nodes = [(row["address"], {"type": "wallet", **row.to_dict()}) for _, row in wallets_df.iterrows()]
+    G.add_nodes_from(wallet_nodes)
 
-    # ----------------------------------------------------
-    # 2. Add Wallet/Address Nodes
-    # ----------------------------------------------------
-    # Wallet nodes (wallet-level features)
-    for _, row in wallets_df.iterrows():
-        addr = row["address"]
-        G.add_node(addr, type="wallet", **row.to_dict())
+    transaction_nodes = set(transactions_df["txId1"]).union(set(transactions_df["txId2"]))
+    G.add_nodes_from((tx_id, {"type": "transaction"}) for tx_id in transaction_nodes)
 
-    # Transaction nodes
-    tx_nodes = set(transactions_df["txId1"]).union(set(transactions_df["txId2"]))
-    for tx_id in tx_nodes:
-        G.add_node(tx_id, type="transaction")
-
-    # ----------------------------------------------------
-    # 3. Add Edges for Three Edge Lists
-    # ----------------------------------------------------
     column_mappings = {
         "addr_addr": ("input_address", "output_address"),
         "addr_tx": ("input_address", "txId"),
@@ -69,36 +53,20 @@ def build_graph(wallets_df, transactions_df, edges_df):
     }
 
     for edge_type, df in edges_df.items():
-        df.columns = df.columns.str.strip()
-
+        df.columns = df.columns.str.strip()  # Clean column names
+        
         if edge_type not in column_mappings:
             print(f"Skipping unknown edge type: {edge_type}")
             continue
-
+        
         src_col, tgt_col = column_mappings[edge_type]
-
+        
         if src_col not in df.columns or tgt_col not in df.columns:
-            print(f"[WARN] {edge_type} missing columns: {df.columns}")
+            print(f"Skipping {edge_type} due to missing columns: {df.columns}")
             continue
-
-        # Preserve all edges (multi-edge!)
-        for _, row in df.iterrows():
-            src = row[src_col]
-            tgt = row[tgt_col]
-            G.add_edge(src, tgt, type=edge_type)
-
-    # ----------------------------------------------------
-    # 4. Compute NEW interpretable structural features
-    # ----------------------------------------------------
-    for node in G.nodes():
-        neighbors = set(G.neighbors(node))
-
-        G.nodes[node]["degree_multi"] = G.degree(node)  # preserves multi-edge count
-        G.nodes[node]["unique_neighbors"] = len(neighbors)
-
-        # Transaction-role features
-        G.nodes[node]["unique_senders"] = len([n for n in neighbors if G.has_edge(n, node)])
-        G.nodes[node]["unique_receivers"] = len([n for n in neighbors if G.has_edge(node, n)])
+        
+        edge_list = [(row[src_col], row[tgt_col], {"type": edge_type}) for _, row in df.iterrows()]
+        G.add_edges_from(edge_list) 
 
     return G
 
@@ -120,8 +88,6 @@ def standardize_graph_and_features(G, node_features):
     return G, node_features
 
 def convert_to_pyg(G, node_features):
-    from src.graphlime_explainer import FEATURE_COLUMNS  # or define locally if needed
-
     # Clean node_features column names
     node_features.columns = [col.replace(" ", "_") for col in node_features.columns]
 
@@ -143,4 +109,4 @@ def convert_to_pyg(G, node_features):
     # Convert features DataFrame to tensor
     features = torch.tensor(node_features[FEATURE_COLUMNS].values, dtype=torch.float)
 
-    return pyg_graph, features, list(G.nodes())
+    return pyg_graph, features

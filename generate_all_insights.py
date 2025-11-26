@@ -337,7 +337,7 @@ def generate_llm_insights_for_top_anomalies(
     out_path=INSIGHTS_FILE,
     metrics_path=METRICS_FILE,
     gnn_time=0,
-    sample_count=220,
+    sample_count=50,
     dry_run=False,
     num_samples=5,
     llm_temperature=0.2,
@@ -487,7 +487,7 @@ if __name__ == "__main__":
     node_features, edge_features = process_features(G, confirm_path="n")
 
     gnn_start = time.time()
-    _, anomalies_df, model = detect_anomalies(G, node_features)
+    _, _, anomalies_df, model = detect_anomalies(G, node_features)
     gnn_time = time.time() - gnn_start
 
     # Run the orchestrator for 220 nodes (top anomalies)
@@ -498,7 +498,7 @@ if __name__ == "__main__":
         out_path=INSIGHTS_FILE,
         metrics_path=METRICS_FILE,
         gnn_time=gnn_time,
-        sample_count=250,
+        sample_count=50,
         dry_run=False,
         num_samples=5,
         llm_temperature=0.2,
