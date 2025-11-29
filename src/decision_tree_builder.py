@@ -17,7 +17,6 @@ INSIGHTS_FILE = os.path.join(RESULTS_DIR, "llm_insights.json")
 try:
     from src.graphlime_explainer import FEATURE_COLUMNS
 except Exception:
-    # fallback: minimal sensible list (should be replaced by your canonical FEATURE_COLUMNS)
     FEATURE_COLUMNS = [
         "degree", "in_degree", "out_degree",
         "num_txs_as_sender", "num_txs_as_receiver", "total_txs",

@@ -1,1 +1,113 @@
-{}
+{
+  "n_examples": 203,
+  "n_features": 33,
+  "feature_names": [
+    "total_txs",
+    "btc_received_total",
+    "btc_sent_total",
+    "num_txs_as_sender",
+    "num_txs_as_receiver",
+    "btc_transacted_total",
+    "fees_total",
+    "degree",
+    "degree",
+    "in_degree",
+    "out_degree",
+    "num_txs_as_sender",
+    "num_txs_as_receiver",
+    "total_txs",
+    "lifetime_in_blocks",
+    "num_timesteps_appeared_in",
+    "btc_transacted_total",
+    "btc_transacted_mean",
+    "btc_transacted_median",
+    "btc_sent_total",
+    "btc_sent_mean",
+    "btc_sent_median",
+    "btc_received_total",
+    "btc_received_mean",
+    "btc_received_median",
+    "fees_total",
+    "fees_mean",
+    "fees_median",
+    "blocks_btwn_txs_mean",
+    "blocks_btwn_input_txs_mean",
+    "blocks_btwn_output_txs_mean",
+    "num_addr_transacted_multiple",
+    "transacted_w_address_mean"
+  ],
+  "binary_accuracy": 0.8292682926829268,
+  "binary_report": {
+    "0": {
+      "precision": 0.14285714285714285,
+      "recall": 0.5,
+      "f1-score": 0.2222222222222222,
+      "support": 2.0
+    },
+    "1": {
+      "precision": 0.9705882352941176,
+      "recall": 0.8461538461538461,
+      "f1-score": 0.9041095890410958,
+      "support": 39.0
+    },
+    "accuracy": 0.8292682926829268,
+    "macro avg": {
+      "precision": 0.5567226890756303,
+      "recall": 0.6730769230769231,
+      "f1-score": 0.563165905631659,
+      "support": 41.0
+    },
+    "weighted avg": {
+      "precision": 0.9302111088337773,
+      "recall": 0.8292682926829268,
+      "f1-score": 0.8708467906596874,
+      "support": 41.0
+    }
+  },
+  "multiclass_accuracy": 0.04878048780487805,
+  "multiclass_report": {
+    "0": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "1": {
+      "precision": 1.0,
+      "recall": 0.058823529411764705,
+      "f1-score": 0.1111111111111111,
+      "support": 34.0
+    },
+    "2": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "3": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "accuracy": 0.04878048780487805,
+    "macro avg": {
+      "precision": 0.25,
+      "recall": 0.014705882352941176,
+      "f1-score": 0.027777777777777776,
+      "support": 41.0
+    },
+    "weighted avg": {
+      "precision": 0.8292682926829268,
+      "recall": 0.04878048780487805,
+      "f1-score": 0.0921409214092141,
+      "support": 41.0
+    }
+  },
+  "fraud_type_classes": [
+    "giveaway scams",
+    "money laundering",
+    "normal",
+    "pump-and-dump schemes"
+  ]
+}

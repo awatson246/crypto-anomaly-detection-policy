@@ -165,7 +165,7 @@ def process_single_node(
     # 1) Explainers
     try:
         t0 = time.time()
-        expl_results = explain_anomaly_multi(G, model, node_id, explainers=["graphlime", "gnnexplainer"])
+        expl_results = explain_anomaly_multi(G, model, node_id, explainers=["graphlime"])
         metrics_entry["explainer_time_s"] = time.time() - t0
     except Exception as e:
         expl_results = {}
@@ -498,13 +498,13 @@ if __name__ == "__main__":
         out_path=INSIGHTS_FILE,
         metrics_path=METRICS_FILE,
         gnn_time=gnn_time,
-        sample_count=50,
+        sample_count=47,
         dry_run=False,
         num_samples=5,
         llm_temperature=0.2,
         llm_model="gpt-4o-mini",
         top_features_count=5,
-        max_workers=8,
+        max_workers=5,
         batch_save_every=25
     )
     print("All done :)")

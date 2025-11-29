@@ -1,0 +1,16 @@
+|--- btc_transacted_median <= 0.99
+|   |--- degree <= 0.99
+|   |   |--- degree <= 0.99
+|   |   |   |--- degree <= 0.17
+|   |   |   |   |--- class: 1
+|   |   |   |--- degree >  0.17
+|   |   |   |   |--- class: 1
+|   |   |--- degree >  0.99
+|   |   |   |--- class: 0
+|   |--- degree >  0.99
+|   |   |--- degree <= 1.00
+|   |   |   |--- class: 1
+|   |   |--- degree >  1.00
+|   |   |   |--- class: 0
+|--- btc_transacted_median >  0.99
+|   |--- class: 0

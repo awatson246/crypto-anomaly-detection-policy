@@ -1,27 +1,2989 @@
 {
-  "1CHJY35Fb5MCq1RfPpyp9Uh5qr7BAgL45i": {},
-  "3377fMhgXxrrMvyC38AxCHp2dGKazYJSZD": {},
-  "3BwkBQ75EK25PSAytEagmHaczgUpLyw9xH": {},
-  "1FffeZj5MAVGc1Mi5twLv4XyPgwBZ5obt3": {},
-  "1PbL59QHiyHWyUuWmwzQ9LnUw79Q9MKcV7": {},
-  "1BWqzzvUSMTaVk948hmDF3LERVq3MszAWm": {},
-  "1MNz9xK5qwdxGdWd7ciGGvrSNokpbad6pM": {},
-  "1GX28yLjVWux7ws4UQ9FB4MnLH4UKTPK2z": {},
-  "196PNs5v4XzLPTyvBTb5NMRxgdFxfbyRxd": {},
-  "1K4DoYFLdLws2GrSvZ7Box6N1R3CBvXWCV": {},
-  "1CCTbKWEbgayM8uCsz7FLfdZMmsNDj7F6L": {},
-  "3E7QAV1BkM4bWSEqCBYnaHC2ruhixPjY6N": {},
-  "1JmDNTvF9vjW7x8cWTvfq5bHohX4HJG1XW": {},
-  "1Aj5FMYrXUu4LGoyD1M65ZukgWyAV882xg": {},
-  "1EEm41ThHBMMavFrLCfBgov1msx1cPPsWo": {},
-  "1HrHMKQjZrh2tPLC9ayoWEUXQF8yh6XhaG": {},
-  "1Fj75n26BWiBruj9W52T2836zo1tPHtYZo": {},
-  "1N3J6F7bYNAYj7nrFnWYDuuVaMsD3kSTog": {},
-  "1BXHrMXXiYV16XGsgqmjZLByYd9axS4FmE": {},
-  "1PiYV7uxFVMJj6C6wm91gBN4P3FFFwFhqG": {},
-  "18VQB3oAcXjh14npHoFCMNdideRNN5VCA8": {},
-  "15ydxRxFwiGSGvwjjWP9FhXMfC8idJaYpD": {},
-  "1KV7ZWfW2uxacKnFJyoaGFFnD93nTGPWUW": {},
-  "17T9qWdBA39iii8p3p2VDkd3YiRtZvzsAb": {},
-  "15isBsGSmgrtAxkjNerx8zdFTausi1Qkrn": {}
+  "37U1BcQvTAfgkSJnFegekjdKJ5SFUAg4Hy": {
+    "degree": {
+      "graphlime": 0.6550441980361938
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "139AdCGDyaF1Yg4Eyddvaj38PnihsfCLPj": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1BKhEsYKhw5FD4pJ6f7JstobjjRFuqQ2YD": {
+    "degree": {
+      "graphlime": 0.9996153712272644
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "12ZjbeFDGtUboK73gshp2EKp8effFEJ7Qf": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_received_total": {
+      "graphlime": 0.33033332228660583
+    },
+    "fees_total": {
+      "graphlime": 5.165735839085528e-09
+    }
+  },
+  "39ioEbcSHDDgLJsvzQWb9QLRBobQi9ovCi": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.989062488079071
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.989062488079071
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.989062488079071
+    },
+    "fees_total": {
+      "graphlime": 0.989062488079071
+    },
+    "btc_received_median": {
+      "graphlime": 0.989062488079071
+    }
+  },
+  "1NfRKpHGe5wxdSYsZ44a154oJi3jxqQvSD": {
+    "degree": {
+      "graphlime": 0.17235982418060303
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3NCHkFAQySJ9vvqPMFFpQVSv8WtpEAJchK": {
+    "degree": {
+      "graphlime": 0.87388676404953
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1FuA1dJcXZtCBa1xSeNwCYxi29jAJHeVbF": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "14EMAQP8KkCefZKi8LyhrYpBGUev2jzme6": {
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.9877551198005676
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.9877551198005676
+    },
+    "degree": {
+      "graphlime": 0.9877551198005676
+    },
+    "btc_received_total": {
+      "graphlime": 0.9877551198005676
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3EFqMV5srqj9ok8gbQg6RrHVt3gcXBKMyP": {
+    "degree": {
+      "graphlime": 0.9564615488052368
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3CH1FdUtsD6pD8HTW4SB1jy66yr755SSEU": {
+    "degree": {
+      "graphlime": 0.2116752415895462
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "16wNszNp67mXTgX6whWUtetzFrjfKAYYGi": {
+    "degree": {
+      "graphlime": 0.17253704369068146
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "19UzxWwNKjNaWKZGS6sjVkYBBtQiDCdGuQ": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1D3xSHHA2oCu2LFvzrTRYripiF3AD1FuTf": {
+    "degree": {
+      "graphlime": 0.9978733658790588
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1LCSgASP4UeP853gWkWZSX35CukH4GT1zP": {
+    "fees_total": {
+      "graphlime": 0.9944636821746826
+    },
+    "degree": {
+      "graphlime": 0.9944636821746826
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1PJ5v8DoPQxmADCriSh5g26rejLQcMzBog": {
+    "btc_received_total": {
+      "graphlime": 0.9933673739433289
+    },
+    "degree": {
+      "graphlime": 0.9933673739433289
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1J3CMMjpjqsCxJxzuFKeH1jeYGntLLUwxS": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "3AGXK2ofuMwtJMb6btZX2xrE7NFJt4R3o5": {
+    "degree": {
+      "graphlime": 0.27063891291618347
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1H4iDjAamMFo7K6v7dAsQdGHRrjhgU23Qb": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "fees_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "12vcmASyAco3rfUNuBnWQVyKGKPDM9GT2o": {
+    "degree": {
+      "graphlime": 0.9997155070304871
+    },
+    "out_degree": {
+      "graphlime": 1.9099530845778645e-08
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "18N5ERb5X9Q2WxL7SdkcmuedL2p39MP2pq": {
+    "degree": {
+      "graphlime": 0.9997624754905701
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1AgKJ6NUqNxjzNqG1YoZV4bUZVKvjN3hKt": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1B42sxrepF3M4VUZ5Jhzukp9dzdx7MZJfe": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1qEoM4LQCzNMakvR1DmmzJWKwZgDCC3gX": {
+    "degree": {
+      "graphlime": 0.994140625
+    },
+    "btc_received_median": {
+      "graphlime": 0.9941344857215881
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1BTPjqjH2UpEqo7FmLuuHsMqrgdRJ3KoZx": {
+    "degree": {
+      "graphlime": 0.9975016713142395
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1E3RfA788FQEwB8dZYAudbQZzoVvTEsFTc": {
+    "degree": {
+      "graphlime": 0.17253738641738892
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Bv5cKzN1wam91PHfHS4nNRJVsZECfEQGX": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "3AVPsESLfFF67wbr6sSXpujjs6CrKTGca1": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.996006965637207
+    },
+    "degree": {
+      "graphlime": 0.996006965637207
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1JFrLB4NUBQgUPLrKHnobSzRtxUoJMki1r": {
+    "btc_received_mean": {
+      "graphlime": 0.9937777519226074
+    },
+    "degree": {
+      "graphlime": 0.9937777519226074
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3Mkk7BMTCPd5gZCxLRvEHWsnbhRLvgMumU": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.996006965637207
+    },
+    "degree": {
+      "graphlime": 0.996006965637207
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY": {
+    "degree": {
+      "graphlime": 0.3411286473274231
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1BYfQkqkARJGQxUqw4bK251HSrDKzRSgew": {
+    "degree": {
+      "graphlime": 0.9973703622817993
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "13ReJYEFttWFY27axxQjxWzNqhzx3TxGNg": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.989062488079071
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.989062488079071
+    },
+    "btc_received_median": {
+      "graphlime": 0.989062488079071
+    },
+    "fees_total": {
+      "graphlime": 0.989062488079071
+    },
+    "btc_transacted_total": {
+      "graphlime": 0.989062488079071
+    }
+  },
+  "36Wu3jDLUgD2suGdEsZkHycu9htUm8JfCg": {
+    "btc_received_mean": {
+      "graphlime": 0.9937777519226074
+    },
+    "degree": {
+      "graphlime": 0.9937777519226074
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.24844442307949066
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 1.4437569362257818e-08
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 1.7219119463618426e-09
+    }
+  },
+  "1CSPyqbLaRKjare36pXzTuGMVCWXAid5Vn": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "37CJdLLD7rUc1F3BmY4EH285enLSGBwuQc": {
+    "degree": {
+      "graphlime": 0.997960090637207
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "39HSySuqMBCmZi7scW8MaGsFdL6wimcvww": {
+    "degree": {
+      "graphlime": 0.9627876281738281
+    },
+    "lifetime_in_blocks": {
+      "graphlime": 1.2152663764197769e-08
+    },
+    "btc_transacted_median": {
+      "graphlime": 3.979461760117431e-10
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 3.979461760117431e-10
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 3.979461760117431e-10
+    }
+  },
+  "14z6xmKnWm6mx8wnnXzNkYUPGYSJy5sdXW": {
+    "degree": {
+      "graphlime": 0.745108425617218
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Pk3PXfDYq34eX87AhgAqE54xQ7Yk8hsYC": {
+    "btc_received_median": {
+      "graphlime": 0.994140625
+    },
+    "degree": {
+      "graphlime": 0.994140625
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1Mnhn6gdm8N2AuxEEzcryyv21cuiejd64T": {
+    "degree": {
+      "graphlime": 0.19791723787784576
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1D1di9KuxFMykoAVhREDtC7ty5eu3tEvoN": {
+    "fees_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "degree": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_received_total": {
+      "graphlime": 0.990123450756073
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "17pJYuEEMtnv297Jmg7cFzgdVU8gxuUjMf": {
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.9877551198005676
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.9877551198005676
+    },
+    "degree": {
+      "graphlime": 0.9877551198005676
+    },
+    "btc_received_total": {
+      "graphlime": 0.9877551198005676
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1LQuHEGCTD4BnPZyGDv887ZHMbFr3wGqSy": {
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.9877551198005676
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.9877551198005676
+    },
+    "degree": {
+      "graphlime": 0.9877551198005676
+    },
+    "btc_received_total": {
+      "graphlime": 0.9877551198005676
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "15b7S654cmCh42htSGxqf5fAdo7FANjVYb": {
+    "degree": {
+      "graphlime": 0.9993671774864197
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "15uyvmNQtLPyzeNcBCvuvgH4f7MUN6XFKF": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.996006965637207
+    },
+    "degree": {
+      "graphlime": 0.996006965637207
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "15Pe1eGqR3xaoN8VfSi1FHPX3VSqtM4QUx": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9952499866485596
+    },
+    "degree": {
+      "graphlime": 0.9952499866485596
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "3PTGC2TjwhpUFynWFinC5CSRsoCSq1p8zn": {
+    "degree": {
+      "graphlime": 0.9994252920150757
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1MAVFf8fmEYVmLoL9RztGyCzLHPpgpgg9P": {
+    "degree": {
+      "graphlime": 0.9997646808624268
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3MEh9VwHcqyxMbvzgNELeXDyA8QJMFMKMi": {
+    "degree": {
+      "graphlime": 0.11145136505365372
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "18stcjaN8E3aExxD54jVqwh414BXhuJe9x": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "fees_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "degree": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.990123450756073
+    }
+  },
+  "1NTpCvpA9zEjJtV5CfVZ6LU5dsrYfg3cBH": {
+    "degree": {
+      "graphlime": 0.9965561032295227
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "17A16QmavnUfCW11DAApiJxp7ARnxN5pGX": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1FMMJx3cTJ1mrBhJKejFHu2HbZeX2nxTTn": {},
+  "3377fMhgXxrrMvyC38AxCHp2dGKazYJSZD": {
+    "degree": {
+      "graphlime": 0.9992857575416565
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1GX28yLjVWux7ws4UQ9FB4MnLH4UKTPK2z": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1DygYcseANLMDa5j4ZmE1A57JJzh5MUYjX": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_received_median": {
+      "graphlime": 0.4958677589893341
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1HdV2CXXttuV4dFpC3XXktdcaf2zZF9zUc": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "17Akhagbr3iz9jZQDPgNmr1kkRW3NNf8EW": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "14puEpmKN9ur3tcbPDGwxwcUkJpFimXzEk": {
+    "degree": {
+      "graphlime": 0.9964334964752197
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1MD1TJLH4qscqMwPfz2h6SX4zB961NsjhL": {
+    "fees_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "total_txs": {
+      "graphlime": 0.990123450756073
+    },
+    "degree": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.4950617253780365
+    }
+  },
+  "1CjL2NPbPZMVteJWCN5zi3gaG9hN9y5a3j": {
+    "degree": {
+      "graphlime": 0.20405346155166626
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "14qo1i9AGopWvzV6JZj5L5hiC9FMY12c6d": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "lifetime_in_blocks": {
+      "graphlime": 0.4958677589893341
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "17jfJBdy4bNd68XXGDTXn9NrEfat6cFJDW": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "degree": {
+      "graphlime": 0.9923611283302307
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1B8PCcVBKZvq38CfgxtFgrc2Pqi86BtjcN": {
+    "degree": {
+      "graphlime": 0.11269830167293549
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1PXPan89R5x5FM1EwmSpjyBkuuCvLLgoY3": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1change6feSoBHr957Zh5qmBrebA8oea7": {
+    "degree": {
+      "graphlime": 0.9983338117599487
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "14tJrPguJKQJ9swxKhxSp9PXVXV11g4GJV": {
+    "degree": {
+      "graphlime": 0.10677631944417953
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "14ZFJcPBUVzMrPGQac4f6Li2dx3TGQtKE5": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "fees_total": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "lifetime_in_blocks": {
+      "graphlime": 0.9868311882019043
+    }
+  },
+  "1PLD449GeGXYx89RsdcPNz4z9uXj5L4d1u": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "degree": {
+      "graphlime": 0.9923611283302307
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1ExH7pXBdhudJrnwGSTkgWHygfP931ijmA": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "degree": {
+      "graphlime": 0.9923611283302307
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "387Jc727ogeU9XZpAWC9JUGQ2pwLq38j4U": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "degree": {
+      "graphlime": 0.9923611283302307
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1AScU6crcHeZaime8iCicEeHFLDgUVtggt": {},
+  "1GUVCx6dHDCntw4ijFq6UnzkJqeh6gtwct": {},
+  "1Dksk7aA6PPpttznZi73d8xzsw4ERHSTLc": {},
+  "1PJKQywnm72ETmdqo1xZzdzqQYoh2GFMyJ": {},
+  "17xmQjsjSPNx2tYSDta9gQm2cUWPFLoPXq": {},
+  "18tngHCFj4HkjC18NhfB28RH7xcWbZRgZp": {},
+  "33yLk7bazMh2gFzGQdYPUT1zUMPdEq5Rjy": {},
+  "179XttLMcaeW6oty4r38HNAdyAQYZTSPKV": {},
+  "1GapE71D4KcZEhdoXNzrmuRcaxYAbNC139": {},
+  "12QiKDKK31cgCdYZhK2qn6eR8h924zHWsL": {},
+  "33uVuTnQyaCTeK8MwZdaxgLNJCECwvxZQE": {},
+  "1AYmp2VpZh9Rw2vgvgjqDd8hGwLoZNjHCn": {},
+  "1FbsXBfyGaMkV9uRVzb2PdHfjYP2rFNnSv": {},
+  "19JjQ3pN48YHSLxynZyYrGYvDBTj6fXe3Z": {},
+  "343xvodkVoUQeCxpXgz4ejEGyFb1wFy73h": {},
+  "1kyQwoZf5KE7nRVTmjjTrd2twBuaZsKWg": {},
+  "13c3C4RK77zcQqkQmFcbsxbsA4fXkM2rGp": {},
+  "1FfFMpBAnoZBi9xbDnTmiRtcLBVXQLoVob": {},
+  "37KpL4uvgq7z6wqBDwLb1BTE5xGyYz1rpT": {},
+  "19iVyH1qUxgywY8LJSbpV4VavjZmyuEyxV": {},
+  "1LpCML4PE9h979KL6bTK3mJJUTaP4BcywZ": {},
+  "3L7pSzNaDaVgN7LZ7NGmET1LDXVKkWzBPT": {},
+  "15evektT41zo3wGCSj9TaU1D3wDtNCwBNh": {},
+  "33r1tqAJc7ZQC9PmLqx13DaKMA4KDZhzjA": {},
+  "3JtL2F46EMLMT9Yf57iatJ3bS94L9VBvdQ": {},
+  "1KXJ3W9Lk1YKFDXNSBCAvFdbMRAq9Fhhhz": {},
+  "1JvmseoLt1To1z92UKF2bqxhXhC6KaoiV": {},
+  "12Ceka3AUArGCijiZQ6teCJ9tvPWoA4tTH": {},
+  "1DPnoAnTHoXa1byS2iBLoAbMNdndXsE2s5": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1JP8FqoXtCMrR1sZc2McLWmHxENox1Y1PV": {
+    "degree": {
+      "graphlime": 0.08050394803285599
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "18rdKmjrg1EawxgiVT3ikLExj6GWS2MNCk": {
+    "degree": {
+      "graphlime": 0.3346858024597168
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3LQxUzikM2rWBhUFrLFNiuWPbPLLJn84DB": {
+    "degree": {
+      "graphlime": 0.2173895239830017
+    },
+    "btc_received_mean": {
+      "graphlime": 1.4773125940337195e-06
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1BCwNmPs2pxThBWG68YrPpbTpHzHj1LnN6": {
+    "fees_total": {
+      "graphlime": 0.0007043625228106976
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.00028960092458873987
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "3Lh5AgX7GCaCWmLZ2Ghm7z8cUkuq6eTQhx": {
+    "degree": {
+      "graphlime": 0.9977017045021057
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "37p9pUugydmoLpQyFLLqGAgjWmUFERa1Pq": {
+    "degree": {
+      "graphlime": 0.9909719228744507
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "396J75eWrTwSBMH6Fj32tbYxUuX4oQfEzJ": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "13hB6VxWn52YuzXJJ9FE6Y7NVnT5CtRjmD": {
+    "degree": {
+      "graphlime": 0.999695897102356
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "38DPYmsa7RXwLrhpTP6udrfSiGn5dzdGAC": {
+    "degree": {
+      "graphlime": 0.012504035606980324
+    },
+    "btc_sent_median": {
+      "graphlime": 8.07451328910247e-07
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1LuckyB5VGzdZLZSBZvw8DR17iiFCpST7L": {
+    "degree": {
+      "graphlime": 0.9994012117385864
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "35Sr8veMauPrkLBZRJTHJH333QF5UfyTpW": {
+    "degree": {
+      "graphlime": 0.037791892886161804
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "16qfiH54X8AzSRcK6Hg1VURYuQUkKCUnRe": {
+    "degree": {
+      "graphlime": 0.9964334964752197
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "35zBvZd46TjSmPx7aUWo58GxNJ52RDoN74": {
+    "degree": {
+      "graphlime": 0.029400169849395752
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "33AibmPKKKDRfSZsqgugzGY5MQnrVYpfQr": {
+    "degree": {
+      "graphlime": 0.02623681165277958
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1KwA4fS4uVuCNjCtMivE7m5ATbv93UZg8V": {
+    "degree": {
+      "graphlime": 0.043940041214227676
+    },
+    "btc_transacted_total": {
+      "graphlime": 0.012500782497227192
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1EqfHy3os5PENg4DCwgkZXYmbtms7jC2Ud": {
+    "degree": {
+      "graphlime": 0.9995652437210083
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "37Kbnc7dkB8AiqGfGHgeqKkgd3C65EwqE9": {
+    "degree": {
+      "graphlime": 0.026471031829714775
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3MfN5to5K5be2RupWE8rjJHQ6V9L8ypWeh": {
+    "degree": {
+      "graphlime": 0.9999441504478455
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1PiYV7uxFVMJj6C6wm91gBN4P3FFFwFhqG": {
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.9958412051200867
+    },
+    "degree": {
+      "graphlime": 0.9958412051200867
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3ChedKXRseKyPwufAWWL85MDXtF54BxAY8": {
+    "degree": {
+      "graphlime": 0.9627742767333984
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3376X6m1YX3Jm4J4c2zq8w93VdSnUnZj31": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1NxaBCFQwejSZbQfWcYNwgqML5wWoE3rK4": {
+    "degree": {
+      "graphlime": 0.9999223351478577
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Etx1nfoiuzFCyVBg3ayxJ8AS9qCjnXRPU": {
+    "degree": {
+      "graphlime": 0.9999916553497314
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1K4tqVDY3E3oAz4rRo6jJTLdrF2bBk1ALv": {
+    "fees_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "degree": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.5424569845199585
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "16krTPWeAgszUHTByHEi6kGikGQo8MacRJ": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "13TuzwBLZosyfTbqr6MaHBJzkKNBsmKQh4": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3CD1QW6fjgTwKq3Pj97nty28WZAVkziNom": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1CDsLgidfcJjuyMjFnHNF7fYAMJYYBwHSN": {
+    "degree": {
+      "graphlime": 0.021050484851002693
+    },
+    "in_degree": {
+      "graphlime": 2.6474486958250054e-07
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "18VpKLVNf6nxwrbyFmfUY58c32Baeh2ipF": {
+    "degree": {
+      "graphlime": 0.021050482988357544
+    },
+    "in_degree": {
+      "graphlime": 2.64738559963007e-07
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1KANX2vCAkL3tg62Umuya9ejxE3MxBphv6": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "31wpB9weXg1u3yjLqbk4XHVkwQPKBkHxjZ": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "37zfKL5EqsokYztEj6yrJxeJah52CgJixG": {
+    "degree": {
+      "graphlime": 0.9996699690818787
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Ej4Jm8J83tKG4wUAbikNF3rQoGckH4Emp": {
+    "degree": {
+      "graphlime": 0.006110730115324259
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3P2eoKr3vAeZhJcTzon3VFkv5r7DqSXW9G": {
+    "degree": {
+      "graphlime": 0.04561576992273331
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Pqx8L8bdp4sW3UqCCVBojfrjYwWsm96W9": {
+    "degree": {
+      "graphlime": 0.9996363520622253
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "18WYMeJ4cxoeb7LxWHMxayuJGVBWfGjckD": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3JnFBLxDCutY3bZEZsPTkHAaUA1bxmEMX2": {
+    "degree": {
+      "graphlime": 0.9937187433242798
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Po1oWkD2LmodfkBYiAktwh76vkF93LKnh": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "18VQB3oAcXjh14npHoFCMNdideRNN5VCA8": {
+    "btc_sent_median": {
+      "graphlime": 0.9928994178771973
+    },
+    "degree": {
+      "graphlime": 0.9928994178771973
+    },
+    "fees_median": {
+      "graphlime": 0.3309664726257324
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1JTeYcsx37XTq5NRgjepAHDqaLHTZUL88a": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "degree": {
+      "graphlime": 0.9923611283302307
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.3307870328426361
+    },
+    "btc_transacted_total": {
+      "graphlime": 1.40733185105546e-08
+    }
+  },
+  "17vNx618m3wDvt33wahv4bkpvSKiStQhqf": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3AhpkBp2xR2h1JLnob71aZvyT8TN5tFxjt": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1NaHBx24d3rtW22DYKcyeVp9htaYXmwMEW": {
+    "degree": {
+      "graphlime": 0.17247651517391205
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1FRBeAtYaM4i5oQ8djgQ47ko7tJShhoAnU": {
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "fees_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "degree": {
+      "graphlime": 0.990123450756073
+    },
+    "num_txs_as_receiver": {
+      "graphlime": 0.33004114031791687
+    }
+  },
+  "1HgcjDJEwe6KBTnEoXURL6UNscdpw9Vehm": {
+    "degree": {
+      "graphlime": 0.9994868040084839
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "391UPbq8v9tXwTWJH8qeZiXT21hVLTbC1X": {
+    "degree": {
+      "graphlime": 0.1033286452293396
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Jbve8q8LJifHzwCw3zaHCcaFgwSHmhHhW": {
+    "degree": {
+      "graphlime": 0.21344305574893951
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3LCNB5KyW8ZLk7DYJbQXJd5ZnTKqyjyu9v": {
+    "degree": {
+      "graphlime": 0.9992857575416565
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "397mQD4TjYgRTv7NXZuusU4z1EBagEqvod": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "13vHWR3iLsHeYwT42RnuKYNBoVPrKKZgRv": {
+    "degree": {
+      "graphlime": 0.23561416566371918
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Hk2gunnDWMuyC2G1tuye2pL9akSdeFEfe": {
+    "degree": {
+      "graphlime": 0.9965561032295227
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3KsNYzJdoMA6RsmqbEYjb3VrvVZxdbgx8f": {
+    "degree": {
+      "graphlime": 0.9978271722793579
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "19Eksj9LqyeQHEg25SFCSCufnwgtVyRajE": {
+    "fees_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "degree": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "18rB7PbeQAEfKzhn88epePqMbzutxmVZ3k": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "3QGJ8o2oMWBBFfd6yBLqLd5RArSK5Ep84g": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1KAB5V2RwQveyZ8FoKMqzrHBih8WvcB7oC": {
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.9877551198005676
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.9877551198005676
+    },
+    "degree": {
+      "graphlime": 0.9877551198005676
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9877551198005676
+    },
+    "btc_received_total": {
+      "graphlime": 0.9877551198005676
+    }
+  },
+  "1B61VuX9qrAhCpgAr63yXy9LMpfqPjPntX": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1ED7DgK4pXzTMvcswVkURgMEsgGU9G3MbD": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "12XQwTywniHvWXUY992c9RHsUZo5gYBkgv": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9952499866485596
+    },
+    "btc_received_median": {
+      "graphlime": 0.9952499866485596
+    },
+    "degree": {
+      "graphlime": 0.9952499866485596
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1P9RQEr2XeE3PEb44ZE35sfZRRW1JHU8qx": {
+    "degree": {
+      "graphlime": 0.2548658549785614
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1B8uNopgy7JK1AxB4YJv9iadboDDJLxVYZ": {
+    "degree": {
+      "graphlime": 0.22385060787200928
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1QCVECkqjBmhkzz344MtVDCkPPZzaspyfX": {
+    "fees_total": {
+      "graphlime": 0.9944636821746826
+    },
+    "degree": {
+      "graphlime": 0.9941449761390686
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "39MaBEh6hT1qQ8EyD1P8qokg1XtbR1TEYr": {
+    "degree": {
+      "graphlime": 0.9992064237594604
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1JydBsXSnZyRM1ENyd48ZREGU55hzFNW3w": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1KiVTTQeT7FEAemaCtAVHWNU2eKDuHuYRu": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "degree": {
+      "graphlime": 0.9923611283302307
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9923611283302307
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3CgMfYD17SYP7ddhUDrbpMUEabymcaFjH5": {
+    "degree": {
+      "graphlime": 0.9991151094436646
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1P1deJAyffEp9ry9hLoaBEy4XrCofFzu1a": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "18ge4pQaUF4T71uF8KT4SNLawTgmqCtwR3": {
+    "degree": {
+      "graphlime": 0.16015784442424774
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3MXkmdwPo5Gs5u9ShwtJ43zCxtGtVsKpTR": {
+    "btc_transacted_median": {
+      "graphlime": 0.2559677064418793
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3N2yMrhZd2m8ysSubwSPHnDByuQptg8Vsf": {
+    "degree": {
+      "graphlime": 0.9992932677268982
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "35dEixmmP3VikmiEb7uxiUVgz8hbqeFkYm": {
+    "btc_transacted_median": {
+      "graphlime": 0.2559677064418793
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "366Dgw4pi3rnvu5zizVWZF6nijWxZWc6RA": {
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.007771317847073078
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "19qid28kRKBgapGc4WW9jGJB3xXA9R48jW": {
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "fees_mean": {
+      "graphlime": 0.9917355179786682
+    },
+    "btc_sent_total": {
+      "graphlime": 0.9917355179786682
+    },
+    "degree": {
+      "graphlime": 0.9917355179786682
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1PuR1RSZVtxbQrEx97BbQP4ZLSSNuyCqWf": {
+    "fees_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.990123450756073
+    },
+    "degree": {
+      "graphlime": 0.990123450756073
+    },
+    "btc_transacted_mean": {
+      "graphlime": 0.990123450756073
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1HdLSSkqEUbLicA81DCKaGua8cY1F4bnNj": {
+    "degree": {
+      "graphlime": 0.4983380138874054
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1GUkazUBpXWdSJ9HbgTapAH7uybpi3Cs6K": {
+    "degree": {
+      "graphlime": 0.9775518178939819
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1LZw2RyfruTs4uh7CYTzcgeL65VYJDmb19": {
+    "degree": {
+      "graphlime": 0.9966706037521362
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "17dKfNjkUT9HGUS5hLStxMQyHD3NCF6vRY": {
+    "btc_sent_median": {
+      "graphlime": 0.295053631067276
+    },
+    "btc_received_mean": {
+      "graphlime": 0.13998724520206451
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "15mXSqrWajzi88XiDX6otskZiBpeDxfRiE": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Dwv5t4omqr4PioHsizt1NzCpgkEpRDDZV": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9719580411911011
+    },
+    "btc_received_total": {
+      "graphlime": 0.49549999833106995
+    },
+    "btc_received_mean": {
+      "graphlime": 7.748603536583687e-09
+    }
+  },
+  "1JKy97Tdnvz95qzwaSEhg4QVApbwq69Rb6": {
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.9877551198005676
+    },
+    "btc_received_median": {
+      "graphlime": 0.9877551198005676
+    },
+    "degree": {
+      "graphlime": 0.9877551198005676
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.9877551198005676
+    },
+    "btc_received_total": {
+      "graphlime": 0.9877551198005676
+    }
+  },
+  "19D1iGzDr7FyAdiy3ZZdxMd6ttHj1kj6WW": {
+    "degree": {
+      "graphlime": 0.2512838542461395
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1FoxBitjXcBeZUS4eDzPZ7b124q3N7QJK7": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "15qA2jzinwu4DXx3TusH9J89VF32GJ66bw": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9909999966621399
+    },
+    "degree": {
+      "graphlime": 0.9909999966621399
+    },
+    "btc_transacted_median": {
+      "graphlime": 0.9909999966621399
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "1F9AedVEzbLMPM482igs6QZmMtnWAwfkbw": {
+    "btc_received_mean": {
+      "graphlime": 0.9937777519226074
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9937777519226074
+    },
+    "degree": {
+      "graphlime": 0.9937777519226074
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "12tUPb4drLCRThyZt6HCNRR1t5QLhywYKP": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1D4KcPzPhvrE6Hz3KJihiMtZxPoU5JSZDC": {
+    "degree": {
+      "graphlime": 0.9968782663345337
+    },
+    "num_timesteps_appeared_in": {
+      "graphlime": 0.9968782663345337
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "156pVdRpYzrG7HqshWvCRj4w4iSpfaR4Bf": {
+    "degree": {
+      "graphlime": 0.16015836596488953
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "3DdZ9RGZLeeBWejnK8Z1gBsqg2HjmcVn3U": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9861111044883728
+    },
+    "lifetime_in_blocks": {
+      "graphlime": 0.9861111044883728
+    },
+    "degree": {
+      "graphlime": 0.9861111044883728
+    },
+    "btc_sent_mean": {
+      "graphlime": 0.9861111044883728
+    },
+    "fees_mean": {
+      "graphlime": 0.4930555522441864
+    }
+  },
+  "1KNhhfEUKP3Zzraf3pCSyumE5hBxHJVL7Y": {
+    "degree": {
+      "graphlime": 0.9998437762260437
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "17BymcHaGRbXGnEzR2m9woUYNf9FBPPJ2P": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1HCZdmxLiyD7jM4hfuGQBcBUhJ3yEmKsJL": {
+    "degree": {
+      "graphlime": 0.2514914572238922
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "17d5BCJJyBfvZLy8ethQ79qMuNd5X2c9dR": {
+    "degree": {
+      "graphlime": 0.9994949698448181
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "12NW6rYvDWkHfRNfLnrUz9bA4ZAA6nyCSU": {
+    "degree": {
+      "graphlime": 0.7872365713119507
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "194kZ5ebPkiwnQbeaTe6hs91HzGN2B41hU": {
+    "btc_received_total": {
+      "graphlime": 0.9933673739433289
+    },
+    "degree": {
+      "graphlime": 0.9933673739433289
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1MqpX62kJU5QcXYNo6cEycaMLyKREodhEu": {
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.9952499866485596
+    },
+    "degree": {
+      "graphlime": 0.9952499866485596
+    },
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    }
+  },
+  "3JTibhzhk9EwhGKe5n7pnyT2gdnDZvbMau": {
+    "degree": {
+      "graphlime": 0.9972245097160339
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1M8C68gP73y2cLsVqprpdmiHQudpmAYT2z": {
+    "degree": {
+      "graphlime": 0.9999500513076782
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1C5WkhM3hCuUFbg8x61XiyKakRsBMJziUS": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1BfDFbf6Z4eErPrakssqSzqLVfY1TnFWmt": {
+    "degree": {
+      "graphlime": 0.9998347163200378
+    },
+    "lifetime_in_blocks": {
+      "graphlime": 1.9762250502708412e-08
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "13oDFsFL2cL9ZzR4VTpLU9F9g6ckPEfRoC": {
+    "degree": {
+      "graphlime": 0.9980008602142334
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1Ns1ox4o1H9YKZ5HVXJh2UgvVRjBXXPeKa": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  },
+  "1DZyoRmRguJiohNqcUNMvPUsieDKiRec3A": {
+    "transacted_w_address_mean": {
+      "graphlime": 0.0
+    },
+    "num_addr_transacted_multiple": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_output_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_input_txs_mean": {
+      "graphlime": 0.0
+    },
+    "blocks_btwn_txs_mean": {
+      "graphlime": 0.0
+    }
+  }
 }
