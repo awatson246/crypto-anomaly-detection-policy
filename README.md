@@ -34,11 +34,15 @@ For dataset details and download instructions, refer to the [data_sources.md](da
 │   ├── raw/                   # Raw dataset files
 │   ├── processed/             # Preprocessed data
 │   ├── data_sources.md        # Dataset overview and instructions
+├── notebooks/                 # Notebooks for data analysis
 ├── features/                  # Contains anomaly, node, and edge features afer running main.py
+├── results/                   # Processed results from running main
+│   ├── explainer_scores.json  # Raw explainer scores for each node (if explained)
+│   ├── llm_insights.json      # Raw llm insights for each node (if generated)
+│   ├── runtime_cost_log.json  # Costs and latency for analyzing each node
 ├── src/                       # Source code for preprocessing, models, and utilities
 ├── tests/                     # Files for looking over data
-├── main.py/                   # Runs the main program to generate features and explain 1 anomaly
-├── generate_all_insights.py/  # Generates a set number of llm insights
+├── main.py/                   # Runs the main program to generate features and explain n samples
 ├── README.md                  # This document!
 ├── requirements.txt           # Required Python packages
 ```
@@ -58,20 +62,16 @@ For dataset details and download instructions, refer to the [data_sources.md](da
    ```bash
    OPENAI_API_KEY=your-api-key-here
    ```
-5. To generate features, run:
+5. To generate features and llm insights, run:
    ```bash
    python main.py
    ```
-6. Then, to generate llm insights run:
-   ```bash
-   python generate_all_insights.py
-   ```
-7. Finally, for the dashboard run:
+6. Finally, for the dashboard run:
    ```bash
    python dashboard/dashboard_setup.py
    ```
    which will create the neccesary files in the dashboard/data folder. 
-8. To launch the dahboard, run: 
+7. To launch the dahboard, run: 
    ```bash
    cd dashboard
    python -m http.server

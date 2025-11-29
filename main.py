@@ -28,14 +28,12 @@ from src.llm_explainer import interpret_with_openai_multi
 from src.graph_builder import load_data, build_graph
 from src.feature_extraction import process_features
 from src.anomaly_detection import detect_anomalies
-from src.decision_tree_builder import train_and_save_decision_trees
 
 # ---------- Config ----------
 RESULTS_DIR = "results"
 INSIGHTS_FILE = os.path.join(RESULTS_DIR, "llm_insights.json")
 METRICS_FILE = os.path.join(RESULTS_DIR, "runtime_cost_log.json")
 EXPLAINER_SCORES_FILE = os.path.join(RESULTS_DIR, "explainer_scores.json")
-GNN_PREDICTIONS_FILE = os.path.join(RESULTS_DIR, "gnn_predictions.json")
 
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
@@ -379,12 +377,6 @@ def generate_llm_insights_for_top_anomalies(
     else:
         explainer_scores = {}
 
-    if os.path.exists(GNN_PREDICTIONS_FILE):
-        with open(GNN_PREDICTIONS_FILE, "r") as f:
-            gnn_predictions = json.load(f)
-    else:
-        gnn_predictions = {}
-
     # ensure anomalies_df has anomaly_score column
     if "anomaly_score" not in anomalies_df.columns:
         raise ValueError("anomalies_df must include 'anomaly_score' column for ranking.")
@@ -405,7 +397,7 @@ def generate_llm_insights_for_top_anomalies(
 
     if total_to_process == 0:
         print("[INFO] Nothing to process.")
-        return insights, metrics_log, explainer_scores, gnn_predictions
+        return insights, metrics_log, explainer_scores
 
     workers = min(max_workers, os.cpu_count() or 4)
     print(f"[INFO] Using {workers} worker threads.")
@@ -442,7 +434,6 @@ def generate_llm_insights_for_top_anomalies(
             # write into main dicts
             insights[nid] = insight_entry
             explainer_scores[nid] = expl_scores_entry
-            gnn_predictions.update(gnn_pred_entry)
             metrics_log.append(metrics_entry)
 
             processed += 1
@@ -454,8 +445,6 @@ def generate_llm_insights_for_top_anomalies(
                     json.dump(insights, f, indent=2)
                 with open(EXPLAINER_SCORES_FILE, "w") as f:
                     json.dump(explainer_scores, f, indent=2)
-                with open(GNN_PREDICTIONS_FILE, "w") as f:
-                    json.dump(gnn_predictions, f, indent=2)
                 with open(metrics_path, "w") as f:
                     json.dump(metrics_log, f, indent=2)
                 save_counter = 0
@@ -465,20 +454,11 @@ def generate_llm_insights_for_top_anomalies(
         json.dump(insights, f, indent=2)
     with open(EXPLAINER_SCORES_FILE, "w") as f:
         json.dump(explainer_scores, f, indent=2)
-    with open(GNN_PREDICTIONS_FILE, "w") as f:
-        json.dump(gnn_predictions, f, indent=2)
     with open(metrics_path, "w") as f:
         json.dump(metrics_log, f, indent=2)
 
     elapsed = time.time() - start_all
     print(f"\nDONE — processed {processed} nodes in {elapsed/60:.2f} minutes. Saved to {RESULTS_DIR}.")
-
-    # After processing, train decision trees as before
-    print("Training decision tree on LLM consensus labels...")
-    stats = train_and_save_decision_trees()
-    print("Decision tree training finished. Stats saved to results/decision_tree_stats.json")
-
-    return insights, metrics_log, explainer_scores, gnn_predictions
 
 # ---------- Main ----------
 if __name__ == "__main__":
