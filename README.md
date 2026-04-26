@@ -51,7 +51,7 @@ For dataset details and download instructions, refer to the [data_sources.md](da
 1. Clone this repository:
    ```bash
    git clone https://github.com/awatson246/crypto-anomaly-detection-policy.git
-   cd crypto-fraud-detection
+   cd crypto-anomaly-detection-policy
    ```
 2. Install dependencies:
    ```bash
